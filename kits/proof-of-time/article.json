@@ -1,0 +1,57 @@
+{
+  "title": "The one thing AI can’t fake is the past",
+  "project": "Proof of Time",
+  "date": "2026-09-21",
+  "blurb": "Timestamp any file on Zcash. Math anyone can check.",
+  "parts": [
+    {
+      "type": "img",
+      "file": "01-header.png",
+      "note": "Cover image — goes in the cover slot at the very top, not in the body."
+    },
+    {
+      "type": "text",
+      "html": "<p>In a couple of years, any photo, contract, song or screenshot could have come out of a model in about four seconds.</p>\n<p>When that day comes, one question matters more than any other:</p>\n<p><b>Did this file exist before the tools that could have faked it?</b></p>\n<p>Proof of Time <b>$TIME</b> answers that question, with math anyone can check.</p>\n<h2>What it does</h2>\n<p>Drop a file on the page. That’s it.</p>\n<ul><li>If that exact file has been stamped before, it shows you <b>when</b>.</li><li>If it’s new, one button stamps it.</li></ul>\n<p>The stamp goes onto the Zcash blockchain and gets buried deeper with every block that follows. <b>Once it’s there, it’s there for good.</b></p>\n<h2>Your file stays on your device</h2>"
+    },
+    {
+      "type": "img",
+      "file": "02-device.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Your phone or laptop turns the file into a <b>fingerprint</b>: a 64-character code that only that exact file produces. Change one pixel and you get a completely different code.</p>\n<p><b>Only the fingerprint gets sent. The file stays with you.</b> Your photos, contracts and unreleased tracks stay private. Stamp your tax return if you want, and all that goes out is a string of letters and numbers.</p>\n<h2>A thousand stamps for the price of one</h2>"
+    },
+    {
+      "type": "img",
+      "file": "03-tree.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>About every 75 seconds, which is one Zcash block, every fingerprint in the queue gets folded into a tree. Pairs combine, then those pairs combine, until you’re left with <b>one root</b>. That root goes on chain.</p>\n<p>A thousand stamps, one transaction, one fee. <b>That’s how stamping stays free.</b></p>\n<p>Your receipt holds the path from your fingerprint up to that root, so anyone can follow it and check it.</p>\n<h2>Check it yourself</h2>\n<p>When your receipt comes back, <b>your own browser checks the math</b> before it shows “verified.”</p>\n<p>There’s also a standalone checker you can run on your own machine, against your own file and receipt.</p>\n<p>The roots go on chain as transparent transactions, where anyone can read them. <b>Every receipt checks out straight against the Zcash chain, forever.</b></p>\n<h2>Live on Zcash mainnet</h2>"
+    },
+    {
+      "type": "img",
+      "file": "04-chain.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Real chain, real anchors. The first one:</p>\n<ul><li>Block <b>3,490,641</b></li><li>Transaction <code>48941a8258e6fc7797dcc29fdc7c523835ce136182c59258e4c18d2cafbdb4a9</code></li><li>Fee: <b>15,000 zatoshis</b>, a fraction of a cent</li></ul>\n<p>Paste it into any block explorer and you’ll find the root sitting right there in the transaction.</p>\n<h2>What a stamp proves</h2>"
+    },
+    {
+      "type": "img",
+      "file": "05-timeline.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>A stamp proves <b>this exact file existed by this block.</b> Locked in, publicly, with a date on it.</p>\n<p>That matters more every month. <b>A photo stamped in 2026 was already around in 2026</b>, before whatever model ships in 2029. The record only moves forward.</p>\n<h2>Who should be stamping right now</h2>\n<ul>\n<li><b>Photographers and artists:</b> your originals, before someone claims them</li>\n<li><b>Builders:</b> code, designs and ideas, dated before the copycats show up</li>\n<li><b>Journalists:</b> footage, while it’s still new</li>\n<li><b>Anyone who signs things:</b> contracts, drafts, agreements</li>\n<li><b>Anyone who wants receipts:</b> “I called it” posts, now with math behind them</li>\n</ul>\n<h2>What’s next</h2>\n<p>Next up is <b>stamping on autopilot</b>: a folder watcher that stamps every screenshot the moment you take it, and a hook that stamps every code commit. Your proof will already be there when you need it.</p>"
+    },
+    {
+      "type": "img",
+      "file": "06-logo.png"
+    },
+    {
+      "type": "text",
+      "html": "<h2>Start the clock</h2>\n<p>Time only runs one way. Stamp it today, and today is on the record for good.</p>\n<p><b>Drop a file. Get a timestamp. Keep the proof.</b></p>\n<p><b>$TIME</b></p>\n<p>CA: <code>Ga1VE5ud6vw2D6maXVV5GVAfYQT3uMmVQxityg9Kpump</code></p>\n<p>👉 proofoftime.fun</p>\n<p>What’s the first file you’d stamp? Tell me below.</p>"
+    }
+  ]
+}

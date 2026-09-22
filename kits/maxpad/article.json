@@ -1,0 +1,49 @@
+{
+  "title": "Send your coin’s fees to anyone you pick",
+  "project": "Maxpad",
+  "date": "2026-09-22",
+  "blurb": "Send your coin’s fees to anyone you pick.",
+  "parts": [
+    {
+      "type": "img",
+      "file": "01-cover.png",
+      "note": "Cover image — goes in the cover slot at the very top, not in the body."
+    },
+    {
+      "type": "text",
+      "html": "<p>Every coin earns trading fees. On <b>Maxpad</b>, you decide where they go.</p>\n<p>A TikToker. A streamer. A Reddit user. Your holders. <b>They don’t sign up for anything. Their share just shows up.</b></p>\n<h2>Set it once</h2>"
+    },
+    {
+      "type": "img",
+      "file": "02-split.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Pick who gets paid, give each a share, launch. <b>Every trade after that pays out the same way.</b></p>\n<p>The split is locked at launch. Nobody can change it, us included.</p>\n<h2>Pay anyone</h2>"
+    },
+    {
+      "type": "img",
+      "file": "03-where.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>A tip pops up on stream. A gift lands on a TikTok. Gold lands on a Reddit post. <b>Paid on the app they already use.</b></p>\n<p>Or send SOL to a wallet, reward your holders, buy back and burn, or give to charity.</p>\n<h2>They sign up for nothing</h2>"
+    },
+    {
+      "type": "img",
+      "file": "04-paid.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Their share waits in a vault tied to their handle. They prove the handle is theirs, and <b>they take the money</b>. As SOL, or the way that site already pays them.</p>\n<p>15% runs the payouts. <b>The other 85% goes exactly where you said.</b></p>"
+    },
+    {
+      "type": "img",
+      "file": "05-close.png"
+    },
+    {
+      "type": "text",
+      "html": "<h2>Your coin. Your fees. Your call.</h2>\n<p><b>Launch one on maxpad.io</b></p>\n<p>Who are you sending yours to? Tell me below.</p>"
+    }
+  ]
+}

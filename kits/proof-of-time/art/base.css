@@ -1,0 +1,15 @@
+@font-face{font-family:JBM;src:url(JetBrainsMono-Regular.ttf);font-weight:400}
+@font-face{font-family:JBM;src:url(JetBrainsMono-Medium.ttf);font-weight:500}
+@font-face{font-family:JBM;src:url(JetBrainsMono-Bold.ttf);font-weight:700}
+@font-face{font-family:Inter;src:url(Inter-Regular.ttf);font-weight:400}
+@font-face{font-family:Inter;src:url(Inter-SemiBold.ttf);font-weight:600}
+@font-face{font-family:Inter;src:url(Inter-Bold.ttf);font-weight:700}
+@font-face{font-family:Inter;src:url(Inter-ExtraBold.ttf);font-weight:800}
+html,body{margin:0;padding:0;background:#111113;overflow:hidden}
+svg{display:block}
+.l{fill:none;stroke:#F2F2F4;stroke-width:7;stroke-linecap:butt;stroke-linejoin:miter}
+.d{fill:none;stroke:#F2F2F4;stroke-width:6;stroke-dasharray:26 16}
+.y{fill:#F4B728}
+.w{fill:#F2F2F4}
+.t{font-family:JBM;fill:#F2F2F4;font-weight:400}
+.dim{font-family:JBM;fill:#6E6E75;font-weight:400}
