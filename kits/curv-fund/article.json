@@ -1,0 +1,49 @@
+{
+  "title": "Borrow against a coin that’s minutes old",
+  "project": "Curv Fund",
+  "date": "2026-09-23",
+  "blurb": "Borrow SOL against a pump.fun coin that’s minutes old. Keep the bag.",
+  "parts": [
+    {
+      "type": "img",
+      "file": "01-cover.png",
+      "note": "Cover image — goes in the cover slot at the very top, not in the body."
+    },
+    {
+      "type": "text",
+      "html": "<p>You’re up on a coin that launched an hour ago. You want SOL, and you want to keep the bag.</p>\n<p>On <b>Curv Fund</b> you borrow against it. <b>Nothing gets sold on the chart.</b></p>\n<h2>Priced from its first block</h2>"
+    },
+    {
+      "type": "img",
+      "file": "02-curve.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Connect your wallet and every pump.fun coin in it shows up, even ones minted minutes ago.</p>\n<p>We read each coin’s bonding curve on chain and work out its market cap ourselves. <b>A coin can be seconds old and already have a loan on offer.</b></p>\n<h2>Your score sets your loan</h2>"
+    },
+    {
+      "type": "img",
+      "file": "03-score.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Every coin gets a risk score from what’s on chain. <b>The safer it reads, the more you can borrow, up to a third of the bag.</b></p>\n<p>You see the rate before you borrow, and it stays the same after.</p>\n<h2>Keep the bag</h2>"
+    },
+    {
+      "type": "img",
+      "file": "04-keep.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Your coins lock in the on-chain program, and no admin key can move them. The SOL is yours to use.</p>\n<p><b>Pay it back and the coins come straight back to you.</b> $CURV creator fees fund the lending pool, so every $CURV trade adds to what can be lent.</p>"
+    },
+    {
+      "type": "img",
+      "file": "05-close.png"
+    },
+    {
+      "type": "text",
+      "html": "<h2>Get the SOL. Keep the bag.</h2>\n<p><b>Borrow on curv.fund</b></p>\n<p>What’s the first coin you’d borrow against? Tell me below.</p>"
+    }
+  ]
+}
