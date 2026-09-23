@@ -1,0 +1,49 @@
+{
+  "title": "Scan any barcode. Launch its coin.",
+  "project": "Scanny",
+  "date": "2026-09-24",
+  "blurb": "Scan any barcode, launch its coin, keep half its fees for life.",
+  "parts": [
+    {
+      "type": "img",
+      "file": "01-cover.png",
+      "note": "Cover image — goes in the cover slot at the very top, not in the body."
+    },
+    {
+      "type": "text",
+      "html": "<p>Every product in your kitchen has a barcode. On <b>Scanny</b>, every barcode gets one coin.</p>\n<p><b>Scan it first and it’s yours for life.</b></p>\n<h2>Scan it</h2>"
+    },
+    {
+      "type": "img",
+      "file": "02-scan.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Point your phone at anything. The fridge, the bathroom cabinet, the shelf at work. Scanny reads the barcode and pulls up the product’s photo, name and size.</p>\n<p>Nobody launched it yet? <b>You launch its coin on pump.fun, right there.</b></p>\n<h2>One barcode, one coin</h2>"
+    },
+    {
+      "type": "img",
+      "file": "03-one-coin.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>The coin’s address is built from the barcode’s digits, so the chain refuses a second one. <b>Whoever lands first owns that product for good.</b></p>\n<p>Coca-Cola. Nutella. Heinz. First scan takes them.</p>\n<h2>Half the fees, for life</h2>"
+    },
+    {
+      "type": "img",
+      "file": "04-fees.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Every trade pays a creator fee. <b>50% of it goes to the first scanner, forever.</b> pump.fun pays it straight to your wallet.</p>\n<p>The split is locked into the coin at launch. Nobody can change it, us included. Scanny charges nothing to launch.</p>"
+    },
+    {
+      "type": "img",
+      "file": "05-close.png"
+    },
+    {
+      "type": "text",
+      "html": "<h2>Go scan your fridge</h2>\n<p><b>scanny.fun</b></p>\n<p>$SCANNY: G8TTWtBR6AqxzMC8nSwdVt7NCUDGvqjUEWRr5SXdpump</p>\n<p>What’s the first thing you’re scanning? Tell me below.</p>"
+    }
+  ]
+}
