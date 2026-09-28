@@ -72,11 +72,9 @@ def caption(text, w, y):
 # ---------------------------------------------------------------- 1 cover 2000x800
 b = []
 b.append('<ellipse cx="1480" cy="420" rx="420" ry="380" fill="url(#blue)"/>')
-b.append(panel(150, 170, 640, 64))
-b.append('<text class="lcd" x="176" y="215" font-size="30">NEW ON PUMP.FUN: NOKIA PAIRS</text>')
-b.append('<text class="disp" x="140" y="470" font-size="270">NOKPAD</text>')
-b.append('<text class="disp" x="148" y="590" font-size="92">Launch your $NOK pair</text>')
-b.append('<text class="disp y" x="148" y="686" font-size="92">from a Nokia.</text>')
+b.append('<text class="disp" x="140" y="420" font-size="270">NOKPAD</text>')
+b.append('<text class="disp" x="148" y="540" font-size="92">Launch your $NOK pair</text>')
+b.append('<text class="disp y" x="148" y="636" font-size="92">from a Nokia.</text>')
 b.append(phone('menu', 1260, 60, 1500))
 page('01-cover.html', 2000, 800, b)
 
