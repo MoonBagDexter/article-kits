@@ -7,12 +7,16 @@
     {"type": "img", "file": "01-cover.png", "note": "Cover image — goes in the cover slot at the very top, not in the body."},
     {"type": "text", "html": "<p><b>Pair Pond</b> is a multiplayer fishing game in your browser.</p>\n<p>Every fish in the harbour is a real Solana coin. <b>Hold the pond’s coin, and every fish you land pays you that coin.</b></p>\n<h2>Cast, hook, reel</h2>"},
     {"type": "img", "file": "02-catch.png"},
-    {"type": "text", "html": "<p>Walk to the end of the pier and cast. When the bobber goes under, hook it and reel it in.</p>\n<p>Cast further out for rarer fish. <b>Tokenized stocks swim here too, as golden fish.</b></p>\n<h2>The Fish Finder picks them</h2>"},
-    {"type": "img", "file": "03-finder.png"},
+    {"type": "text", "html": "<p>Walk to the end of the pier and cast. When the bobber goes under, hook it and reel it in.</p>\n<p>Cast further out for rarer fish. <b>Tokenized stocks swim here too, as golden fish.</b></p>\n<h2>Every catch pays</h2>"},
+    {"type": "img", "file": "03-pays.png"},
+    {"type": "text", "html": "<p>Land a fish and the pond’s fees buy that coin and send it to your wallet.</p>\n<p>Hold any amount of the pond’s coin and your catches pay in coin. <b>Hold more, and you hook rarer fish and bigger catches.</b></p>\n<p>No coin yet? You still fish for silver.</p>\n<h2>Sell for silver, stack it up</h2>"},
+    {"type": "img", "file": "04-silver.png"},
+    {"type": "text", "html": "<p>Sell your catch at the fish market for silver. Land fish in a row without losing one and each sells for more. Hook it the instant it bites for a perfect hook and more silver.</p>\n<p>When the Fish Finder picks a new coin, a school of it starts feeding out on the water. <b>Bites come fast and every fish sells for 50% more.</b></p>\n<p>Tournaments, golden fish hunts and cash drops pay silver and trophies. Silver buys rods, reels, bait, hats and bats.</p>\n<h2>The Fish Finder picks them</h2>"},
+    {"type": "img", "file": "05-finder.png"},
     {"type": "text", "html": "<p>Every few minutes it pulls the coins moving today and checks each one live: real buyers, not bundled, enough liquidity, holders spread out.</p>\n<p><b>Pass every check and it swims. Miss one and it’s thrown back, with the reason on screen.</b></p>\n<h2>Bigger bag, bigger boat</h2>"},
-    {"type": "img", "file": "04-boats.png"},
+    {"type": "img", "file": "06-boats.png"},
     {"type": "text", "html": "<p>The top holders each get a boat in the marina, from a dinghy up to a superyacht. The more you hold, the bigger the boat.</p>\n<p>Take it out to the far marks, where the rarest fish bite. <b>Every so often, fees buy the Fish Finder’s top pick and split it across holders’ boats by bag size.</b></p>\n<h2>Bring a bat</h2>"},
-    {"type": "img", "file": "05-close.png"},
+    {"type": "img", "file": "07-close.png"},
     {"type": "text", "html": "<p>Someone fishing your spot? Walk up with the bat. <b>A good hit sends them flying into the water.</b></p>\n<p><b>Play now at pairpond.fun</b></p>\n<p>What coin are you reeling in first?</p>"}
   ]
 }

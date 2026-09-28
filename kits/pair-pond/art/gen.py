@@ -115,7 +115,50 @@ for i, (img, a, c) in enumerate(rows):
 b.append(f'<text class="tw" x="800" y="850" font-size="30" text-anchor="middle">Hold the pond\'s coin and every fish you land pays you that coin.</text>')
 page('02-catch.html', 1600, 900, b)
 
-# ---------------------------------------------------------------- 3 the Fish Finder 1600x900
+# ---------------------------------------------------------------- 3 every catch pays 1600x900
+b = [header(1600, f'Every catch <tspan class="y">pays you.</tspan>')]
+steps = [('fish-marlin.png', 300, 150, 'Land a fish'), ('money-coin-stack.png', 190, 190, 'Fees buy that coin'),
+         ('money-bag.png', 190, 190, 'Sent to your wallet')]
+for i, (img, iw, ih, label) in enumerate(steps):
+    x = 50 + i * 530
+    b.append(box(x, 196, 440, 330, PAPER, 6))
+    b.append(f'<image href="{img}" x="{x + 220 - iw / 2}" y="{362 - ih / 2 - 20}" width="{iw}" height="{ih}"/>')
+    b.append(f'<text class="t" x="{x + 220}" y="492" font-size="34" text-anchor="middle">{label}</text>')
+    if i < 2:
+        ax = x + 452
+        b.append(f'<path d="M{ax} 361H{ax + 44}" stroke="{NAVY}" stroke-width="12"/><path d="M{ax + 44} 343L{ax + 68} 361L{ax + 44} 379Z" fill="{NAVY}"/>')
+b.append(box(50, 566, 1500, 300, PAPER, 6))
+b.append(f'<text class="pxn" x="96" y="650" font-size="54">Hold more,</text>')
+b.append(f'<text class="pxn" x="96" y="712" font-size="54">fish <tspan fill="{RED}">luckier.</tspan></text>')
+b.append(f'<text class="dim" x="96" y="770" font-size="24">Rarer bites and bigger catches.</text>')
+b.append(f'<text class="dim" x="96" y="804" font-size="24">No coin? You still fish for silver.</text>')
+rar = ['common', 'uncommon', 'rare', 'epic', 'legendary']
+for i, r in enumerate(rar):
+    cx = 640 + i * 200
+    sz = 120 + i * 12
+    b.append(f'<image href="badge-rarity-{r}.png" x="{cx - sz / 2}" y="{730 - sz}" width="{sz}" height="{sz}"/>')
+    b.append(f'<text class="t" x="{cx}" y="772" font-size="26" text-anchor="middle">{r.capitalize()}</text>')
+b.append(f'<path d="M560 812H1480" stroke="{NAVY}" stroke-width="8"/><path d="M1480 798L1504 812L1480 826Z" fill="{NAVY}"/>')
+page('03-pays.html', 1600, 900, b)
+
+# ---------------------------------------------------------------- 4 silver, streaks, frenzies 1600x900
+b = [header(1600, f'Sell for silver. <tspan class="y">Stack it up.</tspan>')]
+b.append(still('frenzy.webp', 50, 196, 1500, 310, 1500, 437, 0, 90))
+b.append(chip(88, 430, 'Frenzy: bites come fast, every fish sells for 50% more', 28, fill=YELLOW, u=4, pad=22))
+cards = [('money-coin-stack-silver.png', 'Fish market', 'Sell your catch', 'for silver'),
+         ('badge-streak.png', 'Streaks', 'Fish in a row', 'sell for more'),
+         ('badge-perfect.png', 'Perfect hooks', 'Hook it on the bite', 'for more silver'),
+         ('badge-medal-gold.png', 'Events', 'Tournaments, hunts', 'and cash drops')]
+for i, (img, a, l1, l2) in enumerate(cards):
+    x = 50 + i * 383
+    b.append(box(x, 548, 350, 320, PAPER, 6))
+    b.append(f'<image href="{img}" x="{x + 175 - 70}" y="572" width="140" height="140"/>')
+    b.append(f'<text class="t" x="{x + 175}" y="760" font-size="34" text-anchor="middle">{a}</text>')
+    b.append(f'<text class="dim" x="{x + 175}" y="800" font-size="24" text-anchor="middle">{l1}</text>')
+    b.append(f'<text class="dim" x="{x + 175}" y="832" font-size="24" text-anchor="middle">{l2}</text>')
+page('04-silver.html', 1600, 900, b)
+
+# ---------------------------------------------------------------- 5 the Fish Finder 1600x900
 b = [header(1600, f'Watch the Fish Finder <tspan class="y">pick.</tspan>')]
 # a coin comes in
 b.append(box(50, 330, 260, 300, PAPER, 6))
@@ -147,9 +190,9 @@ b.append(cross(1140, 680))
 b.append('<text class="t" x="1200" y="712" font-size="28">Bundled at launch</text>')
 b.append('<text class="dim" x="1140" y="752" font-size="22">The reason is shown on screen</text>')
 b.append('<text class="tw" x="800" y="868" font-size="28" text-anchor="middle">Every check runs in the open. Anyone can watch.</text>')
-page('03-finder.html', 1600, 900, b)
+page('05-finder.html', 1600, 900, b)
 
-# ---------------------------------------------------------------- 4 boats 1600x900
+# ---------------------------------------------------------------- 6 boats 1600x900
 b = [header(1600, f'Bigger bag, <tspan class="y">bigger boat.</tspan>')]
 b.append(box(50, 200, 1500, 360, TINT, 6))
 tiers = ['dinghy', 'skiff', 'fisher', 'sportfisher', 'yacht', 'superyacht']
@@ -164,16 +207,13 @@ b.append(f'<path d="M110 520H1450" stroke="{NAVY}" stroke-width="10"/><path d="M
 b.append(f'<rect x="690" y="500" width="220" height="40" fill="{TINT}"/><text class="t" x="800" y="530" font-size="28" text-anchor="middle">Hold more</text>')
 b.append(still('trip.webp', 50, 600, 1500, 270, 1500, 437, 0, 110))
 b.append(chip(88, 800, 'Boat trips pay holders by bag size', 28, fill=YELLOW, u=4, pad=20))
-page('04-boats.html', 1600, 900, b)
+page('06-boats.html', 1600, 900, b)
 
-# ---------------------------------------------------------------- 5 closing 1600x900
+# ---------------------------------------------------------------- 7 closing 1600x900
 b = []
 b.append('<image href="bonk.webp" x="0" y="-40" width="1600" height="900" preserveAspectRatio="none"/>')
 b.append(f'<rect x="0" y="730" width="1600" height="170" fill="{NAVY}"/>')
-b.append(box(40, 752, 560, 126, PAPER, 6, shadow=False))
-lk, lw = lockup(0, 0, 70)
-b.append(f'<g transform="translate({320 - lw / 2} 780)">{lk}</g>')
-b.append(f'<text class="px" x="660" y="836" font-size="64">Bring a bat.</text>')
-b.append(chip(1150, 766, 'pairpond.fun', 46, fill=YELLOW, cls='t', u=6, pad=28, w=410))
-page('05-close.html', 1600, 900, b)
+b.append(f'<text class="px" x="70" y="842" font-size="84">Bring a bat.</text>')
+b.append(chip(1110, 762, 'pairpond.fun', 50, fill=YELLOW, cls='t', u=6, pad=28, w=440))
+page('07-close.html', 1600, 900, b)
 print('built')
