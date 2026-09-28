@@ -1,0 +1,49 @@
+{
+  "title": "Launch your Nokia pair from a Nokia",
+  "project": "NOKPAD",
+  "date": "2026-09-28",
+  "blurb": "Pump.fun just added Nokia pairs. NOKPAD is a Nokia you launch them from.",
+  "parts": [
+    {
+      "type": "img",
+      "file": "01-cover.png",
+      "note": "Cover image — goes in the cover slot at the very top, not in the body."
+    },
+    {
+      "type": "text",
+      "html": "<p>Pump.fun just added Nokia pairs. Coins can now trade against <b>$NOK</b>, the Nokia stock token.</p>\n<p>A Nokia pair deserves a Nokia. <b>So NOKPAD is one: a pixel phone you launch coins from.</b></p>\n<h2>Type it like a text</h2>"
+    },
+    {
+      "type": "img",
+      "file": "02-type.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Open New coin and tap the name out on the keypad. Three taps on 2 for a C, like it's 2001.</p>\n<p>Then the ticker and a line about it. <b>Use your own photo, or the phone draws a pixel logo for you.</b></p>\n<h2>Pick who gets the fees</h2>"
+    },
+    {
+      "type": "img",
+      "file": "03-fees.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>One switch before you send. <b>Holder rewards on: the coin's fees go to its holders, paid in $NOK.</b> Off: they go to you.</p>\n<p>Your wallet signs and pays. The site never holds your money.</p>\n<h2>It rings when your coin moves</h2>"
+    },
+    {
+      "type": "img",
+      "file": "04-rings.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Every coin launched here is saved in Contacts, menu 2.</p>\n<p>A new coin makes the phone buzz. Trades blip. <b>When a coin migrates, the phone rings.</b></p>\n<p>And yes, Snake works.</p>"
+    },
+    {
+      "type": "img",
+      "file": "05-close.png"
+    },
+    {
+      "type": "text",
+      "html": "<h2>Connecting people. Now launching coins.</h2>\n<p>Try the phone at <b>nokpad-production.up.railway.app</b>. Launching switches on soon, so go type yours.</p>\n<p>What are you typing in first?</p>"
+    }
+  ]
+}
