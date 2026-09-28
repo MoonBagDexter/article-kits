@@ -144,7 +144,7 @@ lh = 700
 lw = lh * 457 / 1152
 b.append(f'<image href="logo.png" x="{420 - lw / 2}" y="{450 - lh / 2}" width="{lw}" height="{lh}" filter="url(#hard)"/>')
 b.append('<text class="disp" x="680" y="420" font-size="230">NOKPAD</text>')
-b.append('<text class="disp y" x="688" y="520" font-size="58">nokpad-production.up.railway.app</text>')
-b.append('<text class="dim" x="690" y="590" font-size="26">connecting people since 1865</text>')
+b.append('<text class="disp y" x="688" y="530" font-size="96">nokpad.fun</text>')
+b.append('<text class="dim" x="690" y="610" font-size="26">connecting people since 1865</text>')
 page('05-close.html', 1600, 900, b)
 print('built')
