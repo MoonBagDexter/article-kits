@@ -30,6 +30,8 @@ button.ok{background:#f5b301;color:#111}
 .hint{color:#8b8f94;font-size:13px;margin-top:8px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#f5b301;color:#111;font-weight:700;font-size:14px;padding:10px 18px;border-radius:99px;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.on{opacity:1}
+.body.plain{white-space:pre-wrap}
+.section{font-size:20px;margin:44px 0 0;padding-top:24px;border-top:1px solid #26282c}
 .back{margin:0 0 14px}.back a{color:#8b8f94;text-decoration:none;font-size:13px}
 </style></head><body><div class="wrap">
 <div class="top">
@@ -48,7 +50,33 @@ button.ok{background:#f5b301;color:#111}
 <p>A new coin makes the phone buzz. Trades blip. <b>When a coin migrates, the phone rings.</b></p>
 <p>And yes, Snake works.</p></div></div></div><div class="step"><div class="num">10</div><div class="card"><div class="head"><span class="tag">Image</span><span class="sp"></span><a class="btn ghost" download="05-close.png" href="05-close.png">Download</a><button onclick="copyImage(this)">Copy image</button></div><img src="05-close.png" alt=""></div></div><div class="step"><div class="num">11</div><div class="card"><div class="head"><span class="tag">Text</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body"><h2>Connecting people. Now launching coins.</h2>
 <p>Try the phone at <b>nokpad.fun</b>. Launching switches on soon, so go type yours.</p>
-<p>What are you typing in first?</p></div></div></div></div>
+<p>What are you typing in first?</p></div></div></div><h2 class="section">Marketing copy</h2><div class="step"><div class="num">12</div><div class="card"><div class="head"><span class="tag">Description</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">A Nokia that launches coins. Type yours on the keypad like a text, pick a logo, send. Every coin pairs with $NOK, the Nokia stock token.</div><div class="hint">136 characters. Paste the same text into pump.fun, the X bio and DEX Screener. Add your $TICKER at the end once you have one.</div></div></div><div class="step"><div class="num">13</div><div class="card"><div class="head"><span class="tag">Description, alt: the news</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">Pump.fun added Nokia pairs. We built the Nokia. Tap your coin out on the keypad, three taps for a C, and it pairs with $NOK.</div><div class="hint">124 characters.</div></div></div><div class="step"><div class="num">14</div><div class="card"><div class="head"><span class="tag">Description, alt: the fees</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">Launch coins from a pixel Nokia, paired to $NOK. Flip Holder rewards on and the fees go to your holders, paid in $NOK.</div><div class="hint">118 characters.</div></div></div><div class="step"><div class="num">15</div><div class="card"><div class="head"><span class="tag">Description, alt: the fun</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">A pixel Nokia that launches pump.fun coins paired to $NOK. Type it like a text. It rings when your coin migrates.</div><div class="hint">113 characters.</div></div></div><div class="step"><div class="num">16</div><div class="card"><div class="head"><span class="tag">Website</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">nokpad.fun</div><div class="hint">For the website field on pump.fun, DEX Screener and the X profile.</div></div></div><div class="step"><div class="num">17</div><div class="card"><div class="head"><span class="tag">Tweet: announcement</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">Pump.fun just added Nokia pairs.
+
+So we built a Nokia to launch them from.
+
+Type your coin on the keypad like a text. Three taps for a C. It pairs with $NOK.
+
+nokpad.fun</div><div class="hint">Post it with the article.</div></div></div><div class="step"><div class="num">18</div><div class="card"><div class="head"><span class="tag">Tweet: the fees</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">One switch on the NOKPAD before you send.
+
+Holder rewards on: your coin&#x27;s fees go to its holders, paid in $NOK.
+Off: they go to you.</div></div></div><div class="step"><div class="num">19</div><div class="card"><div class="head"><span class="tag">Tweet: it&#x27;s alive</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">Coin launched from the NOKPAD? The phone buzzes.
+A trade? It blips.
+A coin migrates? It rings.
+
+And yes, Snake works.</div></div></div><div class="step"><div class="num">20</div><div class="card"><div class="head"><span class="tag">Pinned tweet</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">NOKPAD: a pixel Nokia that launches pump.fun coins paired to $NOK.
+
+1. Open New coin, type it on the keys
+2. Logo: your photo, or the phone draws one
+3. Holder rewards on or off
+4. Every coin lands in Contacts, menu 2
+
+Launching switches on soon. Go type yours.</div><div class="hint">No room for the link. Reply under it with nokpad.fun.</div></div></div><div class="step"><div class="num">21</div><div class="card"><div class="head"><span class="tag">Tweet: launching is on</span><span class="sp"></span><button onclick="copyPlain(this)">Copy</button></div><div class="body plain">Launching is on.
+
+Open the NOKPAD, type your coin on the keys, send. It goes live on pump.fun paired to $NOK.
+
+What are you typing in first?
+
+nokpad.fun</div><div class="hint">Save this. Only post it once real launching works on the site.</div></div></div></div>
 </div>
 <div class="toast" id="toast">Copied</div>
 <script>
@@ -65,6 +93,14 @@ async function copyText(btn) {
     const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); s.removeAllRanges()
   }
   mark(btn, 'Copied'); toast('Copied — paste it into X')
+}
+
+async function copyPlain(btn) {
+  const text = btn.closest('.card').querySelector('.body').textContent
+  try { await navigator.clipboard.writeText(text) } catch {
+    const t = document.createElement('textarea'); t.value = text; document.body.append(t); t.select(); document.execCommand('copy'); t.remove()
+  }
+  mark(btn, 'Copied'); toast('Copied')
 }
 
 async function copyImage(btn) {

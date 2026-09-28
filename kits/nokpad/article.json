@@ -45,5 +45,55 @@
       "type": "text",
       "html": "<h2>Connecting people. Now launching coins.</h2>\n<p>Try the phone at <b>nokpad.fun</b>. Launching switches on soon, so go type yours.</p>\n<p>What are you typing in first?</p>"
     }
+  ],
+  "marketing": [
+    {
+      "label": "Description",
+      "note": "136 characters. Paste the same text into pump.fun, the X bio and DEX Screener. Add your $TICKER at the end once you have one.",
+      "text": "A Nokia that launches coins. Type yours on the keypad like a text, pick a logo, send. Every coin pairs with $NOK, the Nokia stock token."
+    },
+    {
+      "label": "Description, alt: the news",
+      "note": "124 characters.",
+      "text": "Pump.fun added Nokia pairs. We built the Nokia. Tap your coin out on the keypad, three taps for a C, and it pairs with $NOK."
+    },
+    {
+      "label": "Description, alt: the fees",
+      "note": "118 characters.",
+      "text": "Launch coins from a pixel Nokia, paired to $NOK. Flip Holder rewards on and the fees go to your holders, paid in $NOK."
+    },
+    {
+      "label": "Description, alt: the fun",
+      "note": "113 characters.",
+      "text": "A pixel Nokia that launches pump.fun coins paired to $NOK. Type it like a text. It rings when your coin migrates."
+    },
+    {
+      "label": "Website",
+      "note": "For the website field on pump.fun, DEX Screener and the X profile.",
+      "text": "nokpad.fun"
+    },
+    {
+      "label": "Tweet: announcement",
+      "note": "Post it with the article.",
+      "text": "Pump.fun just added Nokia pairs.\n\nSo we built a Nokia to launch them from.\n\nType your coin on the keypad like a text. Three taps for a C. It pairs with $NOK.\n\nnokpad.fun"
+    },
+    {
+      "label": "Tweet: the fees",
+      "text": "One switch on the NOKPAD before you send.\n\nHolder rewards on: your coin's fees go to its holders, paid in $NOK.\nOff: they go to you."
+    },
+    {
+      "label": "Tweet: it's alive",
+      "text": "Coin launched from the NOKPAD? The phone buzzes.\nA trade? It blips.\nA coin migrates? It rings.\n\nAnd yes, Snake works."
+    },
+    {
+      "label": "Pinned tweet",
+      "note": "No room for the link. Reply under it with nokpad.fun.",
+      "text": "NOKPAD: a pixel Nokia that launches pump.fun coins paired to $NOK.\n\n1. Open New coin, type it on the keys\n2. Logo: your photo, or the phone draws one\n3. Holder rewards on or off\n4. Every coin lands in Contacts, menu 2\n\nLaunching switches on soon. Go type yours."
+    },
+    {
+      "label": "Tweet: launching is on",
+      "note": "Save this. Only post it once real launching works on the site.",
+      "text": "Launching is on.\n\nOpen the NOKPAD, type your coin on the keys, send. It goes live on pump.fun paired to $NOK.\n\nWhat are you typing in first?\n\nnokpad.fun"
+    }
   ]
 }

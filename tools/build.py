@@ -50,6 +50,14 @@ def build_kit(kit: Path):
                           f'<a class="btn ghost" download="{name}" href="{name}">Download</a>'
                           '<button onclick="copyImage(this)">Copy image</button>'))
 
+    # optional launch copy under the article: plain text, copied as-is (descriptions, tweets)
+    if art.get('marketing'):
+        steps.append('<h2 class="section">Marketing copy</h2>')
+        for n, item in enumerate(art['marketing'], start=len(art['parts']) + 2):
+            hint = f'<div class="hint">{html.escape(item["note"])}</div>' if item.get('note') else ''
+            steps.append(step(n, html.escape(item['label']), f'<div class="body plain">{html.escape(item["text"])}</div>{hint}',
+                              '<button onclick="copyPlain(this)">Copy</button>'))
+
     page = (TEMPLATE.replace('%%PROJECT%%', html.escape(art['project']))
             .replace('%%META%%', meta(art['title'], art.get('blurb', ''), kit.name, cover))
             .replace('%%STEPS%%', ''.join(steps)))
