@@ -102,23 +102,6 @@ for i, (n, a, c) in enumerate(rows):
     b.append(f'<text class="lcd" x="{px + 300}" y="{y + 32}" font-size="24">{c}</text>')
 page('02-type.html', 1600, 900, b)
 
-# ---------------------------------------------------------------- 3 the fees switch 1600x900
-b = []
-b.append(headline('One switch. <tspan class="y">Fees to your holders.</tspan>', 1600))
-b.append(phone('rewards', 190, 165, 690))
-opts = [('On', 'Fees go to holders,', 'paid in $NOK.', True, 260, 296), ('Off', 'Fees go to you,', 'the creator.', False, 520, 318)]
-for label, l1, l2, on, y, row in opts:
-    # from the matching row on the phone's screen to its panel
-    b.append(f'<path class="wire" d="M424 {row} H500 C580 {row} 570 {y + 90} 648 {y + 90}" stroke-opacity="{1 if on else 0.35}"/>')
-    b.append(panel(660, y, 780, 180))
-    fill, txt = ('#43523d', '#c7f0d8') if on else ('#c7f0d8', '#43523d')
-    b.append(f'<rect x="690" y="{y + 40}" width="170" height="100" fill="{fill}" stroke="#43523d" stroke-width="5"/>')
-    b.append(f'<text x="775" y="{y + 118}" font-size="84" text-anchor="middle" style="font-family:\'Jersey 15\';fill:{txt}">{label}</text>')
-    b.append(f'<text class="ink" x="900" y="{y + 84}" font-size="54">{l1}</text>')
-    b.append(f'<text class="ink" x="900" y="{y + 142}" font-size="54">{l2}</text>')
-b.append('<text class="dim" x="1050" y="806" font-size="24" text-anchor="middle">Your wallet signs and pays. The site never holds your money.</text>')
-page('03-fees.html', 1600, 900, b)
-
 # ---------------------------------------------------------------- 4 it rings 1600x900
 b = []
 b.append(headline('It rings when <tspan class="y">your coin moves.</tspan>', 1600))
