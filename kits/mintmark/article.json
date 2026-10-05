@@ -1,0 +1,49 @@
+{
+  "title": "Give your coin a voice, and a week of posts to go with it",
+  "project": "Mintmark",
+  "date": "2026-10-05",
+  "blurb": "Pick a character, tune its voice, get a week of X posts with matching cards.",
+  "parts": [
+    {
+      "type": "img",
+      "file": "01-cover.png",
+      "note": "Cover image — goes in the cover slot at the very top, not in the body."
+    },
+    {
+      "type": "text",
+      "html": "<p>Your coin has a chart. <b>Now give it a voice.</b></p>\n<p>Mintmark turns one character into a full week of X posts, with a picture for every day.</p>\n<h2>Pick who's posting</h2>"
+    },
+    {
+      "type": "img",
+      "file": "02-cast.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>A fox, a frog or a bot. Each one has a face and an attitude of its own. <b>Rename it, add your ticker, and it's yours.</b></p>\n<h2>Tune how it talks</h2>"
+    },
+    {
+      "type": "img",
+      "file": "03-voice.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Three dials: humor, edge, signal. Add a brand line and the words it never says. <b>Every post comes out in that one voice.</b></p>\n<h2>Get the whole week</h2>"
+    },
+    {
+      "type": "img",
+      "file": "04-week.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Seven posts and seven matching cards, Monday to Sunday. Edit any line, then stamp the ones you ship. <b>You post them yourself, so your account stays yours.</b></p>\n<p>It's free to try, with no wallet and no sign-up.</p>"
+    },
+    {
+      "type": "img",
+      "file": "05-close.png"
+    },
+    {
+      "type": "text",
+      "html": "<h2>One coin. One voice. Every day.</h2>\n<p><b>Mint your week on mintmark.world</b></p>\n<p>Fox, frog or bot: which one should post for your coin?</p>"
+    }
+  ]
+}
