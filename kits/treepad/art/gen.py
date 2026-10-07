@@ -203,7 +203,7 @@ page('02-pick.html', 1600, 900, b)
 b = [EXTRA_DEFS, headline(100, 160, 'Every trade ', 'pays for your tree.')]
 b.append(f'<circle cx="138" cy="262" r="30" fill="#000" fill-opacity="0.5" stroke="rgb(255 255 255 / 0.08)" stroke-width="2"/>')
 b.append(solana(138, 262, 30))
-b.append('<text x="186" y="272" class="txt" font-size="30">The creator fee on every trade splits two ways</text>')
+b.append('<text x="186" y="272" class="txt" font-size="30">The creator fee on every coin splits two ways</text>')
 bx, by, bw, bh = 100, 330, 1400, 400
 tw = bw * 0.8 - 12
 b.append(f'<rect x="{bx}" y="{by}" width="{tw}" height="{bh}" rx="28" fill="#0d1a0f" stroke="#6dff4f" stroke-opacity="0.6" stroke-width="3"/>')
@@ -216,8 +216,8 @@ fw = bw - tw - 24
 b.append(f'<rect x="{fx}" y="{by}" width="{fw}" height="{bh}" rx="28" class="panel"/>')
 b.append(flame(fx + fw / 2, by + 150, 9))
 b.append(f'<text x="{fx + fw / 2}" y="{by + 255}" class="disp" font-size="84" text-anchor="middle">20%</text>')
-b.append(f'<text x="{fx + fw / 2}" y="{by + 310}" class="txt" font-size="27" text-anchor="middle">buys back</text>')
-b.append(f'<text x="{fx + fw / 2}" y="{by + 345}" class="txt" font-size="27" text-anchor="middle">and burns</text>')
+b.append(f'<text x="{fx + fw / 2}" y="{by + 305}" class="txt" font-size="26" text-anchor="middle">buys back &amp; burns</text>')
+b.append(f'<text x="{fx + fw / 2}" y="{by + 345}" font-family="Outfit" font-weight="600" font-size="27" fill="#f3f6f2" text-anchor="middle">the Treepad coin</text>')
 b.append('<text x="800" y="820" class="dim" font-size="24" text-anchor="middle">Locked on chain at launch. Traders pay nothing extra.</text>')
 page('03-split.html', 1600, 900, b)
 
