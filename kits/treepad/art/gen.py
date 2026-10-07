@@ -158,18 +158,18 @@ EXTRA_DEFS = ('<defs><filter id="pin-glow" x="-30%" y="-30%" width="160%" height
               '<filter id="fire-glow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#ff8a2a" flood-opacity="0.45"/></filter></defs>')
 
 # ---------------------------------------------------------------- 1 cover 2000x800
-b = [EXTRA_DEFS]
-cover_w = 800 / VIEW_H * VIEW_W  # fill the full height, crop the sides
-cx0 = (2000 - cover_w) / 2
-m, s, mh = world(cx0, 0, cover_w)
-b.append(m)
-p, px, py = pins(cx0, 0, s, 34, 130)
-b.append(p)
-b.append('<rect width="2000" height="800" fill="url(#fade-l)"/>')
-b.append(brand(283, 150, 96))
-b.append('<text x="110" y="400" class="disp" font-size="118">Every trade</text>')
-b.append('<text x="110" y="530" class="disp neon" font-size="118">plants a tree.</text>')
-b.append('<text x="114" y="620" class="txt" font-size="40">Launch a coin. Pick a real tree. Trades pay to plant it.</text>')
+# A row of pixel trees growing left to right along the ground, headline centred above.
+b = []
+b.append('<rect x="0" y="660" width="2000" height="140" fill="#0b120c"/>')
+b.append('<path d="M0 660H2000" stroke="rgb(109 255 79 / 0.25)" stroke-width="2"/>')
+b.append('<ellipse cx="1000" cy="660" rx="1100" ry="160" fill="url(#glow)" opacity="0.7"/>')
+row = [(0, 70), (1, 95), (2, 130), (3, 170), (4, 230), (3, 160), (2, 120), (1, 90), (0, 64)]
+xs = [140, 330, 520, 735, 1000, 1265, 1480, 1670, 1860]
+for (st, sz), x in zip(row, xs):
+    b.append(tree(st, x, 672, sz * 1.1))
+b.append(brand(1000, 110, 80))
+b.append('<text x="1000" y="275" class="disp" font-size="116" text-anchor="middle">Every trade <tspan class="neon">plants a tree.</tspan></text>')
+b.append('<text x="1000" y="345" class="txt" font-size="38" text-anchor="middle">Launch a coin on pump.fun. Pick a real tree. Trades pay to plant it.</text>')
 page('01-cover.html', 2000, 800, b)
 
 # ---------------------------------------------------------------- 2 pick your tree 1600x900
