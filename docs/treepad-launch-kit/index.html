@@ -1,74 +1,114 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Treepad launch kit</title><style>:root{--background:#07090a;--foreground:#f3f6f2;--muted-foreground:rgba(243,246,242,.55);--border:rgba(255,255,255,.1);--card:#0c110e}body{max-width:1100px;margin:0 auto!important;padding:16px!important}
-body{margin:0;font:14px/1.5 -apple-system,Inter,sans-serif;color:var(--foreground);background:var(--background)}
-h2{font-size:20px;margin:28px 0 2px}.when{color:var(--muted-foreground);margin:0 0 12px;font-size:13px}
-.tw{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
-.card,figure{border:1px solid var(--border);border-radius:14px;background:var(--card);padding:12px;margin:0;display:flex;flex-direction:column}
-.lab{font-size:12px;color:var(--muted-foreground);font-weight:600}
-pre{white-space:pre-wrap;font:inherit;margin:8px 0 10px;flex:1}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Treepad launch kit</title><style>
+:root{--bg:#07090a;--fg:#f3f6f2;--muted:rgba(243,246,242,.55);--line:rgba(255,255,255,.1);--card:#0c110e;--neon:#6dff4f}
+body{margin:0 auto;max-width:1100px;padding:16px;font:15px/1.5 -apple-system,Inter,sans-serif;color:var(--fg);background:var(--bg)}
+h1{font-size:32px;margin:8px 0 4px}h2{font-size:22px;margin:32px 0 2px}.when,.top{color:var(--muted);margin:0 0 12px;font-size:14px}.top a{color:var(--neon)}
+.tw{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.card,figure{border:1px solid var(--line);border-radius:14px;background:var(--card);margin:0;display:flex;flex-direction:column}.card{padding:12px}
+.lab{font-size:12px;color:var(--muted);font-weight:600}pre{white-space:pre-wrap;font:inherit;margin:8px 0 10px;flex:1}
 .im{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-top:10px}
-figure{padding:0;overflow:hidden}figure img{cursor:zoom-in;width:100%;max-height:260px;object-fit:contain;background:#07090a;display:block}
-figcaption{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;font-weight:600;font-size:13px;flex-wrap:wrap}
-button{font:600 13px inherit;border-radius:9px;padding:6px 12px;cursor:pointer;border:0}
-.b{background:#6dff4f;color:#07090a;align-self:flex-start}.g{background:transparent;color:var(--foreground);border:1px solid var(--border)}
-.top{padding:4px 0 0;color:var(--muted-foreground)}.top a{color:#6dff4f}
-</style></head><body><h1 style="font-size:32px;margin:8px 0 4px">Treepad launch kit</h1><div class="top">@treepadfun · tap Copy on any tweet or picture. After launch, the proof tweet with the real certificate link is at <a href="https://treepad.fun/launch-proof" target="_blank">treepad.fun/launch-proof</a></div>
-<section><h2>Profile</h2><p class="when">Set up first. Name Treepad · @treepadfun · treepad.fun</p><div class="tw"><div class="card"><div class="lab">Bio (also pump.fun + DEX Screener)</div><pre>Coin launchpad on pump.fun. 100% of creator fees plant real trees, each with its own public certificate. No extra tax on traders. Every trade plants a tree.</pre><button class="b" data-t="&quot;Coin launchpad on pump.fun. 100% of creator fees plant real trees, each with its own public certificate. No extra tax on traders. Every trade plants a tree.&quot;">Copy</button></div></div><div class="im"><figure><img onclick="window.open(this.src)" src="img/avatar.png" alt="Profile picture"><figcaption><span>Profile picture</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-avatar.png">Download</button></span></figcaption></figure><figure><img onclick="window.open(this.src)" src="img/x-header.png" alt="Header"><figcaption><span>Header</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-x-header.png">Download</button></span></figcaption></figure></div></section><section><h2>Pre-launch</h2><p class="when">Pick one.</p><div class="tw"><div class="card"><div class="lab">Teaser 1</div><pre>Most coins send creator fees to a dev wallet.
+figure{overflow:hidden}figure img{width:100%;max-height:300px;object-fit:contain;background:#07090a;display:block;cursor:zoom-in}
+figcaption{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;font-weight:600;font-size:13px;flex-wrap:wrap}small{color:var(--muted);font-weight:400}
+button{font:600 13px inherit;border-radius:9px;padding:7px 12px;cursor:pointer;border:0}.b{background:var(--neon);color:#07090a;align-self:flex-start}.g{background:transparent;color:var(--fg);border:1px solid var(--line)}
+</style></head><body><h1>Treepad launch kit</h1><p class="top">@treepadfun · tap Copy on any tweet or picture. After launch, the proof tweet with the real certificate link is at <a href="https://treepad.fun/launch-proof" target="_blank">treepad.fun/launch-proof</a>. [CA] is the contract address.</p><section><h2>Profile</h2><p class="when">Set up before the first tweet.</p><div class="tw"><div class="card"><div class="lab">Bio (also pump.fun description and DEX Screener info)</div><pre>Coin launchpad on pump.fun. 100% of creator fees plant real trees you pick, each with a public certificate. No extra tax on traders. Every trade plants a tree.</pre><button class="b" data-t="Coin launchpad on pump.fun. 100% of creator fees plant real trees you pick, each with a public certificate. No extra tax on traders. Every trade plants a tree.">Copy</button></div></div><div class="im"><figure><img src="img/avatar.png" alt="Profile picture" loading="lazy" onclick="window.open(this.src)"><figcaption><span>Profile picture <small>400×400</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-avatar.png">Download</button></span></figcaption></figure><figure><img src="img/x-header.png" alt="Header" loading="lazy" onclick="window.open(this.src)"><figcaption><span>Header <small>1500×500</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-x-header.png">Download</button></span></figcaption></figure></div></section><section><h2>Pre-launch</h2><p class="when">Before you go live. Pick one.</p><div class="tw"><div class="card"><div class="lab">Teaser 1</div><pre>Most coins send creator fees to a dev wallet.
 
 One launchpad sends them into the ground.
 
-Soon.</pre><button class="b" data-t="&quot;Most coins send creator fees to a dev wallet.\n\nOne launchpad sends them into the ground.\n\nSoon.&quot;">Copy</button></div><div class="card"><div class="lab">Teaser 2</div><pre>Every trade plants a tree.
+Soon.</pre><button class="b" data-t="Most coins send creator fees to a dev wallet.
+
+One launchpad sends them into the ground.
+
+Soon.">Copy</button></div><div class="card"><div class="lab">Teaser 2</div><pre>Every trade plants a tree.
 
 Each tree gets its own public certificate. Receipts for all of it.
 
-Soon.</pre><button class="b" data-t="&quot;Every trade plants a tree.\n\nEach tree gets its own public certificate. Receipts for all of it.\n\nSoon.&quot;">Copy</button></div><div class="card"><div class="lab">Teaser 3</div><pre>Grey Mangroves. Kenya&#x27;s coast. €0.35 a tree.
+Soon.</pre><button class="b" data-t="Every trade plants a tree.
 
-The fees from your trades are about to pay for them.
+Each tree gets its own public certificate. Receipts for all of it.
 
-Treepad. Soon.</pre><button class="b" data-t="&quot;Grey Mangroves. Kenya&#x27;s coast. \u20ac0.35 a tree.\n\nThe fees from your trades are about to pay for them.\n\nTreepad. Soon.&quot;">Copy</button></div></div><div class="im"><figure><img onclick="window.open(this.src)" src="img/prelaunch.png" alt="Teaser"><figcaption><span>Teaser</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-prelaunch.png">Download</button></span></figcaption></figure><figure><img onclick="window.open(this.src)" src="img/other-devs.png" alt="Other launchpads vs Treepad"><figcaption><span>Other launchpads vs Treepad</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-other-devs.png">Download</button></span></figcaption></figure></div></section><section><h2>Launch</h2><p class="when">Pick one. Swap [CA] for the contract address.</p><div class="tw"><div class="card"><div class="lab">Launch 1</div><pre>Treepad is live.
+Soon.">Copy</button></div><div class="card"><div class="lab">Teaser 3</div><pre>Mangroves in Kenya. Mahogany in Nicaragua. Avocado in Uganda.
+
+500+ real trees in 22 countries, and your coin's fees pick which one.
+
+Treepad. Soon.</pre><button class="b" data-t="Mangroves in Kenya. Mahogany in Nicaragua. Avocado in Uganda.
+
+500+ real trees in 22 countries, and your coin's fees pick which one.
+
+Treepad. Soon.">Copy</button></div></div><div class="im"><figure><img src="img/prelaunch.png" alt="Teaser" loading="lazy" onclick="window.open(this.src)"><figcaption><span>Teaser <small>1600×900</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-prelaunch.png">Download</button></span></figcaption></figure><figure><img src="img/other-devs.png" alt="Other launchpads vs Treepad" loading="lazy" onclick="window.open(this.src)"><figcaption><span>Other launchpads vs Treepad <small>1600×900</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-other-devs.png">Download</button></span></figcaption></figure><figure><img src="img/world-pins.png" alt="Plant anywhere" loading="lazy" onclick="window.open(this.src)"><figcaption><span>Plant anywhere <small>1600×900</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-world-pins.png">Download</button></span></figcaption></figure></div></section><section><h2>Launch</h2><p class="when">The moment you go live. Pick one.</p><div class="tw"><div class="card"><div class="lab">Launch 1</div><pre>Treepad is live.
 
 Launch a coin on pump.fun through treepad.fun and 100% of its creator fees plant trees. No extra tax on traders.
 
 Every trade plants a tree.
 
-[CA]</pre><button class="b" data-t="&quot;Treepad is live.\n\nLaunch a coin on pump.fun through treepad.fun and 100% of its creator fees plant trees. No extra tax on traders.\n\nEvery trade plants a tree.\n\n[CA]&quot;">Copy</button></div><div class="card"><div class="lab">Launch 2</div><pre>Every trade plants a tree.
+[CA]</pre><button class="b" data-t="Treepad is live.
 
-Treepad is live on pump.fun. Creator fees go to Grey Mangroves on Kenya&#x27;s coast, and the whole ledger is public.
+Launch a coin on pump.fun through treepad.fun and 100% of its creator fees plant trees. No extra tax on traders.
+
+Every trade plants a tree.
+
+[CA]">Copy</button></div><div class="card"><div class="lab">Launch 2</div><pre>Every trade plants a tree.
+
+Treepad is live on pump.fun. Pick from 500+ real trees in 22 countries and your coin's creator fees plant them. The whole ledger is public.
 
 treepad.fun
 
-[CA]</pre><button class="b" data-t="&quot;Every trade plants a tree.\n\nTreepad is live on pump.fun. Creator fees go to Grey Mangroves on Kenya&#x27;s coast, and the whole ledger is public.\n\ntreepad.fun\n\n[CA]&quot;">Copy</button></div></div><div class="im"><figure><img onclick="window.open(this.src)" src="img/launch.png" alt="Launch"><figcaption><span>Launch</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-launch.png">Download</button></span></figcaption></figure><figure><img onclick="window.open(this.src)" src="img/launch-square.png" alt="Launch (square)"><figcaption><span>Launch (square)</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-launch-square.png">Download</button></span></figcaption></figure></div></section><section><h2>Proof</h2><p class="when">Right after launch. The live version with the real certificate link and a proof picture appears at treepad.fun/launch-proof.</p><div class="tw"><div class="card"><div class="lab">Proof</div><pre>Treepad is live. The first 10 trees are already in the ground 🌳
+[CA]</pre><button class="b" data-t="Every trade plants a tree.
 
-Grey Mangroves on Kenya&#x27;s coast, planted via Tree-Nation before a single fee came in.
+Treepad is live on pump.fun. Pick from 500+ real trees in 22 countries and your coin's creator fees plant them. The whole ledger is public.
 
-Proof: [CERT LINK]
+treepad.fun
 
-Every trade plants more: https://treepad.fun/forest</pre><button class="b" data-t="&quot;Treepad is live. The first 10 trees are already in the ground \ud83c\udf33\n\nGrey Mangroves on Kenya&#x27;s coast, planted via Tree-Nation before a single fee came in.\n\nProof: [CERT LINK]\n\nEvery trade plants more: https://treepad.fun/forest&quot;">Copy</button></div></div><div class="im"></div></section><section><h2>Pinned thread</h2><p class="when">Post as a thread, pin 1/.</p><div class="tw"><div class="card"><div class="lab">1/</div><pre>1/ Treepad is a coin launchpad on pump.fun where the creator fees plant trees.
+[CA]">Copy</button></div></div><div class="im"><figure><img src="img/launch.png" alt="Launch" loading="lazy" onclick="window.open(this.src)"><figcaption><span>Launch <small>1600×900</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-launch.png">Download</button></span></figcaption></figure><figure><img src="img/launch-square.png" alt="Launch (square)" loading="lazy" onclick="window.open(this.src)"><figcaption><span>Launch (square) <small>1080×1080</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-launch-square.png">Download</button></span></figcaption></figure></div></section><section><h2>Pinned thread</h2><p class="when">Right after the launch tweet. Post as a thread, pin the first one.</p><div class="tw"><div class="card"><div class="lab">1/</div><pre>1/ Treepad is a coin launchpad on pump.fun where the creator fees plant trees.
 
 You launch through treepad.fun. Your coin goes live on pump.fun like any other.
 
-Every trade plants a tree.</pre><button class="b" data-t="&quot;1/ Treepad is a coin launchpad on pump.fun where the creator fees plant trees.\n\nYou launch through treepad.fun. Your coin goes live on pump.fun like any other.\n\nEvery trade plants a tree.&quot;">Copy</button></div><div class="card"><div class="lab">2/</div><pre>2/ 100% of the coin&#x27;s creator fees go to planting trees. It&#x27;s pump.fun&#x27;s normal creator fee, so traders pay no extra tax.
+Every trade plants a tree.</pre><button class="b" data-t="1/ Treepad is a coin launchpad on pump.fun where the creator fees plant trees.
 
-Fees reach the tree wallet within seconds. A tree is ordered as soon as fees cover one.</pre><button class="b" data-t="&quot;2/ 100% of the coin&#x27;s creator fees go to planting trees. It&#x27;s pump.fun&#x27;s normal creator fee, so traders pay no extra tax.\n\nFees reach the tree wallet within seconds. A tree is ordered as soon as fees cover one.&quot;">Copy</button></div><div class="card"><div class="lab">3/</div><pre>3/ The trees are Grey Mangroves at Kenya Mangroves Restoration, on Kenya&#x27;s coast. 3 planting sites, about 210 hectares.
+You launch through treepad.fun. Your coin goes live on pump.fun like any other.
 
-€0.35 per tree. About 10 kg CO₂ per tree over its life. Planted through Tree-Nation.</pre><button class="b" data-t="&quot;3/ The trees are Grey Mangroves at Kenya Mangroves Restoration, on Kenya&#x27;s coast. 3 planting sites, about 210 hectares.\n\n\u20ac0.35 per tree. About 10 kg CO\u2082 per tree over its life. Planted through Tree-Nation.&quot;">Copy</button></div><div class="card"><div class="lab">4/</div><pre>4/ Check it yourself.
+Every trade plants a tree.">Copy</button></div><div class="card"><div class="lab">2/</div><pre>2/ 100% of the coin's creator fees go to planting trees. It's pump.fun's normal creator fee, so traders pay no extra tax.
+
+Fees reach the tree wallet within seconds. A tree is ordered as soon as fees cover one.</pre><button class="b" data-t="2/ 100% of the coin's creator fees go to planting trees. It's pump.fun's normal creator fee, so traders pay no extra tax.
+
+Fees reach the tree wallet within seconds. A tree is ordered as soon as fees cover one.">Copy</button></div><div class="card"><div class="lab">3/</div><pre>3/ You pick the tree. 500+ species in 22 countries: mangroves in Kenya, mahogany in Nicaragua, oaks in Spain, rainforest in Australia.
+
+All planted through Tree-Nation, from €0.35 a tree.</pre><button class="b" data-t="3/ You pick the tree. 500+ species in 22 countries: mangroves in Kenya, mahogany in Nicaragua, oaks in Spain, rainforest in Australia.
+
+All planted through Tree-Nation, from €0.35 a tree.">Copy</button></div><div class="card"><div class="lab">4/</div><pre>4/ Check it yourself.
 
 Every tree has its own public certificate. Every fee payout is a Solana transaction. The whole ledger is on the Forest page.
 
-treepad.fun/forest</pre><button class="b" data-t="&quot;4/ Check it yourself.\n\nEvery tree has its own public certificate. Every fee payout is a Solana transaction. The whole ledger is on the Forest page.\n\ntreepad.fun/forest&quot;">Copy</button></div></div><div class="im"><figure><img onclick="window.open(this.src)" src="img/how-it-works.png" alt="How it works"><figcaption><span>How it works</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-how-it-works.png">Download</button></span></figcaption></figure><figure><img onclick="window.open(this.src)" src="img/how-it-works-square.png" alt="How it works (square)"><figcaption><span>How it works (square)</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-how-it-works-square.png">Download</button></span></figcaption></figure><figure><img onclick="window.open(this.src)" src="img/mangroves.png" alt="Where the trees go"><figcaption><span>Where the trees go</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-mangroves.png">Download</button></span></figcaption></figure></div></section><section><h2>Day one</h2><p class="when">Through the first day.</p><div class="tw"><div class="card"><div class="lab">Tree count</div><pre>[N] trees planted so far.
+treepad.fun/forest</pre><button class="b" data-t="4/ Check it yourself.
+
+Every tree has its own public certificate. Every fee payout is a Solana transaction. The whole ledger is on the Forest page.
+
+treepad.fun/forest">Copy</button></div></div><div class="im"><figure><img src="img/how-it-works.png" alt="How it works" loading="lazy" onclick="window.open(this.src)"><figcaption><span>How it works <small>1600×900</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-how-it-works.png">Download</button></span></figcaption></figure><figure><img src="img/how-it-works-square.png" alt="How it works (square)" loading="lazy" onclick="window.open(this.src)"><figcaption><span>How it works (square) <small>1080×1080</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-how-it-works-square.png">Download</button></span></figcaption></figure><figure><img src="img/pick-your-tree.png" alt="Pick your tree" loading="lazy" onclick="window.open(this.src)"><figcaption><span>Pick your tree <small>1600×900</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-pick-your-tree.png">Download</button></span></figcaption></figure><figure><img src="img/pick-your-tree-square.png" alt="Pick your tree (square)" loading="lazy" onclick="window.open(this.src)"><figcaption><span>Pick your tree (square) <small>1080×1080</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-pick-your-tree-square.png">Download</button></span></figcaption></figure></div></section><section><h2>Day one</h2><p class="when">Through the first day.</p><div class="tw"><div class="card"><div class="lab">Tree count</div><pre>[N] trees planted so far.
 
 Every one has a public certificate. Open any of them:
 
-treepad.fun/forest</pre><button class="b" data-t="&quot;[N] trees planted so far.\n\nEvery one has a public certificate. Open any of them:\n\ntreepad.fun/forest&quot;">Copy</button></div><div class="card"><div class="lab">Launch yours</div><pre>Want your coin to plant trees too?
+treepad.fun/forest</pre><button class="b" data-t="[N] trees planted so far.
 
-Launch it at treepad.fun. It goes live on pump.fun like any other coin, and 100% of its creator fees go to trees.</pre><button class="b" data-t="&quot;Want your coin to plant trees too?\n\nLaunch it at treepad.fun. It goes live on pump.fun like any other coin, and 100% of its creator fees go to trees.&quot;">Copy</button></div><div class="card"><div class="lab">Where they go</div><pre>Where do the trees go?
+Every one has a public certificate. Open any of them:
 
-Kenya&#x27;s coast. Grey Mangroves, 3 planting sites, about 210 hectares. €0.35 a tree, about 10 kg CO₂ each over its life.
+treepad.fun/forest">Copy</button></div><div class="card"><div class="lab">Launch yours</div><pre>Want your coin to plant trees too?
 
-Certificate: [CERT LINK]</pre><button class="b" data-t="&quot;Where do the trees go?\n\nKenya&#x27;s coast. Grey Mangroves, 3 planting sites, about 210 hectares. \u20ac0.35 a tree, about 10 kg CO\u2082 each over its life.\n\nCertificate: [CERT LINK]&quot;">Copy</button></div></div><div class="im"><figure><img onclick="window.open(this.src)" src="img/fees-to-trees.png" alt="100% of fees to trees"><figcaption><span>100% of fees to trees</span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-fees-to-trees.png">Download</button></span></figcaption></figure></div></section><script>
+Launch it at treepad.fun. It goes live on pump.fun like any other coin, and 100% of its creator fees go to trees.</pre><button class="b" data-t="Want your coin to plant trees too?
+
+Launch it at treepad.fun. It goes live on pump.fun like any other coin, and 100% of its creator fees go to trees.">Copy</button></div><div class="card"><div class="lab">Pick your tree</div><pre>Your coin, your tree.
+
+Launch on treepad.fun and pick from 500+ species in 22 countries. Every fee your coin earns plants that tree, certificate and all.</pre><button class="b" data-t="Your coin, your tree.
+
+Launch on treepad.fun and pick from 500+ species in 22 countries. Every fee your coin earns plants that tree, certificate and all.">Copy</button></div><div class="card"><div class="lab">Where they go</div><pre>Where do the trees go?
+
+Wherever launchers pick. The first 10 are Grey Mangroves on Kenya's coast, planted before a single fee came in.
+
+Certificate: [CERT LINK]</pre><button class="b" data-t="Where do the trees go?
+
+Wherever launchers pick. The first 10 are Grey Mangroves on Kenya's coast, planted before a single fee came in.
+
+Certificate: [CERT LINK]">Copy</button></div></div><div class="im"><figure><img src="img/fees-to-trees.png" alt="100% of fees to trees" loading="lazy" onclick="window.open(this.src)"><figcaption><span>100% of fees to trees <small>1600×900</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-fees-to-trees.png">Download</button></span></figcaption></figure><figure><img src="img/mangroves.png" alt="The first trees: Kenya's mangroves" loading="lazy" onclick="window.open(this.src)"><figcaption><span>The first trees: Kenya's mangroves <small>1600×900</small></span><span><button class="b ci">Copy image</button> <button class="g dl" data-n="treepad-mangroves.png">Download</button></span></figcaption></figure></div></section><script>
 const flash=(b,t)=>{const o=b.textContent;b.textContent=t;setTimeout(()=>b.textContent=o,1600)};
 async function copyText(t){try{await navigator.clipboard.writeText(t);return true}catch{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();return ok}}
-function png(img){const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;c.getContext('2d').drawImage(img,0,0);return c}
-document.querySelectorAll('[data-t]').forEach(b=>b.onclick=async()=>flash(b,await copyText(JSON.parse(b.dataset.t))?'Copied':'Select & copy'));
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=async()=>flash(b,await copyText(b.dataset.t)?'Copied':'Select & copy'));
 document.querySelectorAll('.ci').forEach(b=>b.onclick=async()=>{const src=b.closest('figure').querySelector('img').getAttribute('src');const blob=fetch(src).then(r=>r.blob()).then(x=>new Blob([x],{type:'image/png'}));try{await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);flash(b,'Copied');return}catch(e){}try{const files=[new File([await blob],src.split('/').pop(),{type:'image/png'})];if(navigator.canShare&&navigator.canShare({files})){await navigator.share({files});return}}catch(e){if(e.name==='AbortError')return}window.open(src,'_blank');flash(b,'Long-press to copy')});
 document.querySelectorAll('.dl').forEach(b=>b.onclick=()=>{const a=document.createElement('a');a.href=b.closest('figure').querySelector('img').getAttribute('src');a.download=b.dataset.n;a.click()});
 </script></body></html>
