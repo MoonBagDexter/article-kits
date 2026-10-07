@@ -1,0 +1,304 @@
+{
+ "picks": [
+  {
+   "id": 126,
+   "name": "Honduran Mahogany",
+   "latin": "Swietenia humilis",
+   "priceEur": 18,
+   "co2Kg": 840,
+   "project": "CommuniTree",
+   "place": "Nicaragua",
+   "file": "sp-mahogany.jpg"
+  },
+  {
+   "id": 2882,
+   "name": "Ip\u00ea-Amarelo",
+   "latin": "Handroanthus serratifolius",
+   "priceEur": 5,
+   "co2Kg": 250,
+   "project": "Reforest the Amazon Basin",
+   "place": "Brazil",
+   "file": "sp-ipe.jpg"
+  },
+  {
+   "id": 2717,
+   "name": "Cork oak",
+   "latin": "Quercus suber",
+   "priceEur": 3,
+   "co2Kg": 100,
+   "project": "Agroforesterie et Boisement",
+   "place": "France",
+   "file": "sp-cork-oak.jpg"
+  },
+  {
+   "id": 3682,
+   "name": "Grey Mangrove",
+   "latin": "Avicennia marina",
+   "priceEur": 0.35,
+   "co2Kg": 10,
+   "project": "Kenya Mangroves Restoration",
+   "place": "Kenya",
+   "file": "sp-grey-mangrove.jpg"
+  }
+ ],
+ "projects": [
+  [
+   13.15,
+   -86.347,
+   "CommuniTree",
+   "Nicaragua"
+  ],
+  [
+   19.055958,
+   81.986229,
+   "Trees for Tribals",
+   "India"
+  ],
+  [
+   -5.148192,
+   38.448196,
+   "Plant to Stop Poverty",
+   "Tanzania"
+  ],
+  [
+   7.550622,
+   4.852035,
+   "Restoration of Ala Forest Reserve",
+   "Nigeria"
+  ],
+  [
+   -9.188258,
+   -63.175442,
+   "Reforest the Amazon Basin",
+   "Brazil"
+  ],
+  [
+   -17.270603,
+   -62.805347,
+   "Amazon Windshields",
+   "Bolivia"
+  ],
+  [
+   47.267403,
+   3.305741,
+   "Restauration For\u00eats d\u00e9grad\u00e9es",
+   "France"
+  ],
+  [
+   -28.746443,
+   153.450165,
+   "Big Scrub Rainforest Restoration",
+   "Australia"
+  ],
+  [
+   -16.226572,
+   145.437958,
+   "Daintree Life Revegetation",
+   "Australia"
+  ],
+  [
+   -35.675148,
+   -71.542969,
+   "Restoring Biodiversity Highways",
+   "Chile"
+  ],
+  [
+   22.006382,
+   86.039948,
+   "Trees for Tigers",
+   "India"
+  ],
+  [
+   -23.555771,
+   -46.639557,
+   "Miniforests in Schools",
+   "Brazil"
+  ],
+  [
+   1.272721,
+   34.048634,
+   "Preservation of Mt. Elgon Ecosystem",
+   "Uganda"
+  ],
+  [
+   -3.0939,
+   39.918999,
+   "Bore",
+   "Kenya"
+  ],
+  [
+   -7.180551,
+   110.349533,
+   "Community Reforestation in Indonesia",
+   "Indonesia"
+  ],
+  [
+   46.89217,
+   -114.340752,
+   "National Forest Recovery",
+   "United States"
+  ],
+  [
+   47.812778,
+   4.786852,
+   "Agroforesterie et Boisement",
+   "France"
+  ],
+  [
+   18.790075,
+   74.097565,
+   "Agroforestry Tree Plantation",
+   "India"
+  ],
+  [
+   -0.39104,
+   36.730492,
+   "Save the Aberdare Forest",
+   "Kenya"
+  ],
+  [
+   -2.874174,
+   32.219807,
+   "Geita Tree Plantation for Community",
+   "Tanzania"
+  ],
+  [
+   10.369135,
+   78.184113,
+   "Trees for Slender Loris",
+   "India"
+  ],
+  [
+   19.722183,
+   -100.279381,
+   "Agroforestry Systems",
+   "Mexico"
+  ],
+  [
+   38.102879,
+   -2.75392,
+   "Alvelal",
+   "Spain"
+  ],
+  [
+   -4.798667,
+   38.290218,
+   "Replanting the burnt Mkussu Forest",
+   "Tanzania"
+  ],
+  [
+   41.050026,
+   -96.748299,
+   "Reforestation of National Forests",
+   "United States"
+  ],
+  [
+   46.168808,
+   25.911007,
+   "Bear Groves in Transylvania",
+   "Romania"
+  ],
+  [
+   19.355715,
+   -98.098366,
+   "Heroes of \"La Malinche\"",
+   "Mexico"
+  ],
+  [
+   52.984489,
+   -9.269574,
+   "Ireland Community Tree Planting",
+   "Ireland"
+  ],
+  [
+   -2.830217,
+   40.179935,
+   "Kenya Mangroves Restoration",
+   "Kenya"
+  ],
+  [
+   0.826785,
+   34.38345,
+   "Mount Elgon Farmer-Led Agroforestry",
+   "Uganda"
+  ],
+  [
+   -2.457609,
+   33.707947,
+   "Simiyu Farmer-Led Agroforestry",
+   "Tanzania"
+  ],
+  [
+   -26.15686,
+   32.401905,
+   "Indian Ocean Mangrove Restoration",
+   "Mozambique"
+  ],
+  [
+   52.405426,
+   -98.917091,
+   "Boreal Forest Habitat Restauration",
+   "Canada"
+  ],
+  [
+   41.490704,
+   -123.247726,
+   "Lost Forests Recovery in California",
+   "United States"
+  ],
+  [
+   51.771252,
+   -1.324433,
+   "Community Tree Planting",
+   "United Kingdom"
+  ],
+  [
+   2.777604,
+   32.100861,
+   "VCS Afforestation Program",
+   "Uganda"
+  ],
+  [
+   0.027701,
+   37.539066,
+   "VCS Subsistence Farmer Program",
+   "Kenya"
+  ],
+  [
+   -2.390773,
+   40.782242,
+   "Swahili Coast Mangrove Restoration",
+   "Kenya"
+  ],
+  [
+   -3.364696,
+   39.954983,
+   "Mida Creek Restoration",
+   "Kenya"
+  ],
+  [
+   17.976389,
+   -97.373886,
+   "Restoration and Social Empowerment",
+   "Mexico"
+  ],
+  [
+   -31.491564,
+   -64.835419,
+   "Bosques de Agua",
+   "Argentina"
+  ],
+  [
+   -17.830269,
+   31.026451,
+   "Zimbabwe Reforestation Initiative",
+   "Zimbabwe"
+  ],
+  [
+   -26.49,
+   -64.889999,
+   "Bosques Yungas",
+   "Argentina"
+  ]
+ ]
+}

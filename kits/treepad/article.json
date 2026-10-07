@@ -1,18 +1,18 @@
 {
   "title": "Launch a coin that plants real trees",
   "project": "Treepad",
-  "date": "2026-10-07",
-  "blurb": "Launch a coin. 100% of its creator fees plant real trees.",
+  "date": "2026-10-08",
+  "blurb": "Launch a coin, pick a real tree, and every trade pays to plant it.",
   "parts": [
     {"type": "img", "file": "01-cover.png", "note": "Cover image — goes in the cover slot at the very top, not in the body."},
-    {"type": "text", "html": "<p>Every trade plants a tree.</p>\n<p>Launch a coin on <b>Treepad</b> and <b>100% of its creator fees buy real trees.</b></p>\n<h2>Set it up</h2>"},
-    {"type": "img", "file": "02-launch.png"},
-    {"type": "text", "html": "<p>Pick a name, a ticker and an image. Sign with your wallet. Your coin goes live on pump.fun <b>with the tree split locked on chain.</b></p>\n<p>Traders pay nothing extra. The trees come from the normal creator fee every coin already charges.</p>\n<h2>Your coin grows a tree</h2>"},
-    {"type": "img", "file": "03-grow.png"},
-    {"type": "text", "html": "<p>Every coin gets its own pixel tree. <b>It grows with the market cap.</b> A seed at launch, a sapling at $50k, a giant at $1M.</p>\n<h2>See every tree</h2>"},
-    {"type": "img", "file": "04-map.png"},
-    {"type": "text", "html": "<p>Tree-Nation puts them in the ground. Right now that’s Grey Mangroves at Kenya Mangroves Restoration.</p>\n<p><b>Every tree gets a public certificate</b>, and every fee claim is a Solana transaction. Open any of it on the site.</p>"},
+    {"type": "text", "html": "<p>Every trade plants a tree.</p>\n<p>Launch a coin on <b>Treepad</b>, pick a real tree, and <b>every trade pays to plant it.</b></p>\n<h2>Pick your tree</h2>"},
+    {"type": "img", "file": "02-pick.png"},
+    {"type": "text", "html": "<p>Name your coin, add a ticker and an image, then pick a tree. <b>580 trees in 22 countries</b>, from mangroves in Kenya to mahogany in Nicaragua.</p>\n<p>Sign with your wallet and it goes live on pump.fun.</p>\n<h2>Where the fees go</h2>"},
+    {"type": "img", "file": "03-split.png"},
+    {"type": "text", "html": "<p><b>80% of the creator fees plant your tree. 20% buys back and burns.</b></p>\n<p>The split is locked on chain at launch. Traders pay nothing extra: it all comes out of pump.fun’s normal creator fee.</p>\n<h2>Your coin grows a tree</h2>"},
+    {"type": "img", "file": "04-grow.png"},
+    {"type": "text", "html": "<p>Every coin gets its own pixel tree, and <b>it grows with the market cap.</b> A seed at launch, a sapling at $50k, a giant at $1M.</p>\n<p>Tree-Nation puts the real ones in the ground. <b>Every tree gets a public certificate</b>, and every fee claim is a Solana transaction.</p>"},
     {"type": "img", "file": "05-close.png"},
-    {"type": "text", "html": "<h2>Your coin. Real trees.</h2>\n<p><b>Launch one on treepad.fun</b></p>\n<p>What would you name yours? Tell me below.</p>"}
+    {"type": "text", "html": "<h2>Your coin. Your tree.</h2>\n<p><b>Launch one on treepad.fun</b></p>\n<p>Which tree are you picking? Tell me below.</p>"}
   ]
 }

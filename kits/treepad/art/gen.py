@@ -123,55 +123,105 @@ def headline(x, y, plain, lit, size=78, anchor='start'):
             f'<tspan class="neon">{lit}</tspan></text>')
 
 
+CAT = json.load(open('catalog.json', encoding='utf-8'))  # live /api/trees picks + all 43 project spots, saved 2026-10-08
+KENYA = (-3.5, 39.6)
+
+FLAME = ['...ab...', '..abba..', '..abbba.', '.abbcbba', '.abccbba', 'abbccbba', 'abcccbba', 'abccccba', '.abccba.', '..aaaa..']
+FLAME_C = {'a': '#ff5c2a', 'b': '#ffa62b', 'c': '#ffe066'}
+
+
+def flame(cx, base, px):
+    out = []
+    for r, row in enumerate(FLAME):
+        for c, ch in enumerate(row):
+            if ch in FLAME_C:
+                out.append(f'<rect x="{cx - 4 * px + c * px}" y="{base - (len(FLAME) - r) * px}" width="{px}" height="{px}" fill="{FLAME_C[ch]}"/>')
+    return '<g shape-rendering="crispEdges" filter="url(#fire-glow)">' + ''.join(out) + '</g>'
+
+
+def pins(x, y, s, small, big):
+    """Every Tree-Nation project as a small sapling, like the site's map, and Treepad's planted spot as a glowing giant."""
+    out = []
+    for lat, lng, name, place in CAT['projects']:
+        if name == 'Kenya Mangroves Restoration':
+            continue
+        px, py = map_point(x, y, s, lat, lng)
+        out.append(f'<ellipse cx="{px}" cy="{py}" rx="{small * 0.3}" ry="{small * 0.06}" fill="#000" opacity="0.6"/>')
+        out.append(tree(2, px, py, small, glow=False).replace('/>', ' opacity="0.9" filter="url(#pin-glow)"/>'))
+    px, py = map_point(x, y, s, *KENYA)
+    out.append(f'<circle cx="{px}" cy="{py - big * 0.35}" r="{big * 0.85}" fill="url(#glow)"/>')
+    out.append(tree(4, px, py + big * 0.06, big))
+    return ''.join(out), px, py
+
+
+EXTRA_DEFS = ('<defs><filter id="pin-glow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#6eff5a" flood-opacity="0.3"/></filter>'
+              '<filter id="fire-glow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#ff8a2a" flood-opacity="0.45"/></filter></defs>')
+
 # ---------------------------------------------------------------- 1 cover 2000x800
-b = []
+b = [EXTRA_DEFS]
 cover_w = 800 / VIEW_H * VIEW_W  # fill the full height, crop the sides
-m, s, mh = world((2000 - cover_w) / 2, 0, cover_w)
+cx0 = (2000 - cover_w) / 2
+m, s, mh = world(cx0, 0, cover_w)
 b.append(m)
-px, py = map_point((2000 - cover_w) / 2, 0, s, -3.5, 39.6)  # Kenya's coast, where the mangroves go
-b.append(f'<circle cx="{px}" cy="{py}" r="90" fill="url(#glow)"/>')
-b.append(tree(3, px, py + 18, 120))
+p, px, py = pins(cx0, 0, s, 34, 130)
+b.append(p)
 b.append('<rect width="2000" height="800" fill="url(#fade-l)"/>')
 b.append(brand(283, 150, 96))
 b.append('<text x="110" y="400" class="disp" font-size="118">Every trade</text>')
 b.append('<text x="110" y="530" class="disp neon" font-size="118">plants a tree.</text>')
-b.append('<text x="114" y="620" class="txt" font-size="40">Launch a coin. 100% of its fees plant real trees.</text>')
+b.append('<text x="114" y="620" class="txt" font-size="40">Launch a coin. Pick a real tree. Trades pay to plant it.</text>')
 page('01-cover.html', 2000, 800, b)
 
-# ---------------------------------------------------------------- 2 launch flow 1600x900
-b = [headline(100, 170, 'Launch a coin. ', 'Fees plant trees.')]
-cards = [
-    ('Your coin', 'goes live on pump.fun'),
-    ('Every trade', 'pays the creator fee'),
-    ('100% of it', 'buys real trees'),
-]
-cw, ch, gap = 380, 420, 130
-x0 = (1600 - (3 * cw + 2 * gap)) / 2
-cy = 270
-for i, (t, sub) in enumerate(cards):
+# ---------------------------------------------------------------- 2 pick your tree 1600x900
+b = [EXTRA_DEFS, headline(100, 160, 'Pick your tree. ', '580 to choose from.')]
+order = ['Grey Mangrove', 'Ipê-Amarelo', 'Cork oak', 'Honduran Mahogany']
+picks = {p['name']: p for p in CAT['picks']}
+cw, gap = 320, 40
+x0 = (1600 - (4 * cw + 3 * gap)) / 2
+top, ph, ch = 240, 250, 470
+for i, name in enumerate(order):
+    sp = picks[name]
     x = x0 + i * (cw + gap)
-    lit = i == 2
-    stroke = ' stroke="#6dff4f" stroke-opacity="0.55"' if lit else ''
-    b.append(f'<rect x="{x}" y="{cy}" width="{cw}" height="{ch}" rx="28" class="panel"{stroke}/>')
-    mx = x + cw / 2
-    b.append(f'<circle cx="{mx}" cy="{cy + 150}" r="110" fill="url(#glow)" opacity="{1 if lit else 0.55}"/>')
-    if i == 0:
-        b.append(tree(0, mx, cy + 262, 280))
-    elif i == 1:
-        b.append(f'<circle cx="{mx}" cy="{cy + 150}" r="78" fill="#000" fill-opacity="0.5" stroke="rgb(255 255 255 / 0.08)" stroke-width="2"/>')
-        b.append(solana(mx, cy + 150, 72))
-    else:
-        b.append(tree(3, mx, cy + 262, 240))
-    b.append(f'<text x="{mx}" y="{cy + 330}" class="disp{" neon" if lit else ""}" font-size="40" text-anchor="middle">{t}</text>')
-    b.append(f'<text x="{mx}" y="{cy + 378}" class="txt" font-size="27" text-anchor="middle">{sub}</text>')
-    if i < 2:
-        ax = x + cw + 22
-        b.append(f'<path d="M{ax} {cy + ch / 2}H{ax + gap - 44}" class="flow"/>')
-        b.append(f'<path d="M{ax + gap - 56} {cy + ch / 2 - 13}l14 13l-14 13" fill="none" stroke="#6dff4f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>')
-b.append('<text x="800" y="800" class="dim" font-size="24" text-anchor="middle">The tree split is locked on chain when the coin is created.</text>')
-page('02-launch.html', 1600, 900, b)
+    sel = i == 0
+    b.append(f'<clipPath id="ph{i}"><rect x="{x}" y="{top}" width="{cw}" height="{ph + 20}" rx="22"/></clipPath>')
+    b.append(f'<rect x="{x}" y="{top}" width="{cw}" height="{ch}" rx="22" fill="{"#0d1a0f" if sel else "#0c110e"}" stroke="{"#6dff4f" if sel else "rgb(255 255 255 / 0.09)"}" stroke-opacity="{0.7 if sel else 1}" stroke-width="{3 if sel else 2}"/>')
+    b.append(f'<image href="{sp["file"]}" x="{x}" y="{top}" width="{cw}" height="{ph}" preserveAspectRatio="xMidYMid slice" clip-path="url(#ph{i})" style="image-rendering:auto"/>')
+    b.append(f'<rect x="{x}" y="{top + ph - 1}" width="{cw}" height="2" fill="rgb(255 255 255 / 0.08)"/>')
+    if sel:
+        b.append(f'<rect x="{x + 18}" y="{top + 18}" width="112" height="40" rx="20" fill="#6dff4f"/>')
+        b.append(f'<text x="{x + 74}" y="{top + 45}" font-family="Outfit" font-weight="600" font-size="21" fill="#07090a" text-anchor="middle">Picked</text>')
+    tx = x + 26
+    b.append(f'<text x="{tx}" y="{top + ph + 56}" class="disp" font-size="{30 if len(name) < 16 else 27}">{name}</text>')
+    b.append(f'<text x="{tx}" y="{top + ph + 96}" class="txt" font-size="24">{sp["place"]}</text>')
+    price = f'€{sp["priceEur"]:.2f}' if sp['priceEur'] < 1 else f'€{sp["priceEur"]:g}'
+    b.append(f'<text x="{tx}" y="{top + ph + 150}" class="mono" font-size="25" font-weight="700" fill="{"#6dff4f" if sel else "rgb(243 246 242 / 0.85)"}">{price} a tree</text>')
+    b.append(f'<text x="{tx}" y="{top + ph + 186}" class="dim" font-size="21">{sp["co2Kg"]} kg CO₂ each</text>')
+b.append('<text x="800" y="800" class="dim" font-size="24" text-anchor="middle">580 trees in 22 countries, from €0.35. Every tree gets a public certificate.</text>')
+page('02-pick.html', 1600, 900, b)
 
-# ---------------------------------------------------------------- 3 tree grows 1600x900
+# ---------------------------------------------------------------- 3 fee split 1600x900
+b = [EXTRA_DEFS, headline(100, 160, 'Every trade ', 'pays for your tree.')]
+b.append(f'<circle cx="138" cy="262" r="30" fill="#000" fill-opacity="0.5" stroke="rgb(255 255 255 / 0.08)" stroke-width="2"/>')
+b.append(solana(138, 262, 30))
+b.append('<text x="186" y="272" class="txt" font-size="30">The creator fee on every trade splits two ways</text>')
+bx, by, bw, bh = 100, 330, 1400, 400
+tw = bw * 0.8 - 12
+b.append(f'<rect x="{bx}" y="{by}" width="{tw}" height="{bh}" rx="28" fill="#0d1a0f" stroke="#6dff4f" stroke-opacity="0.6" stroke-width="3"/>')
+b.append(f'<circle cx="{bx + 300}" cy="{by + 200}" r="210" fill="url(#glow)"/>')
+b.append(tree(4, bx + 300, by + 360, 320))
+b.append(f'<text x="{bx + 590}" y="{by + 215}" class="disp neon" font-size="190">80%</text>')
+b.append(f'<text x="{bx + 598}" y="{by + 300}" class="disp" font-size="50">plants your tree</text>')
+fx = bx + tw + 24
+fw = bw - tw - 24
+b.append(f'<rect x="{fx}" y="{by}" width="{fw}" height="{bh}" rx="28" class="panel"/>')
+b.append(flame(fx + fw / 2, by + 150, 9))
+b.append(f'<text x="{fx + fw / 2}" y="{by + 255}" class="disp" font-size="84" text-anchor="middle">20%</text>')
+b.append(f'<text x="{fx + fw / 2}" y="{by + 310}" class="txt" font-size="27" text-anchor="middle">buys back</text>')
+b.append(f'<text x="{fx + fw / 2}" y="{by + 345}" class="txt" font-size="27" text-anchor="middle">and burns</text>')
+b.append('<text x="800" y="820" class="dim" font-size="24" text-anchor="middle">Locked on chain at launch. Traders pay nothing extra.</text>')
+page('03-split.html', 1600, 900, b)
+
+# ---------------------------------------------------------------- 4 tree grows 1600x900
 b = [headline(100, 170, 'Your tree grows ', 'with your coin.')]
 names = ['Seed', 'Sprout', 'Sapling', 'Tree', 'Giant']
 caps = ['at launch', '$10k', '$50k', '$250k', '$1M']
@@ -186,37 +236,15 @@ for i in range(5):
     b.append(f'<text x="{cx}" y="{base + 112}" class="mono" fill="rgb(243 246 242 / 0.55)" font-size="26" text-anchor="middle">{caps[i]}</text>')
 b.append(f'<path d="M100 {base + 4}H1500" stroke="rgb(255 255 255 / 0.10)" stroke-width="2"/>')
 b.append('<text x="800" y="850" class="dim" font-size="24" text-anchor="middle">Every coin on Treepad gets its own tree. Market cap sets its size.</text>')
-page('03-grow.html', 1600, 900, b)
-
-# ---------------------------------------------------------------- 4 on the map 1600x900
-b = [headline(100, 150, 'Every tree, ', 'on the map.')]
-mw = 1400
-mx0, my0 = 100, 210
-m, s, mh = world(mx0, my0, mw)
-b.append(f'<clipPath id="mapclip"><rect x="{mx0}" y="{my0}" width="{mw}" height="{mh}" rx="24"/></clipPath>')
-b.append(f'<g clip-path="url(#mapclip)">{m}</g>')
-b.append(f'<rect x="{mx0}" y="{my0}" width="{mw}" height="{mh}" rx="24" fill="none" stroke="rgb(255 255 255 / 0.08)" stroke-width="2"/>')
-px, py = map_point(mx0, my0, s, -3.5, 39.6)
-b.append(f'<circle cx="{px}" cy="{py}" r="70" fill="url(#glow)"/>')
-b.append(tree(3, px, py + 14, 90))
-# Pin card, like the site's hover card.
-cwid, chei = 620, 190
-cx, cyy = px - 70 - cwid, py - 120  # card sits left of the pin; the right side runs off the picture
-b.append(f'<path d="M{cx + cwid} {py - 25}l14 14l-14 14z" fill="#10161c"/>')
-b.append(f'<rect x="{cx}" y="{cyy}" width="{cwid}" height="{chei}" rx="20" fill="#10161c" stroke="rgb(255 255 255 / 0.14)" stroke-width="2"/>')
-b.append(tree(3, cx + 70, cyy + 110, 84, glow=True))
-b.append(f'<text x="{cx + 130}" y="{cyy + 62}" class="disp" font-size="31">Kenya Mangroves Restoration</text>')
-b.append(f'<text x="{cx + 130}" y="{cyy + 106}" class="txt" font-size="27">Grey Mangroves, by Tree-Nation</text>')
-b.append(f'<text x="{cx + 130}" y="{cyy + 150}" font-family="Outfit" font-size="27" class="neon">A public certificate for every tree</text>')
-b.append('<text x="800" y="818" class="dim" font-size="24" text-anchor="middle">Every fee claim is a Solana transaction. Every tree has a certificate.</text>')
-page('04-map.html', 1600, 900, b)
+page('04-grow.html', 1600, 900, b)
 
 # ---------------------------------------------------------------- 5 close 1600x900
 b = []
-b.append('<circle cx="800" cy="330" r="330" fill="url(#glow)"/>')
-b.append(brand(800, 330, 230))
-b.append('<text x="800" y="560" class="disp" font-size="76" text-anchor="middle">Every trade <tspan class="neon">plants a tree.</tspan></text>')
-b.append('<rect x="610" y="640" width="380" height="96" rx="48" fill="#6dff4f"/>')
-b.append('<text x="800" y="704" font-family="Outfit" font-weight="600" font-size="44" fill="#07090a" text-anchor="middle">treepad.fun</text>')
+b.append('<circle cx="800" cy="320" r="330" fill="url(#glow)"/>')
+b.append(brand(800, 320, 230))
+b.append('<text x="800" y="550" class="disp" font-size="76" text-anchor="middle">Every trade <tspan class="neon">plants a tree.</tspan></text>')
+b.append('<rect x="610" y="620" width="380" height="96" rx="48" fill="#6dff4f"/>')
+b.append('<text x="800" y="684" font-family="Outfit" font-weight="600" font-size="44" fill="#07090a" text-anchor="middle">treepad.fun</text>')
+b.append('<text x="800" y="790" class="dim" font-size="28" text-anchor="middle">@treepadfun</text>')
 page('05-close.html', 1600, 900, b)
 print('ok')
