@@ -1,0 +1,18 @@
+{
+  "title": "Launch a coin. Its fees pay an AI to build its game.",
+  "project": "Fee2Play",
+  "date": "2026-10-09",
+  "blurb": "Every coin on Fee2Play gets its own browser game, built live by AI and paid for by its trading fees.",
+  "parts": [
+    {"type": "img", "file": "01-cover.png", "note": "Cover image — goes in the cover slot at the very top, not in the body."},
+    {"type": "text", "html": "<p>Every coin on <b>Fee2Play</b> comes with its own browser game.</p>\n<p><b>Its trading fees pay an AI to build it, live, in front of everyone.</b></p>\n<h2>Pick a game</h2>"},
+    {"type": "img", "file": "02-pick.png"},
+    {"type": "text", "html": "<p>Endless runner, flyer, snake, space shooter, tower stacker. Or pitch your own idea in one line.</p>\n<p>Name the coin and <b>launch it with one signature.</b></p>\n<h2>Fees fund it</h2>"},
+    {"type": "img", "file": "03-fees.png"},
+    {"type": "text", "html": "<p>80% of each trading fee goes to the game's fund. 20% goes to Fee2Play. <b>The split is locked on pump.fun itself, so nobody can change it.</b></p>\n<p>When the fund hits $20 the AI starts building, and the fees that keep coming in keep making the game better.</p>\n<h2>Watch it get built</h2>"},
+    {"type": "img", "file": "04-built.png"},
+    {"type": "text", "html": "<p>The agent works in the open on the coin's page, step by step. <b>Only the wallet that launched the coin can steer it.</b></p>\n<p>Anyone can play the game right there in the browser.</p>"},
+    {"type": "img", "file": "05-close.png"},
+    {"type": "text", "html": "<h2>Every coin is a game.</h2>\n<p><b>Launch yours on fee2play.fun</b></p>\n<p>What game would your coin be? Tell me below.</p>"}
+  ]
+}
