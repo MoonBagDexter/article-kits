@@ -6,7 +6,8 @@ render.py shoots them to PNG."""
 
 CANDY, PEPPER, GOLD, GRAPE, CURSE, TOXIC, CHOC, INK = '#e8262b', '#fff8ec', '#ffc93c', '#8a3dff', '#23142f', '#8fe03a', '#5a3020', '#120a10'
 RIM, LILAC, SLAB = '#5d3a80', '#cbb6ea', '#2e1b40'
-URL = 'web-production-7836f.up.railway.app'
+URL = 'candyorcurse.fun'
+HANDLE = '@candycurseSOL'
 WORD_R = 1000 / 530  # wordmark.webp width / height
 
 HEAD = f'''<!doctype html><html><head><meta charset="utf-8"><style>
@@ -186,6 +187,6 @@ b.append(img('wordmark.webp', 50, 640, 470, 470 / WORD_R))
 b.append(f'<rect x="560" y="664" width="1000" height="190" rx="6" fill="{INK}"/>'
          f'<rect x="550" y="652" width="1000" height="190" rx="6" fill="{INK}"/>'
          f'<rect x="556" y="658" width="988" height="178" rx="3" fill="{CURSE}"/>')
-b.append(text(1050, 728, 'Free in your browser', 56, GOLD))
-b.append(plain(1050, 796, URL, 38, PEPPER, weight=700))
+b.append(text(1050, 724, URL, 64, GOLD))
+b.append(plain(1050, 790, f'Free in your browser  ·  {HANDLE} on X', 32, PEPPER, weight=700))
 page('05-close.html', 1600, 900, b)
