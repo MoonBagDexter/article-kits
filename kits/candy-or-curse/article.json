@@ -1,0 +1,18 @@
+{
+  "title": "Knock on a door. Get candy, or get cursed.",
+  "project": "Candy or Curse",
+  "date": "2026-10-09",
+  "blurb": "A multiplayer Halloween game in your browser. Knock on doors for candy, real $CoC, or a jump scare.",
+  "parts": [
+    {"type": "img", "file": "01-cover.png", "note": "Cover image — goes in the cover slot at the very top, not in the body."},
+    {"type": "text", "html": "<p><b>Candy or Curse</b> is a multiplayer Halloween game in your browser. Free, on PC or phone.</p>\n<p>You walk a haunted street in costume, bucket in hand, and knock on doors. <b>Most give you candy. Some jump scare you.</b></p>\n<h2>Knock, knock</h2>"},
+    {"type": "img", "file": "02-knock.png"},
+    {"type": "text", "html": "<p>A neighbour opens up and drops a sweet in your bucket. Or the porch light dies and something lunges at the camera. Eight scares, each with its own monster.</p>\n<p>Get scared and your candy spills on the lawn for anyone to grab.</p>\n<h2>Hold $CoC, get paid in $CoC</h2>"},
+    {"type": "img", "file": "03-paid.png"},
+    {"type": "text", "html": "<p>Hold $CoC and sign in with one free signature. <b>Now some of your treats pay real $CoC, straight to your wallet.</b></p>\n<p>Paid treats come from creator fees, and every one buys $CoC. A bigger bag gets a bigger bucket, up to double the treat.</p>\n<h2>Level up, open the town</h2>"},
+    {"type": "img", "file": "04-town.png"},
+    {"type": "text", "html": "<p>Hollow Lane is the start. Level up to open the Graveyard, the corn maze, Scream Park and Witch Woods. Fly over all of it on a broom.</p>\n<p><b>Every 15 to 25 minutes the Big House rings its bell and opens for 90 seconds.</b> Get in fast.</p>\n<h2>Come knock</h2>"},
+    {"type": "img", "file": "05-close.png"},
+    {"type": "text", "html": "<p><b>Play free at web-production-7836f.up.railway.app</b></p>\n<p>What did your first door give you?</p>"}
+  ]
+}
