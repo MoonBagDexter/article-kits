@@ -124,7 +124,7 @@ page('01-cover.html', 2000, 800, b)
 b = [headline(1600, 'Knock. Then ', 'hope.')]
 # Frames from the game's own clips, cropped above the clip's corner plate.
 b.append(still('treat.jpg', 60, 196, 720, 470, 900, 506, 40, 8, 'candy'))
-b.append(still('scare.jpg', 820, 196, 720, 470, 900, 506, 90, 34, 'curse'))
+b.append(still('scare.jpg', 820, 196, 720, 470, 900, 506, 90, 62, 'curse'))
 b.append(text(420, 742, 'Candy', 70, GOLD))
 b.append(plain(420, 790, 'Most doors give you a treat', 30, PEPPER))
 b.append(text(1180, 742, 'Curse', 76, TOXIC, 'cr'))
