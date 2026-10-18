@@ -1,0 +1,49 @@
+{
+  "title": "Launch a coin by asking Grok",
+  "project": "Grokpad",
+  "date": "2026-10-19",
+  "blurb": "Say a name and a ticker. Grok puts your coin live on pump.fun.",
+  "parts": [
+    {
+      "type": "img",
+      "file": "01-cover.png",
+      "note": "Cover image — goes in the cover slot at the very top, not in the body."
+    },
+    {
+      "type": "text",
+      "html": "<p>You already talk to Grok. Now it can launch your coin.</p>\n<p><b>Say a name and a ticker. Grok puts it live on pump.fun.</b></p>\n<h2>Set it up once</h2>"
+    },
+    {
+      "type": "img",
+      "file": "02-setup.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Tap one button on Grokpad. You get a private connector link and your own launch wallet. <b>No sign-up, no forms.</b></p>\n<p>Paste the link into Grok’s Connectors. Send a little SOL, just what you’ll launch with. A launch costs about 0.02 SOL.</p>\n<h2>Then just ask</h2>"
+    },
+    {
+      "type": "img",
+      "file": "03-ask.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>“Launch a coin called Moon Cat, ticker MCAT, about a cat on the moon.”</p>\n<p>Grok writes the description if you skip it, launches from your wallet and sends back the pump.fun link. <b>No wallet pop-ups.</b></p>\n<p>Check your balance, sell or withdraw the same way.</p>\n<h2>80% of the fees are yours</h2>"
+    },
+    {
+      "type": "img",
+      "file": "04-fees.png"
+    },
+    {
+      "type": "text",
+      "html": "<p>Every trade of your coin pays a creator fee. <b>80% goes to your wallet, 20% to Grokpad.</b></p>\n<p>The split is written into pump.fun’s own fee program at launch. Nobody can change it, us included. Payouts run on their own.</p>"
+    },
+    {
+      "type": "img",
+      "file": "05-close.png"
+    },
+    {
+      "type": "text",
+      "html": "<h2>Say it. It’s live.</h2>\n<p><b>Get your link at web-production-7f245.up.railway.app</b></p>\n<p>What’s the first coin you’d ask Grok for?</p>"
+    }
+  ]
+}
