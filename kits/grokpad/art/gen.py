@@ -1,21 +1,24 @@
 """Builds each article picture as an HTML page in Grokpad's look. tools/render.py shoots them to PNG.
 
 Colours, fonts and logos come from the grok-launcher redesign (frontend worktree: globals.css, docs/BRAND.md,
-public/brand): LED white on true black, Geist + JetBrains Mono, the logo's lime as the one accent.
+public/brand): LED white on true black, Urbanist + Doto + JetBrains Mono (the Grokpad font kit), the logo's lime as the one accent.
 """
 
 HEAD = '''<!doctype html><html><head><meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&family=Doto:ROND,wght@0..100,100..900&family=JetBrains+Mono:wght@400;500;700&display=block" rel="stylesheet">
 <style>
 html,body{margin:0;padding:0;background:#000000;overflow:hidden}
 svg{display:block}
-.disp{font-family:Geist;font-weight:600;fill:#f4f6ee;letter-spacing:-0.04em}
-.txt{font-family:Geist;fill:#f4f6ee}
-.muted{font-family:Geist;fill:rgb(244 246 238 / 0.6)}
-.dim{font-family:Geist;fill:rgb(244 246 238 / 0.38)}
+.disp{font-family:Urbanist;font-weight:700;fill:#f4f6ee;letter-spacing:-0.03em}
+.txt{font-family:Urbanist;fill:#f4f6ee}
+.muted{font-family:Urbanist;fill:rgb(244 246 238 / 0.6)}
+.dim{font-family:Urbanist;fill:rgb(244 246 238 / 0.38)}
 .mono{font-family:'JetBrains Mono';fill:#f4f6ee}
 .lime{fill:#a6ec0d}
+.led{fill:#f4f6ee;font-family:Doto;font-variation-settings:'ROND' 100;font-weight:900}
+.led.lime{fill:#a6ec0d}
+.glow{filter:drop-shadow(0 0 10px #5aab04)}
 .panel{fill:#0a0a0a;stroke:rgb(255 255 255 / 0.15);stroke-width:2}
 .panel-lit{fill:#0d1306;stroke:#a6ec0d;stroke-width:3}
 .wire{fill:none;stroke:#a6ec0d;stroke-width:5;stroke-linecap:round}
@@ -80,7 +83,7 @@ b.append(f'<text class="txt" x="{xs[1]}" y="{cy + 71}" font-size="26" font-weigh
 # 3: fund
 b.append(panel(xs[2] - 175, cy - 150, 350, 300, lit=True))
 b.append(f'<text class="mono" x="{xs[2]}" y="{cy - 82}" font-size="22" text-anchor="middle" style="fill:rgb(244 246 238 / 0.38)">launch wallet</text>')
-b.append(f'<text class="mono lime" x="{xs[2]}" y="{cy + 20}" font-size="60" font-weight="700" text-anchor="middle">+0.1 SOL</text>')
+b.append(f'<text class="led lime glow" x="{xs[2]}" y="{cy + 22}" font-size="56" text-anchor="middle">0.1 SOL</text>')
 b.append(f'<text class="mono" x="{xs[2]}" y="{cy + 92}" font-size="22" text-anchor="middle" style="fill:rgb(244 246 238 / 0.6)">launch ≈ 0.02 SOL</text>')
 steps = [('Get your link', 'one tap, no sign-up'), ('Add it to Grok', 'paste it in Connectors'), ('Fund your wallet', 'just what you’ll launch with')]
 for x, (a, c) in zip(xs, steps):
@@ -116,7 +119,7 @@ b = ['<text class="disp" x="800" y="132" font-size="62" text-anchor="middle"><ts
 cy = 480
 b.append(panel(110, cy - 110, 360, 220))
 b.append(f'<text class="muted" x="150" y="{cy - 40}" font-size="28">Creator fees</text>')
-b.append(f'<text class="mono" x="150" y="{cy + 26}" font-size="50" font-weight="700">$MCAT</text>')
+b.append(f'<text class="led" x="150" y="{cy + 28}" font-size="58">$MCAT</text>')
 b.append(f'<text class="dim" x="150" y="{cy + 72}" font-size="25">every trade, forever</text>')
 b.append(f'<path class="wire" d="M470 {cy}H640"/>')
 b.append(mark(760, cy, 230))
@@ -125,11 +128,11 @@ y1, y2 = 330, 650
 b.append(f'<path d="M870 {cy} C960 {cy} 960 {y1} 1050 {y1}" fill="none" stroke="{LIME}" stroke-width="12" stroke-linecap="round"/>')
 b.append(f'<path d="M870 {cy} C960 {cy} 960 {y2} 1050 {y2}" class="wire-dim"/>')
 b.append(panel(1050, y1 - 95, 440, 190, lit=True))
-b.append(f'<text class="mono lime" x="1090" y="{y1 + 34}" font-size="96" font-weight="700">80%</text>')
+b.append(f'<text class="led lime glow" x="1085" y="{y1 + 38}" font-size="108">80%</text>')
 b.append(f'<text class="txt" x="1450" y="{y1 - 6}" font-size="32" font-weight="600" text-anchor="end">You</text>')
 b.append(f'<text class="muted" x="1450" y="{y1 + 34}" font-size="25" text-anchor="end">your wallet</text>')
 b.append(panel(1050, y2 - 80, 440, 160))
-b.append(f'<text class="mono" x="1090" y="{y2 + 24}" font-size="70" font-weight="700" style="fill:rgb(244 246 238 / 0.6)">20%</text>')
+b.append(f'<text class="led" x="1085" y="{y2 + 28}" font-size="80" style="fill:rgb(244 246 238 / 0.6)">20%</text>')
 b.append(f'<text class="txt" x="1450" y="{y2 + 10}" font-size="32" font-weight="600" text-anchor="end" style="fill:rgb(244 246 238 / 0.6)">Grokpad</text>')
 b.append('<text class="dim" x="800" y="840" font-size="27" text-anchor="middle">Locked on pump.fun’s fee program at launch. Nobody can change it, us included.</text>')
 page('04-fees.html', 1600, 900, b)
