@@ -80,8 +80,8 @@ b.append(f'<text class="disp" x="{xs[1] + 90}" y="{cy + 6}" font-size="46" text-
 b.append(f'<text class="mono lime" x="{xs[1]}" y="{cy + 98}" font-size="22" text-anchor="middle">● connected</text>')
 # 3: free
 b.append(panel(xs[2] - 175, cy - 150, 350, 300, lit=True))
-b.append(f'<text class="led lime glow" x="{xs[2]}" y="{cy + 30}" font-size="84" text-anchor="middle">FREE</text>')
-steps = [('Grab your link', 'one tap, no sign-up'), ('Add it to Grok', 'done, that’s the setup'), ('Launch free', 'no deposit, ever')]
+b.append(f'<text class="led lime glow" x="{xs[2] + 4}" y="{cy + 30}" font-size="84" text-anchor="middle">FREE</text>')
+steps = [('Grab your link', 'one tap, no sign-up'), ('Add it to Grok', 'done, that’s the setup'), ('Launch free', 'nothing to deposit')]
 for x, (a, c) in zip(xs, steps):
     b.append(f'<text class="txt" x="{x}" y="{cy + 228}" font-size="36" font-weight="600" text-anchor="middle">{a}</text>')
     b.append(f'<text class="muted" x="{x}" y="{cy + 274}" font-size="27" text-anchor="middle">{c}</text>')
@@ -119,8 +119,9 @@ for i, (n, label, lit) in enumerate(tiles):
     x = x0 + i * (tw + gap)
     b.append(panel(x, ty, tw, th, 24, lit=lit))
     cls = 'led lime glow' if lit else 'led'
-    b.append(f'<text class="{cls}" x="{x + tw / 2}" y="{ty + 250}" font-size="230" text-anchor="middle">{n}</text>')
-    b.append(f'<text class="txt" x="{x + tw / 2}" y="{ty + 340}" font-size="34" font-weight="600" text-anchor="middle">{label}</text>')
+    # Doto leaves empty space right of each digit, so a middle anchor sits the dots 12px left of centre.
+    b.append(f'<text class="{cls}" x="{x + tw / 2 + 12}" y="{ty + 236}" font-size="230" text-anchor="middle">{n}</text>')
+    b.append(f'<text class="txt" x="{x + tw / 2}" y="{ty + 326}" font-size="34" font-weight="600" text-anchor="middle">{label}</text>')
 b.append('<text class="dim" x="800" y="770" font-size="30" text-anchor="middle">See a meme. Say the word. <tspan style="fill:#f4f6ee">It’s live in seconds.</tspan></text>')
 page('04-sentence.html', 1600, 900, b)
 
