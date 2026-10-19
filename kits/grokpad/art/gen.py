@@ -58,24 +58,15 @@ def lockup(cx, cy, h, glow=True):
 
 
 # ---------------------------------------------------------------- 1 cover 2000x800
-b = [lockup(1000, 215, 230)]
+b = [lockup(1000, 245, 250)]
 # the Grok prompt bar, mid-launch
-bx, by, bw, bh = 470, 405, 1060, 112
+bx, by, bw, bh = 520, 450, 960, 112
 b.append(f'<rect x="{bx}" y="{by}" width="{bw}" height="{bh}" rx="20" fill="#0a0a0a" stroke="{LIME}" stroke-width="3"/>')
 b.append(f'<rect x="{bx}" y="{by}" width="{bw}" height="{bh}" rx="20" fill="none" stroke="{LIME}" stroke-width="10" stroke-opacity="0.12"/>')
-b.append(f'<text class="mono" x="{bx + 44}" y="{by + 70}" font-size="40">launch Moon Cat, ticker MCAT<tspan class="lime">▍</tspan></text>')
+b.append(f'<text class="mono" x="{bx + 44}" y="{by + 70}" font-size="40">hey grok, launch my coin<tspan class="lime">▍</tspan></text>')
 b.append(f'<circle cx="{bx + bw - 58}" cy="{by + bh / 2}" r="36" fill="{LIME}"/>')
 b.append(f'<path d="M{bx + bw - 58} {by + bh / 2 + 16}V{by + bh / 2 - 16}M{bx + bw - 72} {by + bh / 2 - 2}L{bx + bw - 58} {by + bh / 2 - 16}L{bx + bw - 44} {by + bh / 2 - 2}" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>')
-b.append('<text class="disp" x="1000" y="620" font-size="58" text-anchor="middle">Launch coins. <tspan class="lime">Just ask Grok.</tspan></text>')
-# a tape of coins going live
-tape = ['$MCAT', '$GDOG', '$FROG', '$NIGHT', '$PFROG', '$MOON', '$BLOB', '$ZAP']
-b.append('<defs><linearGradient id="tapefade" x1="0" x2="1"><stop offset="0" stop-color="#000"/><stop offset="0.18" stop-color="#000" stop-opacity="0"/><stop offset="0.82" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000"/></linearGradient></defs>')
-x = 30
-for t in tape:
-    b.append(f'<circle cx="{x}" cy="{712}" r="7" fill="{LIME}"/>')
-    b.append(f'<text class="mono" x="{x + 20}" y="{722}" font-size="28" style="fill:rgb(244 246 238 / 0.6)">{t} <tspan class="lime">LIVE</tspan></text>')
-    x += 250
-b.append('<rect x="0" y="680" width="2000" height="70" fill="url(#tapefade)"/>')
+b.append('<text class="disp" x="1000" y="680" font-size="58" text-anchor="middle">Launch coins. <tspan class="lime">Just ask Grok.</tspan></text>')
 page('01-cover.html', 2000, 800, b)
 
 # ---------------------------------------------------------------- 2 plug in 1600x900
