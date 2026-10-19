@@ -1,8 +1,8 @@
 {
-  "title": "Launch coins for free. Just ask Grok.",
+  "title": "Launch coins. Just ask Grok.",
   "project": "Grokpad",
   "date": "2026-10-19",
-  "blurb": "Free coin launches. One sentence to Grok and it's live on pump.fun.",
+  "blurb": "Tell Grok a name and a ticker. Seconds later your coin is live on pump.fun.",
   "parts": [
     {
       "type": "img",
@@ -11,7 +11,7 @@
     },
     {
       "type": "text",
-      "html": "<p>You already talk to Grok all day. Now it launches coins.</p>\n<p><b>Free. No sign-up. No deposit. One sentence and it’s live on pump.fun.</b></p>\n<h2>One tap to plug in</h2>"
+      "html": "<p>You already talk to Grok all day. Now it launches coins.</p>\n<p><b>Say a name and a ticker. Seconds later it’s live on pump.fun.</b></p>\n<h2>One tap to plug in</h2>"
     },
     {
       "type": "img",
@@ -27,15 +27,15 @@
     },
     {
       "type": "text",
-      "html": "<p>“Launch Moon Cat, ticker MCAT.”</p>\n<p>Grok writes the description, makes the picture and ships it. <b>You don’t fill in a thing or pay a cent.</b></p>\n<h2>Idea to coin in one sentence</h2>"
+      "html": "<p>“Launch Moon Cat, ticker MCAT.”</p>\n<p>Grok writes the description, makes the picture and ships it. <b>You don’t fill in a thing.</b></p>\n<h2>Then ask again</h2>"
     },
     {
       "type": "img",
-      "file": "04-sentence.png"
+      "file": "04-again.png"
     },
     {
       "type": "text",
-      "html": "<p>See a meme. Say the word. <b>It’s live in seconds.</b></p>"
+      "html": "<p>See a meme. Say the word. <b>It’s live in seconds.</b> Got another one? Say it again.</p>"
     },
     {
       "type": "img",
@@ -43,7 +43,7 @@
     },
     {
       "type": "text",
-      "html": "<h2>Say it. It’s live.</h2>\n<p><b>grokpad.org</b></p>\n<p>What are you launching first?</p>"
+      "html": "<h2>Just ask Grok.</h2>\n<p><b>grokpad.org</b></p>\n<p>What are you launching first?</p>"
     }
   ]
 }
