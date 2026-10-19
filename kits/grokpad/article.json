@@ -1,8 +1,8 @@
 {
-  "title": "Launch a coin for free, just by asking Grok",
+  "title": "Launch coins for free. Just ask Grok.",
   "project": "Grokpad",
   "date": "2026-10-19",
-  "blurb": "Free coin launches. No sign-up, no deposit. Just ask Grok.",
+  "blurb": "Free coin launches. One sentence to Grok and it's live on pump.fun.",
   "parts": [
     {
       "type": "img",
@@ -11,7 +11,7 @@
     },
     {
       "type": "text",
-      "html": "<p>You already talk to Grok. Now it can launch your coin.</p>\n<p><b>It’s free. No sign-up, no deposit. Say a name and a ticker, and it’s live on pump.fun.</b></p>\n<h2>Set it up once</h2>"
+      "html": "<p>You already talk to Grok all day. Now it launches coins.</p>\n<p><b>Free. No sign-up. No deposit. One sentence and it’s live on pump.fun.</b></p>\n<h2>One tap to plug in</h2>"
     },
     {
       "type": "img",
@@ -19,7 +19,7 @@
     },
     {
       "type": "text",
-      "html": "<p>Tap one button on Grokpad to get your private connector link. Paste it into Grok’s Connectors. <b>That’s the whole setup.</b></p>\n<p>There’s nothing to fund. Grokpad covers the launch.</p>\n<h2>Then just ask</h2>"
+      "html": "<p>Grab your link on Grokpad and add it to Grok. <b>Done. That’s the whole setup.</b></p>\n<h2>Then just ask</h2>"
     },
     {
       "type": "img",
@@ -27,15 +27,15 @@
     },
     {
       "type": "text",
-      "html": "<p>“Launch a coin called Moon Cat, ticker MCAT, about a cat on the moon.”</p>\n<p>Grok can write the description and picture for you. <b>No wallet pop-ups, no forms.</b></p>\n<h2>Live in seconds</h2>"
+      "html": "<p>“Launch Moon Cat, ticker MCAT.”</p>\n<p>Grok writes the description, makes the picture and ships it. <b>You don’t fill in a thing or pay a cent.</b></p>\n<h2>Idea to coin in one sentence</h2>"
     },
     {
       "type": "img",
-      "file": "04-live.png"
+      "file": "04-sentence.png"
     },
     {
       "type": "text",
-      "html": "<p>Grok sends back your coin’s Grokpad page and its contract address. <b>That page is also your coin’s website on pump.fun.</b></p>\n<p>Want a bag of your own coin? Add a little SOL to your Grokpad wallet, just what you’ll trade with, and tell Grok to buy.</p>"
+      "html": "<p>See a meme. Say the word. <b>It’s live in seconds.</b></p>"
     },
     {
       "type": "img",
@@ -43,7 +43,7 @@
     },
     {
       "type": "text",
-      "html": "<h2>Say it. It’s live.</h2>\n<p><b>Get your link at grokpad.org</b></p>\n<p>What’s the first coin you’d ask Grok for?</p>"
+      "html": "<h2>Say it. It’s live.</h2>\n<p><b>grokpad.org</b></p>\n<p>What are you launching first?</p>"
     }
   ]
 }
