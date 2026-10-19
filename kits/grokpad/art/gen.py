@@ -152,4 +152,13 @@ b = [lockup(800, 370, 300)]
 b.append(f'<text class="mono lime" x="800" y="650" font-size="40" font-weight="500" text-anchor="middle">{URL}</text>')
 b.append('<text class="muted" x="800" y="720" font-size="34" text-anchor="middle">Just ask <tspan class="lime">Grok.</tspan></text>')
 page('05-close.html', 1600, 900, b)
+
+# ---------------------------------------------------------------- 5 close, with the CA (the article's "with CA" version)
+CA = 'CvUfTWZG9cyFy2cQdK6TGypxAYu1LuEu2MgunrKzpump'
+b = [lockup(800, 330, 280)]
+b.append(f'<text class="mono lime" x="800" y="590" font-size="40" font-weight="500" text-anchor="middle">{URL}</text>')
+b.append('<text class="muted" x="800" y="655" font-size="34" text-anchor="middle">Just ask <tspan class="lime">Grok.</tspan></text>')
+b.append(panel(250, 720, 1100, 84, 14))
+b.append(f'<text class="mono" x="800" y="773" font-size="30" text-anchor="middle"><tspan style="fill:rgb(244 246 238 / 0.38)">CA  </tspan>{CA}</text>')
+page('05-close-ca.html', 1600, 900, b)
 print('built')

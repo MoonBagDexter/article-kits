@@ -37,6 +37,9 @@ def build_kit(kit: Path):
     steps = [step(1, 'Title', f'<div class="body title">{html.escape(art["title"])}</div>',
                   '<button onclick="copyText(this)">Copy</button>')]
     cover = None
+    if art.get('ca'):  # a switch between the article as posted before the coin and with its contract address
+        steps.insert(0, '<div class="catog"><button class="on" data-ca="0" onclick="setCa(false)">Without CA</button>'
+                        '<button data-ca="1" onclick="setCa(true)">With CA</button></div>')
     for n, part in enumerate(art['parts'], start=2):
         if part['type'] == 'text':
             steps.append(step(n, 'Text', f'<div class="body">{part["html"]}</div>',
@@ -46,9 +49,16 @@ def build_kit(kit: Path):
         shutil.copy2(kit / name, out / name)
         cover = cover or name
         hint = f'<div class="hint">{part["note"]}</div>' if part.get('note') else ''
-        steps.append(step(n, 'Cover image' if n == 2 else 'Image', f'<img src="{name}" alt="">{hint}',
-                          f'<a class="btn ghost" download="{name}" href="{name}">Download</a>'
-                          '<button onclick="copyImage(this)">Copy image</button>'))
+        img = f'<img src="{name}" alt="">'
+        dl = f'<a class="btn ghost" download="{name}" href="{name}">Download</a>'
+        if part.get('ca_file'):  # the same picture with the contract address, shown by the With CA switch
+            alt = part['ca_file']
+            shutil.copy2(kit / alt, out / alt)
+            img = f'<img class="no-ca" src="{name}" alt=""><img class="ca-only" src="{alt}" alt="">'
+            dl = (f'<a class="btn ghost no-ca" download="{name}" href="{name}">Download</a>'
+                  f'<a class="btn ghost ca-only" download="{alt}" href="{alt}">Download</a>')
+        steps.append(step(n, 'Cover image' if n == 2 else 'Image', f'{img}{hint}',
+                          f'{dl}<button onclick="copyImage(this)">Copy image</button>'))
 
     # optional launch copy under the article: plain text, copied as-is (descriptions, tweets)
     if art.get('marketing'):

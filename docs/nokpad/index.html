@@ -33,6 +33,9 @@ button.ok{background:#f5b301;color:#111}
 .body.plain{white-space:pre-wrap}
 .section{font-size:20px;margin:44px 0 0;padding-top:24px;border-top:1px solid #26282c}
 .back{margin:0 0 14px}.back a{color:#8b8f94;text-decoration:none;font-size:13px}
+body:not(.with-ca) .ca-only,body.with-ca .no-ca{display:none!important}
+.catog{display:inline-flex;gap:4px;margin-top:14px;padding:4px;background:#141517;border:1px solid #26282c;border-radius:12px}
+.catog button{background:transparent;color:#8b8f94;border-radius:9px}.catog button.on{background:#EFF3F4;color:#0F1419}
 </style></head><body><div class="wrap">
 <div class="top">
 <p class="back"><a href="../">&larr; All articles</a></p>
@@ -80,7 +83,10 @@ const mark = (btn, label) => { btn.closest('.step').querySelector('.card').class
 
 async function copyText(btn) {
   const el = btn.closest('.card').querySelector('.body')
-  const html = el.innerHTML, plain = el.innerText
+  // only what's showing: the with-CA / without-CA switch hides the other version's bits
+  const c = el.cloneNode(true)
+  c.querySelectorAll(document.body.classList.contains('with-ca') ? '.no-ca' : '.ca-only').forEach(n => n.remove())
+  const html = c.innerHTML, plain = el.innerText
   try {
     await navigator.clipboard.write([new ClipboardItem({ 'text/html': new Blob([html], { type: 'text/html' }), 'text/plain': new Blob([plain], { type: 'text/plain' }) })])
   } catch {
@@ -88,6 +94,11 @@ async function copyText(btn) {
     const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); s.removeAllRanges()
   }
   mark(btn, 'Copied'); toast('Copied — paste it into X')
+}
+
+function setCa(on) {
+  document.body.classList.toggle('with-ca', on)
+  document.querySelectorAll('.catog button').forEach(b => b.classList.toggle('on', (b.dataset.ca === '1') === on))
 }
 
 async function copyPlain(btn) {
@@ -99,7 +110,7 @@ async function copyPlain(btn) {
 }
 
 async function copyImage(btn) {
-  const img = btn.closest('.card').querySelector('img')
+  const img = [...btn.closest('.card').querySelectorAll('img')].find(i => i.offsetParent !== null)
   try {
     const blob = await (await fetch(img.src)).blob()
     await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])

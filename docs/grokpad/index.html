@@ -33,6 +33,9 @@ button.ok{background:#f5b301;color:#111}
 .body.plain{white-space:pre-wrap}
 .section{font-size:20px;margin:44px 0 0;padding-top:24px;border-top:1px solid #26282c}
 .back{margin:0 0 14px}.back a{color:#8b8f94;text-decoration:none;font-size:13px}
+body:not(.with-ca) .ca-only,body.with-ca .no-ca{display:none!important}
+.catog{display:inline-flex;gap:4px;margin-top:14px;padding:4px;background:#141517;border:1px solid #26282c;border-radius:12px}
+.catog button{background:transparent;color:#8b8f94;border-radius:9px}.catog button.on{background:#EFF3F4;color:#0F1419}
 </style></head><body><div class="wrap">
 <div class="top">
 <p class="back"><a href="../">&larr; All articles</a></p>
@@ -40,13 +43,14 @@ button.ok{background:#f5b301;color:#111}
 <p>Go top to bottom. Hit <b>Copy</b> on each block, paste it into the X article editor, then move on. The images get <b>Copy image</b> (paste straight in) or <b>Download</b> (upload it).</p>
 <p>Text keeps its bold and bullets when pasted. If a section heading pastes as plain text, highlight it in X and set it to <b>Heading</b>.</p>
 </div>
-<div id="steps"><div class="step"><div class="num">1</div><div class="card"><div class="head"><span class="tag">Title</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body title">Launch coins. Just ask Grok.</div></div></div><div class="step"><div class="num">2</div><div class="card"><div class="head"><span class="tag">Cover image</span><span class="sp"></span><a class="btn ghost" download="01-cover.png" href="01-cover.png">Download</a><button onclick="copyImage(this)">Copy image</button></div><img src="01-cover.png" alt=""><div class="hint">Cover image — goes in the cover slot at the very top, not in the body.</div></div></div><div class="step"><div class="num">3</div><div class="card"><div class="head"><span class="tag">Text</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body"><p>You already talk to Grok all day. Now it launches coins.</p>
+<div id="steps"><div class="catog"><button class="on" data-ca="0" onclick="setCa(false)">Without CA</button><button data-ca="1" onclick="setCa(true)">With CA</button></div><div class="step"><div class="num">1</div><div class="card"><div class="head"><span class="tag">Title</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body title">Launch coins. Just ask Grok.</div></div></div><div class="step"><div class="num">2</div><div class="card"><div class="head"><span class="tag">Cover image</span><span class="sp"></span><a class="btn ghost" download="01-cover.png" href="01-cover.png">Download</a><button onclick="copyImage(this)">Copy image</button></div><img src="01-cover.png" alt=""><div class="hint">Cover image — goes in the cover slot at the very top, not in the body.</div></div></div><div class="step"><div class="num">3</div><div class="card"><div class="head"><span class="tag">Text</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body"><p>You already talk to Grok all day. Now it launches coins.</p>
 <p><b>Say a name and a ticker. Seconds later it’s live on pump.fun.</b></p>
 <h2>One tap to plug in</h2></div></div></div><div class="step"><div class="num">4</div><div class="card"><div class="head"><span class="tag">Image</span><span class="sp"></span><a class="btn ghost" download="02-setup.png" href="02-setup.png">Download</a><button onclick="copyImage(this)">Copy image</button></div><img src="02-setup.png" alt=""></div></div><div class="step"><div class="num">5</div><div class="card"><div class="head"><span class="tag">Text</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body"><p>Grab your link on Grokpad and add it to Grok. <b>Done. That’s the whole setup.</b></p>
 <h2>Then just ask</h2></div></div></div><div class="step"><div class="num">6</div><div class="card"><div class="head"><span class="tag">Image</span><span class="sp"></span><a class="btn ghost" download="03-ask.png" href="03-ask.png">Download</a><button onclick="copyImage(this)">Copy image</button></div><img src="03-ask.png" alt=""></div></div><div class="step"><div class="num">7</div><div class="card"><div class="head"><span class="tag">Text</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body"><p>“Launch Moon Cat, ticker MCAT.”</p>
 <p>Grok writes the description, makes the picture and ships it. <b>You don’t fill in a thing.</b></p>
-<h2>Then ask again</h2></div></div></div><div class="step"><div class="num">8</div><div class="card"><div class="head"><span class="tag">Image</span><span class="sp"></span><a class="btn ghost" download="04-again.png" href="04-again.png">Download</a><button onclick="copyImage(this)">Copy image</button></div><img src="04-again.png" alt=""></div></div><div class="step"><div class="num">9</div><div class="card"><div class="head"><span class="tag">Text</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body"><p>See a meme. Say the word. <b>It’s live in seconds.</b> Got another one? Say it again.</p></div></div></div><div class="step"><div class="num">10</div><div class="card"><div class="head"><span class="tag">Image</span><span class="sp"></span><a class="btn ghost" download="05-close.png" href="05-close.png">Download</a><button onclick="copyImage(this)">Copy image</button></div><img src="05-close.png" alt=""></div></div><div class="step"><div class="num">11</div><div class="card"><div class="head"><span class="tag">Text</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body"><h2>Just ask Grok.</h2>
+<h2>Then ask again</h2></div></div></div><div class="step"><div class="num">8</div><div class="card"><div class="head"><span class="tag">Image</span><span class="sp"></span><a class="btn ghost" download="04-again.png" href="04-again.png">Download</a><button onclick="copyImage(this)">Copy image</button></div><img src="04-again.png" alt=""></div></div><div class="step"><div class="num">9</div><div class="card"><div class="head"><span class="tag">Text</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body"><p>See a meme. Say the word. <b>It’s live in seconds.</b> Got another one? Say it again.</p></div></div></div><div class="step"><div class="num">10</div><div class="card"><div class="head"><span class="tag">Image</span><span class="sp"></span><a class="btn ghost no-ca" download="05-close.png" href="05-close.png">Download</a><a class="btn ghost ca-only" download="05-close-ca.png" href="05-close-ca.png">Download</a><button onclick="copyImage(this)">Copy image</button></div><img class="no-ca" src="05-close.png" alt=""><img class="ca-only" src="05-close-ca.png" alt=""></div></div><div class="step"><div class="num">11</div><div class="card"><div class="head"><span class="tag">Text</span><span class="sp"></span><button onclick="copyText(this)">Copy</button></div><div class="body"><h2>Just ask Grok.</h2>
 <p><b>grokpad.org</b></p>
+<p class="ca-only">CA: CvUfTWZG9cyFy2cQdK6TGypxAYu1LuEu2MgunrKzpump</p>
 <p>What are you launching first?</p></div></div></div></div>
 </div>
 <div class="toast" id="toast">Copied</div>
@@ -56,7 +60,10 @@ const mark = (btn, label) => { btn.closest('.step').querySelector('.card').class
 
 async function copyText(btn) {
   const el = btn.closest('.card').querySelector('.body')
-  const html = el.innerHTML, plain = el.innerText
+  // only what's showing: the with-CA / without-CA switch hides the other version's bits
+  const c = el.cloneNode(true)
+  c.querySelectorAll(document.body.classList.contains('with-ca') ? '.no-ca' : '.ca-only').forEach(n => n.remove())
+  const html = c.innerHTML, plain = el.innerText
   try {
     await navigator.clipboard.write([new ClipboardItem({ 'text/html': new Blob([html], { type: 'text/html' }), 'text/plain': new Blob([plain], { type: 'text/plain' }) })])
   } catch {
@@ -64,6 +71,11 @@ async function copyText(btn) {
     const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); s.removeAllRanges()
   }
   mark(btn, 'Copied'); toast('Copied — paste it into X')
+}
+
+function setCa(on) {
+  document.body.classList.toggle('with-ca', on)
+  document.querySelectorAll('.catog button').forEach(b => b.classList.toggle('on', (b.dataset.ca === '1') === on))
 }
 
 async function copyPlain(btn) {
@@ -75,7 +87,7 @@ async function copyPlain(btn) {
 }
 
 async function copyImage(btn) {
-  const img = btn.closest('.card').querySelector('img')
+  const img = [...btn.closest('.card').querySelectorAll('img')].find(i => i.offsetParent !== null)
   try {
     const blob = await (await fetch(img.src)).blob()
     await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
