@@ -1,8 +1,8 @@
 {
-  "title": "Launch a coin by asking Grok",
+  "title": "Launch a coin for free, just by asking Grok",
   "project": "Grokpad",
   "date": "2026-10-19",
-  "blurb": "Say a name and a ticker. Grok puts your coin live on pump.fun.",
+  "blurb": "Free coin launches. No sign-up, no deposit. Just ask Grok.",
   "parts": [
     {
       "type": "img",
@@ -11,7 +11,7 @@
     },
     {
       "type": "text",
-      "html": "<p>You already talk to Grok. Now it can launch your coin.</p>\n<p><b>Say a name and a ticker. Grok puts it live on pump.fun.</b></p>\n<h2>Set it up once</h2>"
+      "html": "<p>You already talk to Grok. Now it can launch your coin.</p>\n<p><b>It’s free. No sign-up, no deposit. Say a name and a ticker, and it’s live on pump.fun.</b></p>\n<h2>Set it up once</h2>"
     },
     {
       "type": "img",
@@ -19,7 +19,7 @@
     },
     {
       "type": "text",
-      "html": "<p>Tap one button on Grokpad. You get a private connector link and your own launch wallet. <b>No sign-up, no forms.</b></p>\n<p>Paste the link into Grok’s Connectors. Send a little SOL, just what you’ll launch with. A launch costs about 0.02 SOL.</p>\n<h2>Then just ask</h2>"
+      "html": "<p>Tap one button on Grokpad to get your private connector link. Paste it into Grok’s Connectors. <b>That’s the whole setup.</b></p>\n<p>There’s nothing to fund. Grokpad covers the launch.</p>\n<h2>Then just ask</h2>"
     },
     {
       "type": "img",
@@ -27,15 +27,15 @@
     },
     {
       "type": "text",
-      "html": "<p>“Launch a coin called Moon Cat, ticker MCAT, about a cat on the moon.”</p>\n<p>Grok writes the description if you skip it, launches from your wallet and sends back the pump.fun link. <b>No wallet pop-ups.</b></p>\n<p>Check your balance, sell or withdraw the same way.</p>\n<h2>80% of the fees are yours</h2>"
+      "html": "<p>“Launch a coin called Moon Cat, ticker MCAT, about a cat on the moon.”</p>\n<p>Grok can write the description and picture for you. <b>No wallet pop-ups, no forms.</b></p>\n<h2>Live in seconds</h2>"
     },
     {
       "type": "img",
-      "file": "04-fees.png"
+      "file": "04-live.png"
     },
     {
       "type": "text",
-      "html": "<p>Every trade of your coin pays a creator fee. <b>80% goes to your wallet, 20% to Grokpad.</b></p>\n<p>The split is written into pump.fun’s own fee program at launch. Nobody can change it, us included. Payouts run on their own.</p>"
+      "html": "<p>Grok sends back your coin’s Grokpad page and its contract address. <b>That page is also your coin’s website on pump.fun.</b></p>\n<p>Want a bag of your own coin? Add a little SOL to your Grokpad wallet, just what you’ll trade with, and tell Grok to buy.</p>"
     },
     {
       "type": "img",

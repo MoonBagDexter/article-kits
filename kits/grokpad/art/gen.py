@@ -59,7 +59,7 @@ def lockup(cx, cy, h, glow=True):
 
 # ---------------------------------------------------------------- 1 cover 2000x800
 b = [lockup(1000, 350, 340)]
-b.append('<text class="muted" x="1000" y="640" font-size="52" text-anchor="middle" font-weight="500">Launch coins by <tspan class="lime">asking Grok.</tspan></text>')
+b.append('<text class="muted" x="1000" y="640" font-size="52" text-anchor="middle" font-weight="500">Free coin launches. <tspan class="lime">Just ask Grok.</tspan></text>')
 page('01-cover.html', 2000, 800, b)
 
 # ---------------------------------------------------------------- 2 set it up 1600x900
@@ -81,12 +81,12 @@ b.append(f'<rect x="{xs[1] - 135}" y="{cy - 56}" width="270" height="64" rx="12"
 b.append(f'<text class="mono lime" x="{xs[1] - 115}" y="{cy - 15}" font-size="21">https://…/mcp/•••</text>')
 b.append(f'<rect x="{xs[1] - 135}" y="{cy + 30}" width="270" height="64" rx="12" fill="none" stroke="{LIME}" stroke-width="3"/>')
 b.append(f'<text class="txt" x="{xs[1]}" y="{cy + 71}" font-size="26" font-weight="600" text-anchor="middle">+ Add Connector</text>')
-# 3: fund
+# 3: launch free
 b.append(panel(xs[2] - 175, cy - 150, 350, 300, lit=True))
-b.append(f'<text class="mono" x="{xs[2]}" y="{cy - 82}" font-size="22" text-anchor="middle" style="fill:rgb(244 246 238 / 0.38)">launch wallet</text>')
-b.append(f'<text class="led lime glow" x="{xs[2]}" y="{cy + 22}" font-size="56" text-anchor="middle">0<tspan class="pct">.</tspan>1 SOL</text>')
-b.append(f'<text class="mono" x="{xs[2]}" y="{cy + 92}" font-size="22" text-anchor="middle" style="fill:rgb(244 246 238 / 0.6)">launch ≈ 0.02 SOL</text>')
-steps = [('Get your link', 'one tap, no sign-up'), ('Add it to Grok', 'paste it in Connectors'), ('Fund your wallet', 'just what you’ll launch with')]
+b.append(f'<text class="mono" x="{xs[2]}" y="{cy - 82}" font-size="22" text-anchor="middle" style="fill:rgb(244 246 238 / 0.38)">launch cost</text>')
+b.append(f'<text class="led lime glow" x="{xs[2]}" y="{cy + 30}" font-size="84" text-anchor="middle">FREE</text>')
+b.append(f'<text class="mono" x="{xs[2]}" y="{cy + 98}" font-size="22" text-anchor="middle" style="fill:rgb(244 246 238 / 0.6)">nothing to deposit</text>')
+steps = [('Get your link', 'one tap, no sign-up'), ('Add it to Grok', 'paste it in Connectors'), ('Launch free', 'no deposit, no wallet pop-ups')]
 for x, (a, c) in zip(xs, steps):
     b.append(f'<text class="txt" x="{x}" y="{cy + 228}" font-size="36" font-weight="600" text-anchor="middle">{a}</text>')
     b.append(f'<text class="muted" x="{x}" y="{cy + 274}" font-size="27" text-anchor="middle">{c}</text>')
@@ -101,42 +101,54 @@ b.append(f'<text class="mono" x="{lx}" y="{py + 80}" font-size="26" style="fill:
 b.append(f'<text class="mono" x="{lx}" y="{py + 128}" font-size="31">launch a coin called Moon Cat, ticker MCAT,</text>')
 b.append(f'<text class="mono" x="{lx}" y="{py + 172}" font-size="31">about a cat that lives on the moon</text>')
 b.append(f'<text class="mono" x="{lx}" y="{py + 256}" font-size="26" style="fill:rgb(244 246 238 / 0.38)">grok</text>')
-b.append(f'<text class="mono" x="{lx}" y="{py + 304}" font-size="31" style="fill:rgb(244 246 238 / 0.6)">Done. <tspan style="fill:#f4f6ee">Moon Cat ($MCAT)</tspan> is live on pump.fun:</text>')
-b.append(f'<text class="mono lime" x="{lx}" y="{py + 348}" font-size="31">pump.fun/coin/7xKp…pump</text>')
-b.append(f'<text class="mono" x="{lx}" y="{py + 392}" font-size="31" style="fill:rgb(244 246 238 / 0.6)">Creator fees are locked: 80% to you, 20% to Grokpad.</text>')
-chips = ['“what’s my balance?”', '“sell my MCAT”', '“withdraw to my wallet”']
-cw = [330, 270, 380]
+b.append(f'<text class="mono" x="{lx}" y="{py + 304}" font-size="31" font-weight="700">Moon Cat ($MCAT) is live</text>')
+b.append(f'<text class="mono" x="{lx}" y="{py + 348}" font-size="31" style="fill:rgb(244 246 238 / 0.6)">Grokpad page: <tspan class="lime">grokpad.org/coins/7xKp…pump</tspan></text>')
+b.append(f'<text class="mono" x="{lx}" y="{py + 392}" font-size="31" style="fill:rgb(244 246 238 / 0.6)">Contract address: <tspan style="fill:#f4f6ee">7xKp…pump</tspan></text>')
+chips = ['“buy 0.1 SOL of $MCAT”', '“sell my MCAT”', '“withdraw to my wallet”']
+cw = [360, 260, 380]
 gap = 24
 x = px + (pw - (sum(cw) + gap * 2)) / 2
 for c, w in zip(chips, cw):
-    b.append(f'<rect x="{x}" y="{py + 450}" width="{w}" height="64" rx="32" fill="#121212" stroke="rgb(255 255 255 / 0.15)" stroke-width="2"/>')
+    b.append(f'<rect x="{x}" y="{py + 450}" width="{w}" height="64" rx="12" fill="#121212" stroke="rgb(255 255 255 / 0.15)" stroke-width="2"/>')
     b.append(f'<text class="mono" x="{x + w / 2}" y="{py + 491}" font-size="23" text-anchor="middle" style="fill:rgb(244 246 238 / 0.6)">{c}</text>')
     x += w + gap
 b.append('<text class="dim" x="800" y="850" font-size="27" text-anchor="middle">No wallet pop-ups. No forms.</text>')
 page('03-ask.html', 1600, 900, b)
 
-# ---------------------------------------------------------------- 4 the fees 1600x900
-b = ['<text class="disp" x="800" y="132" font-size="62" text-anchor="middle"><tspan class="lime">80%</tspan> of the fees are yours.</text>']
-cy = 480
-b.append(panel(110, cy - 110, 360, 220))
-b.append(f'<text class="muted" x="150" y="{cy - 40}" font-size="28">Creator fees</text>')
-b.append(f'<text class="led" x="150" y="{cy + 28}" font-size="58">$MCAT</text>')
-b.append(f'<text class="dim" x="150" y="{cy + 72}" font-size="25">every trade, forever</text>')
-b.append(f'<path class="wire" d="M470 {cy}H640"/>')
-b.append(mark(760, cy, 230))
-# 80 branch
-y1, y2 = 330, 650
-b.append(f'<path d="M870 {cy} C960 {cy} 960 {y1} 1050 {y1}" fill="none" stroke="{LIME}" stroke-width="12" stroke-linecap="round"/>')
-b.append(f'<path d="M870 {cy} C960 {cy} 960 {y2} 1050 {y2}" class="wire-dim"/>')
-b.append(panel(1050, y1 - 95, 440, 190, lit=True))
-b.append(f'<text class="led lime glow" x="1085" y="{y1 + 38}" font-size="108">80<tspan class="pct">%</tspan></text>')
-b.append(f'<text class="txt" x="1450" y="{y1 - 6}" font-size="32" font-weight="600" text-anchor="end">You</text>')
-b.append(f'<text class="muted" x="1450" y="{y1 + 34}" font-size="25" text-anchor="end">your wallet</text>')
-b.append(panel(1050, y2 - 80, 440, 160))
-b.append(f'<text class="led" x="1085" y="{y2 + 28}" font-size="80" style="fill:rgb(244 246 238 / 0.6)">20<tspan class="pct">%</tspan></text>')
-b.append(f'<text class="txt" x="1450" y="{y2 + 10}" font-size="32" font-weight="600" text-anchor="end" style="fill:rgb(244 246 238 / 0.6)">Grokpad</text>')
-b.append('<text class="dim" x="800" y="840" font-size="27" text-anchor="middle">Locked on pump.fun’s fee program at launch. Nobody can change it, us included.</text>')
-page('04-fees.html', 1600, 900, b)
+# ---------------------------------------------------------------- 4 live, with its own page 1600x900
+b = ['<text class="disp" x="800" y="132" font-size="62" text-anchor="middle">Live in seconds. <tspan class="lime">With its own page.</tspan></text>']
+px, py, pw, ph = 200, 215, 1200, 520
+b.append(panel(px, py, pw, ph, 28))
+# address bar
+b.append(f'<rect x="{px + 30}" y="{py + 28}" width="{pw - 60}" height="62" rx="12" fill="#121212" stroke="rgb(255 255 255 / 0.15)" stroke-width="2"/>')
+b.append(f'<circle cx="{px + 64}" cy="{py + 59}" r="7" fill="{LIME}"/>')
+b.append(f'<text class="mono" x="{px + 90}" y="{py + 68}" font-size="26"><tspan class="lime">grokpad.org</tspan><tspan style="fill:rgb(244 246 238 / 0.6)">/coins/7xKp…pump</tspan></text>')
+# coin header
+ax, ay = px + 120, py + 220
+b.append(f'<circle cx="{ax}" cy="{ay}" r="74" fill="#0d1306" stroke="{LIME}" stroke-width="3"/>')
+b.append(f'<circle cx="{ax}" cy="{ay}" r="120" fill="url(#glow)"/>')
+b.append(f'<text class="led lime" x="{ax}" y="{ay + 18}" font-size="52" text-anchor="middle">MC</text>')
+b.append(f'<text class="disp" x="{ax + 112}" y="{ay - 6}" font-size="58">Moon Cat</text>')
+b.append(f'<text class="mono" x="{ax + 114}" y="{ay + 44}" font-size="28" style="fill:rgb(244 246 238 / 0.6)">$MCAT</text>')
+b.append(f'<rect x="{ax + 250}" y="{ay + 16}" width="246" height="40" rx="6" fill="#0d1306" stroke="{LIME}" stroke-width="2"/>')
+b.append(f'<circle cx="{ax + 274}" cy="{ay + 36}" r="6" fill="{LIME}"/>')
+b.append(f'<text class="mono lime" x="{ax + 290}" y="{ay + 44}" font-size="20" font-weight="700">LIVE ON PUMP.FUN</text>')
+# rows
+rows = [('Contract address', '<tspan class="mono" style="fill:#f4f6ee">7xKp…pump</tspan>'),
+        ('pump.fun website', '<tspan class="mono lime">this page</tspan>')]
+ry = py + 380
+for label, val in rows:
+    b.append(f'<path d="M{px + 46} {ry - 44}H{px + pw - 46}" stroke="rgb(255 255 255 / 0.08)" stroke-width="2"/>')
+    b.append(f'<text class="muted" x="{px + 46}" y="{ry}" font-size="28">{label}</text>')
+    b.append(f'<text x="{px + pw - 46}" y="{ry}" font-size="28" text-anchor="end">{val}</text>')
+    ry += 84
+# launch cost tile on the right of the header
+tx, ty = px + pw - 300, py + 140
+b.append(panel(tx, ty, 254, 160, 16, lit=True))
+b.append(f'<text class="mono" x="{tx + 127}" y="{ty + 46}" font-size="20" text-anchor="middle" style="fill:rgb(244 246 238 / 0.38)">launch cost</text>')
+b.append(f'<text class="led lime glow" x="{tx + 127}" y="{ty + 118}" font-size="64" text-anchor="middle">FREE</text>')
+b.append('<text class="dim" x="800" y="835" font-size="27" text-anchor="middle">Grok sends back the page and the contract address.</text>')
+page('04-live.html', 1600, 900, b)
 
 # ---------------------------------------------------------------- 5 close 1600x900
 b = [lockup(800, 370, 300)]
