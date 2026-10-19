@@ -96,10 +96,8 @@ b.append(f'<text class="disp" x="{xs[1] + 90}" y="{cy + 6}" font-size="46" text-
 b.append(f'<text class="mono lime" x="{xs[1]}" y="{cy + 98}" font-size="22" text-anchor="middle">● connected</text>')
 # 3: free
 b.append(panel(xs[2] - 175, cy - 150, 350, 300, lit=True))
-b.append(f'<text class="mono" x="{xs[2]}" y="{cy - 82}" font-size="22" text-anchor="middle" style="fill:rgb(244 246 238 / 0.38)">grok</text>')
-b.append(f'<text class="mono" x="{xs[2]}" y="{cy + 12}" font-size="30" text-anchor="middle">“launch Moon Cat”</text>')
-b.append(f'<text class="led lime glow" x="{xs[2] + 3}" y="{cy + 102}" font-size="56" text-anchor="middle">LIVE</text>')
-steps = [('Grab your link', 'one tap, no sign-up'), ('Add it to Grok', 'done, that’s the setup'), ('Just ask', 'say a name and a ticker')]
+b.append(f'<text class="led lime glow" x="{xs[2] + 4}" y="{cy + 30}" font-size="84" text-anchor="middle">FREE</text>')
+steps = [('Grab your link', 'one tap, no sign-up'), ('Add it to Grok', 'done, that’s the setup'), ('Launch free', 'nothing to deposit')]
 for x, (a, c) in zip(xs, steps):
     b.append(f'<text class="txt" x="{x}" y="{cy + 228}" font-size="36" font-weight="600" text-anchor="middle">{a}</text>')
     b.append(f'<text class="muted" x="{x}" y="{cy + 274}" font-size="27" text-anchor="middle">{c}</text>')
