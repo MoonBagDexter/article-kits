@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME = (r'C:\Program Files\Google\Chrome\Application\chrome.exe' if sys.platform == 'win32'
-          else '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')
+          else '/Users/james/.agent-browser/chrome-agent')
 
 kit = ROOT / 'kits' / sys.argv[1]
 for page in sorted((kit / 'art').glob('*.html')):

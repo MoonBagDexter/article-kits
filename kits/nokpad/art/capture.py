@@ -25,7 +25,7 @@ def taps(page, seq, gap=90, pause=1300):
 
 
 with sync_playwright() as p:
-    b = p.chromium.launch(channel='chrome')
+    b = p.chromium.launch(executable_path='/Users/james/.agent-browser/chrome-agent')
     page = b.new_page(viewport={'width': 1600, 'height': 1300}, device_scale_factor=3)
     page.goto(URL)
     page.add_style_tag(content=HIDE)
