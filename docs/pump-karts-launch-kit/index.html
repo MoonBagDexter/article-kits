@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex" />
+<title>Launch kit</title>
+<style>
+  :root { --bg: #0b0c10; --card: #14161c; --line: #262a33; --text: #e7e9ea; --muted: #8b93a3; --accent: #FBDD03; --x: #1d9bf0; --xline: #2f3336; --xmuted: #71767b; --good: #2fd07a; --bad: #ff5d5d; }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 150px; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 -apple-system, BlinkMacSystemFont, Inter, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+  button, a.btn { appearance: none; border: 0; cursor: pointer; font: 700 14px -apple-system, Inter, sans-serif; padding: 9px 16px; border-radius: 99px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: #eff3f4; color: #0f1419; white-space: nowrap; }
+  button.ghost, a.btn.ghost { background: #22262e; color: var(--text); }
+  button.ok { background: var(--good); color: #04130a; }
+  button.small, a.btn.small { padding: 6px 12px; font-size: 13px; }
+
+  /* top bar: title, progress, CA + link, part tabs */
+  .bar { position: sticky; top: 0; z-index: 10; background: rgba(11, 12, 16, .94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .bar-in { max-width: 1180px; margin: 0 auto; padding: 10px 16px 0; }
+  .row1 { display: flex; align-items: center; gap: 10px; }
+  .row1 img { width: 34px; height: 34px; border-radius: 8px; }
+  .row1 h1 .short { display: none; }
+  .row1 h1 { font-size: 17px; margin: 0; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .prog { display: grid; gap: 4px; justify-items: end; font: 700 13px ui-monospace, monospace; color: var(--muted); }
+  .prog b { color: var(--text); }
+  .meter { width: 110px; height: 5px; border-radius: 9px; background: #22262e; overflow: hidden; } .meter i { display: block; height: 100%; background: var(--good); }
+  .gear { background: #22262e; color: var(--text); padding: 7px 12px; font-size: 13px; }
+  .vars { display: none; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 0 2px; }
+  .vars.on { display: grid; }
+  .vars label { font-size: 12px; color: var(--muted); display: grid; gap: 3px; }
+  .vars input { font: 13px ui-monospace, monospace; color: var(--text); background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 9px; width: 100%; }
+  .vars input:focus { outline: 1px solid var(--accent); }
+  .tabs { display: flex; gap: 4px; margin-top: 8px; }
+  .tabs button { flex: 1; background: none; color: var(--muted); border-radius: 0; border-bottom: 3px solid transparent; padding: 10px 6px 9px; display: grid; justify-items: center; gap: 1px; font-size: 15px; }
+  .tabs button small { font: 600 11px ui-monospace, monospace; color: var(--muted); }
+  .tabs button.on { color: var(--text); border-bottom-color: var(--accent); }
+  .tabs button.all small { color: var(--good); }
+  .chips { display: flex; gap: 6px; overflow-x: auto; padding: 8px 16px 10px; max-width: 1180px; margin: 0 auto; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chips a { flex: none; font-size: 13px; color: var(--muted); text-decoration: none; border: 1px solid var(--line); border-radius: 99px; padding: 4px 11px; }
+  .chips a.all { color: var(--good); border-color: #1d4a32; }
+
+  /* layout: section list on the left (wide screens), content on the right */
+  .layout { max-width: 1180px; margin: 0 auto; padding: 0 16px 120px; display: grid; grid-template-columns: 1fr; gap: 32px; }
+  .rail { display: none; }
+  main { min-width: 0; }
+  @media (min-width: 1000px) {
+    .layout { grid-template-columns: 230px minmax(0, 1fr); }
+    .rail { display: block; position: sticky; top: 132px; align-self: start; padding-top: 28px; }
+    .rail a { display: flex; justify-content: space-between; gap: 8px; padding: 8px 10px; border-radius: 8px; color: var(--muted); text-decoration: none; font-size: 14px; }
+    .rail a:hover { background: var(--card); color: var(--text); }
+    .rail a span { font: 600 12px ui-monospace, monospace; }
+    .rail a.all span { color: var(--good); }
+    .chips { display: none; }
+    html { scroll-padding-top: 140px; }
+  }
+
+  .part-head { padding: 26px 0 4px; }
+  .part-head h2 { font-size: 28px; line-height: 1.15; margin: 0; }
+  .part-head p { color: var(--muted); margin: 6px 0 0; max-width: 640px; }
+  .how { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; font-size: 13px; color: var(--muted); }
+  .how span { border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px; }
+  .how b { color: var(--text); }
+  .live-note { font-size: 13px; color: var(--muted); margin: 4px 0 10px; } .live-note:empty { display: none; } .live-note b { color: var(--accent); }
+  .sec { margin-top: 38px; }
+  .sec > h3 { font-size: 19px; margin: 0; display: flex; align-items: baseline; gap: 10px; }
+  .sec > h3 small { font: 600 12px ui-monospace, monospace; color: var(--muted); }
+  .sec > h3 small.all { color: var(--good); }
+  .sec > .sub { color: var(--muted); font-size: 14px; margin: 4px 0 0; max-width: 680px; }
+  .stack { display: grid; gap: 14px; margin-top: 14px; max-width: 640px; }
+  .grid { display: grid; gap: 14px; margin-top: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); align-items: start; }
+
+  /* an X post, as it will look */
+  .xpanel { background: #000; border: 1px solid var(--xline); border-radius: 16px; overflow: hidden; }
+  .tw { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px; padding: 12px 14px 0; }
+  .avc { display: flex; flex-direction: column; align-items: center; }
+  .av { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: #222; flex: none; }
+  .av.empty { border: 2px dashed #3a4050; }
+  .tw.next .avc::after { content: ""; flex: 1; width: 2px; background: #333639; margin-top: 4px; }
+  .twm { min-width: 0; padding-bottom: 14px; }
+  .kick { display: flex; align-items: center; gap: 8px; font: 700 11px ui-monospace, monospace; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; cursor: default; }
+  .kick .n { background: var(--accent); color: #111; border-radius: 6px; padding: 0 6px; }
+  .kick .sp { flex: 1; }
+  .len { font: 600 12px ui-monospace, monospace; color: var(--good); letter-spacing: 0; white-space: nowrap; } .len.over { color: var(--bad); }
+  .twh { display: flex; align-items: center; gap: 4px; white-space: nowrap; overflow: hidden; }
+  .twh b { font-size: 15px; } .twh .h { color: var(--xmuted); overflow: hidden; text-overflow: ellipsis; }
+  .tick { display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; background: var(--x); color: #fff; font-size: 10px; font-weight: 900; flex: none; }
+  .rep { color: var(--xmuted); font-size: 14px; } .rep span { color: var(--x); }
+  .body { white-space: pre-wrap; word-break: break-word; font-size: 15px; line-height: 1.35; margin-top: 2px; }
+  .body .tag2 { color: var(--x); } .body .ph { background: #3a3000; color: var(--accent); border-radius: 4px; padding: 0 3px; }
+  .body.mono { font: 14px ui-monospace, monospace; word-break: break-all; }
+  .pic { margin-top: 10px; border-radius: 16px; overflow: hidden; border: 1px solid var(--xline); background: #000; }
+  .pic img { display: block; width: 100%; max-height: 420px; object-fit: contain; }
+  .pic video { display: block; width: 100%; max-height: 480px; background: #000; }
+  .pending { margin-top: 10px; border: 1px dashed #3a4050; border-radius: 16px; padding: 22px 14px; color: var(--muted); font-size: 14px; text-align: center; }
+  .acts { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; align-items: center; }
+  .acts .sp { flex: 1; }
+  .posted { background: none; color: var(--muted); border: 1px solid var(--line); }
+  /* posted: folds to one line, tap it to open again */
+  [data-id].done .fold { display: none; }
+  [data-id].done.open .fold { display: block; }
+  [data-id].done .kick { color: var(--good); cursor: pointer; }
+  [data-id].done .kick .n { background: var(--good); }
+  [data-id].done .kick::after { content: "Posted · tap to open"; color: var(--muted); font-weight: 600; }
+  [data-id].done.open .kick::after { content: "Posted"; }
+  [data-id].done .av { width: 24px; height: 24px; opacity: .5; }
+  [data-id].done .twm { padding-bottom: 10px; }
+  [data-id].done .twh, [data-id].done .rep { display: none; }
+  [data-id].done.open .twh { display: flex; } [data-id].done.open .rep { display: block; }
+  [data-id].done.open .av { width: 40px; height: 40px; opacity: 1; }
+
+  /* setup fields: tight rows */
+  .fields { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .field { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px 14px; border-top: 1px solid var(--line); align-items: center; }
+  .field:first-child { border-top: 0; }
+  .field .kick { grid-column: 1 / -1; color: var(--muted); margin: 0; }
+  .field .body { font-size: 15px; }
+  .field .btns { display: flex; gap: 6px; }
+  .field.done .kick { color: var(--good); cursor: default; }
+  .field.done .kick::after { content: "✓ done"; }
+  .field.done .fold { display: block; }
+  .field .thumb { max-height: 110px; max-width: 100%; border-radius: 10px; display: block; border: 1px solid var(--line); }
+  .field .thumb.round { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; }
+  .previews { display: grid; gap: 12px; margin-top: 14px; max-width: 640px; }
+  .x-profile { position: relative; background: #000; border: 1px solid var(--xline); border-radius: 16px; overflow: hidden; }
+  .x-banner { aspect-ratio: 3 / 1; background: #333639; } .x-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .x-avatar { position: absolute; left: 4%; top: 0; width: 22%; aspect-ratio: 1; margin-top: 22.333%; border-radius: 50%; border: 4px solid #000; overflow: hidden; }
+  .x-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .x-body { padding: calc(11% + 12px) 16px 16px; }
+  .x-name { font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 5px; }
+  .x-handle { color: var(--xmuted); font-size: 15px; }
+  .x-bio { margin: 10px 0 0; font-size: 15px; white-space: pre-wrap; word-break: break-word; }
+  .x-meta { color: var(--xmuted); font-size: 14px; margin-top: 8px; display: flex; gap: 14px; flex-wrap: wrap; } .x-meta a { color: var(--x); }
+  .x-switch { display: flex; gap: 6px; margin: 0 16px 14px; } .x-switch button { padding: 5px 12px; font-size: 12px; background: #16181c; color: var(--xmuted); border: 1px solid var(--xline); } .x-switch button.on { color: var(--text); border-color: var(--text); }
+
+  /* picks: tap a circle */
+  .pickbox { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+  .pickbox .kick { color: var(--muted); }
+  .picks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .picks button { width: 64px; height: 64px; border-radius: 50%; padding: 0; border: 2px solid var(--line); overflow: hidden; position: relative; background: #000; flex: none; display: block; }
+  .picks button img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .picks button i { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); font-style: normal; font-size: 11px; font-weight: 800; background: #0c0f1a; color: var(--accent); padding: 0 5px; border-radius: 4px 4px 0 0; }
+  .picks button.sug { border: 2px dashed var(--accent); }
+  .picks button.on { border: 4px solid var(--accent); }
+  .picked-as { margin-top: 8px; font-size: 13px; color: var(--muted); } .picked-as b { color: var(--text); }
+
+  /* a friend's team: one pack to hand over */
+  .pack { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 14px; display: grid; gap: 12px; }
+  .pack-head { display: flex; align-items: center; gap: 12px; }
+  .pack-head .av { width: 56px; height: 56px; }
+  .pack-head .who { flex: 1; min-width: 0; }
+  .pack-head b { font-size: 18px; display: block; } .pack-head span { color: var(--muted); font: 600 13px ui-monospace, monospace; }
+  .pack .pickbox, .pack .fields { background: #0f1116; }
+  .pack-note { color: var(--muted); font-size: 13px; }
+
+  .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); transform: translateX(-50%); background: var(--accent); color: #111; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 99px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 20; }
+  .toast.on { opacity: 1; }
+  @media (max-width: 560px) {
+    .vars { grid-template-columns: 1fr; }
+    .row1 h1 .full { display: none; }
+    .row1 h1 .short { display: inline; }
+    .meter { width: 70px; }
+    .tabs button { font-size: 14px; }
+    .part-head h2 { font-size: 24px; }
+    .field { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="bar" id="bar"></header>
+<div class="layout"><nav class="rail" id="rail"></nav><main id="app"></main></div>
+<div class="toast" id="toast">Copied</div>
+<script>
+const PLAN = {"id":"pump-karts-kit","template":"board","title":"Pump Karts launch kit","lead":"Top to bottom. Tap \u003cb>Copy\u003c/b> on any text, \u003cb>Copy image\u003c/b> or \u003cb>Download\u003c/b> on any picture. Paste the real CA and the domain in the boxes below and every post fills itself in. No X Premium: posts cap at 280, links count 23, no editing after posting.","vars":{"CA":"FC1SCp6fnsbadsfk9MJbs4TxDBYg5n45yp1v2PCBpump","SITE":"https://pumpkarts.io"},"profile":{"name":"Pump Karts","handle":"PumpKartsSOL","ticker":"KARTS","bio":"Free browser kart game. Hold $KARTS for a Driver's License, race real players, podium pays in $KARTS.","location":"Four Corners","joined":"October 2026","logo":"assets/logo.png","banner":"assets/banner.jpg"},"sections":[{"part":"Part 1 · Launch day","partSub":"Everything that explains Pump Karts, in order: set up, warm up, launch, then lay the whole thing out one post at a time.","title":"1. Coin + profile","previews":true,"sub":"Set the X account up first (no CA in the bio yet), make the coin, then add the CA under the bio.","items":[{"id":"coin-name","label":"pump.fun · name","text":"Pump Karts"},{"id":"coin-ticker","label":"pump.fun · ticker (no $)","text":"KARTS"},{"id":"coin-desc","label":"pump.fun · description (set once, can't be changed after)","text":"$KARTS is a free racing game which runs on your browser. Hold $KARTS for a Driver's License, race real players, win $KARTS.","limit":150},{"type":"image","id":"pfp","label":"Picture · pump.fun + X profile","src":"assets/pfp-1024.png"},{"type":"image","id":"banner","label":"X banner","src":"assets/banner-1500x500.png"},{"id":"x-name","label":"X · name","text":"Pump Karts","limit":50},{"id":"x-bio","label":"X · bio before launch (no CA yet)","text":"Free browser kart game. Hold $KARTS for a Driver's License, race real players, podium pays in $KARTS.","limit":160},{"id":"x-bio-ca","label":"X · bio after launch (swap to this once the coin is live)","text":"Free browser kart game. Hold $KARTS for a Driver's License, race real players, podium pays in $KARTS.\n{CA}","limit":160},{"id":"x-location","label":"X · location","text":"Four Corners","limit":30},{"id":"x-site","label":"X · website","text":"{SITE}"}]},{"title":"2. Warm-ups","sub":"Three posts on the new account before the coin goes up, a few minutes apart. No link, no CA.","items":[{"id":"w1","label":"Warm-up 1","text":"16 karts. one finish line. the podium gets paid.","limit":280,"media":{"src":"assets/stills/v2/aerial-a.png"}},{"id":"w2","label":"Warm-up 2","text":"no download. open a link, you're on the grid.","limit":280,"media":{"src":"assets/stills/v2/hero-a.png"}},{"id":"w3","label":"Warm-up 3","text":"free kart game in your browser. real players. the podium gets paid.","limit":280,"media":{"src":"assets/stills/v2/action-a.png"}}]},{"title":"3. Launch post","sub":"Coin live, CA in the bio, then the launch post with the trailer. Pin it, then the replies under it in order.","items":[{"id":"launch","label":"Launch post + trailer","text":"Pump Karts is live.\n\nthe first gamepad: a free kart game and a launchpad in one.\n\nrace real players, the podium gets paid in $KARTS.\nlaunch your own team coin, paired to $KARTS.\n\n{SITE}","limit":280,"media":{"src":"assets/video/poster.jpg","video":"assets/video/pump-karts-trailer.mp4","download":"assets/video/poster.jpg"}},{"id":"r1","label":"Reply 1 · CA","text":"{CA}","limit":280,"reply":true,"mono":true},{"id":"r-dev","label":"Reply 2 · the dev buy","text":"the dev buy: 10% of the supply.\n\n5% is locked for 6 months.\n5% kickstarts the prize pot: it pays the first races' podiums in $KARTS, straight from the dev wallet. every payout is on Solscan.","limit":280,"reply":true},{"id":"r2","label":"Reply 3 · how the racing pays","text":"how the racing pays:\n\n1. play free in your browser\n2. hold 50,000 $KARTS, your Driver's License goes live\n3. beat other licensed drivers, prizes land in $KARTS\n\nthe dev's 5% pays the first prizes, then creator fees buy every prize.","limit":280,"media":{"src":"assets/video/explainer-poster.jpg","video":"assets/video/explainer.mp4","pending":"explainer video missing"},"reply":true},{"id":"r3","label":"Reply 4 · the launchpad","text":"anyone can launch their own team on Pump Karts, paired to $KARTS.\n\nhold the coin, race in its colours.\n70% of the fees go to the team pot, paid to members who make the podium.\n30% feeds the Top Teams fund, and the 3 best teams split it every midnight.","limit":280,"reply":true},{"id":"r4","label":"Reply 5 · the flywheel","text":"the $KARTS flywheel:\n\nracers hold $KARTS to get licensed\nrace prizes are bought in $KARTS\nteams launch paired to $KARTS, so every team buy runs through it\nthe best teams get paid in $KARTS every night\n\nmore racers, more teams, more $KARTS bought. one ecosystem, one coin.","limit":280,"reply":true},{"id":"r5","label":"Reply 6 · it keeps moving","text":"and it keeps moving: a balance patch every week, a new combo every month.","limit":280,"reply":true}]},{"title":"4. Lay it all out","ordered":true,"sub":"The rest of launch day, in this order, spread through the day: what it is, how to play, how it pays, how teams work. One thing per post.","items":[{"id":"what-it-is","label":"What it is","text":"a kart game where the podium gets paid.\n\nopen a link on your phone or computer and you're on the grid against real people. nothing to download.","limit":280,"media":{"src":"assets/stills/v2/aerial-a.png","pending":"picture being filmed"}},{"id":"how-race","label":"How to race","text":"racing takes 3 taps:\n\n1. open the link\n2. hit Race, pick the Grand Tour or Tracks\n3. keep driving while it fills, the race pulls you in","limit":280,"media":{"src":"assets/graphics/how-race.png","pending":"graphic being made"}},{"id":"phone","label":"On a phone","text":"on a phone the kart drives itself.\n\nyou steer, brake and fight. same races, same prizes.","limit":280,"media":{"src":"assets/graphics/phone.png","pending":"graphic being made"}},{"id":"how-license","label":"How to get licensed","text":"want to race for $KARTS? get your Driver's License:\n\n1. connect your wallet in the game\n2. hold 50,000 $KARTS\n\nthat's it. it's live the second you hold. nothing gets locked.","limit":280,"media":{"src":"assets/graphics/how-license.png","pending":"graphic being made"}},{"id":"prizes","label":"How a race pays","text":"where the prizes come from:\n\nthe dev's 5% kickstarts the pot and pays the first podiums. after that creator fees fill it: at payout the pot buys $KARTS on the market, and the top 3 licensed drivers take it home.","limit":280,"media":{"src":"assets/graphics/race-pays.png","pending":"graphic being made"}},{"id":"free","label":"Free to play","text":"no $KARTS? play everything free and stack Bolts.\n\nwhen you want to race for real prizes, grab a license.","limit":280},{"id":"pad","label":"Game and launchpad","text":"Pump Karts is the first gamepad: a game and a launchpad in one.\n\nanyone can launch a team on pump.fun paired to $KARTS, and it shows up in the game.","limit":280},{"id":"how-team","label":"How to launch a team","text":"start your own team in 4 steps:\n\n1. License page, Start a team\n2. launch the coin on pump.fun, paired to $KARTS\n3. lock the fees: 70% team pot, 30% Top Teams fund\n4. paste the coin's address. your team is on the grid.","limit":280,"media":{"src":"assets/graphics/how-team.png","pending":"graphic being made"}},{"id":"split","label":"The split","text":"every team runs on the same locked split:\n\n70% of fees fill the team pot, paid to members who make the podium\n30% feeds the Top Teams fund\n\nno dev cut.","limit":280,"media":{"src":"assets/graphics/split.png","pending":"graphic being made"}},{"id":"fund","label":"Top Teams fund","text":"every midnight UTC the 3 best teams split the Top Teams fund.\n\nonly races with 4+ real players count, so you can't farm it. you have to win.","limit":280,"media":{"src":"assets/graphics/top-teams.png","pending":"graphic being made"}}]},{"part":"Part 2 · Running the coin","partSub":"After launch day. Keep the account alive: no order, post whichever fits the day.","loose":true,"title":"The game","sub":"Hype posts about what's in the game. Any time.","items":[{"id":"goons","label":"The Goons","text":"pick your Goon. every one has an ultimate that can flip a race:\n\nToasty melts down\nClank fires homing bottles\nChilly freezes the pack\nQuackers drops a minefield\nWhirly sends a tornado\nZorp opens a black hole\nShifty swaps places with the kart ahead","limit":280,"media":{"src":"assets/graphics/goons.png","pending":"graphic being made"}},{"id":"rides","label":"The junk rides","text":"4 junk rides, all the same speed. what wins is how you use the skill.\n\nthe Hamster Tyre slams. the Shopping Cart fires a fizz bottle. the Space Hopper drops gum. the Belly Slide throws snowballs.","limit":280,"media":{"src":"assets/graphics/rides.png","pending":"graphic being made"}},{"id":"black-hole","label":"Black Hole","text":"leading by a mile? Zorp doesn't care.\n\none black hole pulls in every kart within 35 m and flings them back out.","limit":280,"media":{"src":"assets/bank/g-zorp.png","video":"assets/bank/g-zorp.mp4","pending":"clip being filmed"}},{"id":"volcano","label":"Volcano Races","text":"1 in 4 Grand Tour races, the volcano wakes up.\n\nlava rains on the road all race. good luck holding first.","limit":280,"media":{"src":"assets/bank/w-volcano.png","video":"assets/bank/w-volcano.mp4","pending":"clip being filmed"}},{"id":"comebacks","label":"Comebacks","text":"last place gets the best items.\n\nnobody is out of a Pump Karts race until the line.","limit":280},{"id":"colours","label":"Team colours","text":"hold a team coin and your kart wears its colours.\n\nthe 8 biggest teams get a board in the plaza, where every player spawns.","limit":280,"media":{"src":"assets/bank/p-plaza.png","pending":"picture being filmed"}},{"id":"bolts","label":"Double Bolts","text":"licensed drivers earn double Bolts on everything, on top of the $KARTS they win.","limit":280}]},{"title":"Proof","sub":"Fills itself from the live game: yellow blanks mean that number isn't real yet, so hold the post.","items":[{"id":"first-prize","label":"First prizes","text":"first $KARTS prizes just landed.\n\n{TX}","limit":280},{"id":"week","label":"The week","text":"this week: {RACES} races, {DRIVERS} drivers, {WEEK_PAID} $KARTS paid to the podium.","limit":280}]},{"title":"Roadmap","items":[{"id":"rm-plan","label":"The plan","text":"the next 6 months of Pump Karts:\n\na balance patch every week\na new combo every month\nmore teams, seasons, new tracks, events\n\nwe read every race. the game keeps moving.","limit":280},{"id":"rm-balance","label":"Weekly balance","text":"every week we patch the balance.\n\nwe read every finished race: which Goon wins, which ride gets wrecked, who beats the field. the strongest pick gets pulled in, the weakest gets a buff.","limit":280},{"id":"rm-combo","label":"Monthly combo","text":"a new combo drops every month.\n\nfirst one lands {DATE}. you'll see it here first.","limit":280}]},{"part":"Part 3 · Friends' teams","partSub":"Your friends launch these from their own wallets after $KARTS is live. They're not official Pump Karts coins: you hand them the kit, your account just cheers them on.","title":"Your account","sub":"Engage with every team that shows up, friends' or strangers'.","items":[{"id":"new-team","label":"New team","text":"{TEAM} just launched, paired to $KARTS.","limit":280},{"id":"top-teams-night","label":"Last night's Top Teams","text":"last night's Top Teams:\n\n1. {TEAM1}\n2. {TEAM2}\n3. {TEAM3}\n\n{FUND_PAID} $KARTS paid out.","limit":280}]},{"title":"Team Pump","pack":{"name":"Team Pump","ticker":"TPUMP","pic":"pump-pic"},"sub":"Ticker TPUMP. Paired to $KARTS, fees locked 70% team pot / 30% Top Teams fund. The post goes out from their account.","items":[{"type":"pick","id":"pump-pic","label":"Team Pump · coin picture","suggest":4,"note":"Tap one to pick it. It's the coin's picture on pump.fun and goes on their launch post below.","options":[{"label":"Real pill, white","thumb":"assets/teams/pump/thumbs/pump-1-straight-white.jpg","src":"assets/teams/pump/pump-1-straight-white.png"},{"label":"Real pill, dark","thumb":"assets/teams/pump/thumbs/pump-2-straight-dark.jpg","src":"assets/teams/pump/pump-2-straight-dark.png"},{"label":"Real pill, green","thumb":"assets/teams/pump/thumbs/pump-3-straight-green.jpg","src":"assets/teams/pump/pump-3-straight-green.png"},{"label":"Pill kart","thumb":"assets/teams/pump/thumbs/pump-4-themed-kart.jpg","src":"assets/teams/pump/pump-4-themed-kart.png"},{"label":"Stripes + flag","thumb":"assets/teams/pump/thumbs/pump-5-themed-stripes-flag.jpg","src":"assets/teams/pump/pump-5-themed-stripes-flag.png"},{"label":"Boost through the line","thumb":"assets/teams/pump/thumbs/pump-6-themed-boost.jpg","src":"assets/teams/pump/pump-6-themed-boost.png"},{"label":"Pixel pill","thumb":"assets/teams/pump/thumbs/pump-7-themed-pixel.jpg","src":"assets/teams/pump/pump-7-themed-pixel.png"}]},{"id":"pump-desc","label":"Team Pump · coin description","text":"The pump.fun team in Pump Karts. Hold to race in its colours. Podium finishes pay from the team pot.","limit":150},{"id":"pump-post","label":"Team Pump · their launch post","text":"Team Pump is on the grid.\n\nhold $TPUMP and race in its colours. podium finishes pay from the team pot.","limit":280,"media":{"pickOf":"pump-pic","pending":"pick the coin picture above"}}]},{"title":"Team FOMO","pack":{"name":"Team FOMO","ticker":"TFOMO","pic":"fomo-pic"},"sub":"Ticker TFOMO. Paired to $KARTS, fees locked 70% team pot / 30% Top Teams fund. The post goes out from their account.","items":[{"type":"pick","id":"fomo-pic","label":"Team FOMO · coin picture","suggest":3,"note":"Tap one to pick it. It's the coin's picture on pump.fun and goes on their launch post below.","options":[{"label":"Real mark","thumb":"assets/teams/fomo/thumbs/fomo-1-straight.jpg","src":"assets/teams/fomo/fomo-1-straight.png"},{"label":"Race track","thumb":"assets/teams/fomo/thumbs/fomo-2-themed-track.jpg","src":"assets/teams/fomo/fomo-2-themed-track.png"},{"label":"Yellow + chequer","thumb":"assets/teams/fomo/thumbs/fomo-3-themed-yellow-chequer.jpg","src":"assets/teams/fomo/fomo-3-themed-yellow-chequer.png"},{"label":"Racing goggles","thumb":"assets/teams/fomo/thumbs/fomo-4-themed-goggles.jpg","src":"assets/teams/fomo/fomo-4-themed-goggles.png"},{"label":"Pixel mark","thumb":"assets/teams/fomo/thumbs/fomo-5-themed-pixel.jpg","src":"assets/teams/fomo/fomo-5-themed-pixel.png"}]},{"id":"fomo-desc","label":"Team FOMO · coin description","text":"The FOMO team in Pump Karts. Hold to race in its colours. Podium finishes pay from the team pot. Don't be late.","limit":150},{"id":"fomo-post","label":"Team FOMO · their launch post","text":"Team FOMO is open.\n\nyou were going to join late anyway. $TFOMO","limit":280,"media":{"pickOf":"fomo-pic","pending":"pick the coin picture above"}}]},{"title":"Team Diamond Hands","pack":{"name":"Team Diamond Hands","ticker":"DHANDS","pic":"diamond-hands-pic"},"sub":"Ticker DHANDS. Paired to $KARTS, fees locked 70% team pot / 30% Top Teams fund. The post goes out from their account.","items":[{"type":"pick","id":"diamond-hands-pic","label":"Team Diamond Hands · coin picture","suggest":4,"note":"Tap one to pick it. It's the coin's picture on pump.fun and goes on their launch post below.","options":[{"label":"Reference blown up (has a watermark)","thumb":"assets/teams/diamond-hands/thumbs/diamond-hands-1-straight-upscale.jpg","src":"assets/teams/diamond-hands/diamond-hands-1-straight-upscale.png"},{"label":"Clean redraw","thumb":"assets/teams/diamond-hands/thumbs/diamond-hands-2-straight-clean-redraw.jpg","src":"assets/teams/diamond-hands/diamond-hands-2-straight-clean-redraw.png"},{"label":"Diamond wheel","thumb":"assets/teams/diamond-hands/thumbs/diamond-hands-3-themed-wheel.jpg","src":"assets/teams/diamond-hands/diamond-hands-3-themed-wheel.png"},{"label":"Trophy","thumb":"assets/teams/diamond-hands/thumbs/diamond-hands-4-themed-trophy.jpg","src":"assets/teams/diamond-hands/diamond-hands-4-themed-trophy.png"},{"label":"Fist + flag","thumb":"assets/teams/diamond-hands/thumbs/diamond-hands-5-themed-flag.jpg","src":"assets/teams/diamond-hands/diamond-hands-5-themed-flag.png"},{"label":"Racing glove","thumb":"assets/teams/diamond-hands/thumbs/diamond-hands-6-themed-glove.jpg","src":"assets/teams/diamond-hands/diamond-hands-6-themed-glove.png"}]},{"id":"diamond-hands-desc","label":"Team Diamond Hands · coin description","text":"The Diamond Hands team in Pump Karts. Hold to race in its colours. Podium finishes pay from the team pot.","limit":150},{"id":"diamond-hands-post","label":"Team Diamond Hands · their launch post","text":"Team Diamond Hands is open.\n\nhold $DHANDS, race in its colours, and don't let go.","limit":280,"media":{"pickOf":"diamond-hands-pic","pending":"pick the coin picture above"}}]}]};
+const KEY = "kit:" + PLAN.id;
+const saved = JSON.parse(localStorage.getItem(KEY) || "{}");
+// A box the owner typed in wins, unless the plan's own value changed since (a new CA in the plan beats an old typed one).
+const typed = Object.fromEntries(Object.entries(saved.vars || {}).filter(([k, v]) => (saved.base || {})[k] === PLAN.vars[k] && v));
+const V = Object.assign({ CA: PLAN.vars.CA, SITE: PLAN.vars.SITE }, typed);
+// Posted ticks and the open tab live under their own key: the old page ticked a post on every Copy.
+const board = JSON.parse(localStorage.getItem(KEY + ":board") || "{}");
+const done = new Set(board.done || []);
+const picks = saved.picks || {};
+let tab = board.tab || 0;
+let varsOpen = false;
+const save = () => { localStorage.setItem(KEY, JSON.stringify({ ...saved, vars: V, base: PLAN.vars, picks })); localStorage.setItem(KEY + ":board", JSON.stringify({ done: [...done], tab })); };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+// LIVE: the kit's live.json (its live.py fills Proof posts from the game; serve.py keeps it fresh). Missing: those blanks stay.
+let LIVE = null;
+const fill = (t) => t.replace(/\{([A-Z_0-9]+)\}/g, (m, k) => (k === "CA" || k === "SITE" ? V[k] : LIVE?.vars?.[k]) || m);
+const hasLive = (s) => s.items.some((it) => /\{(?!CA\}|SITE\}|DATE\})[A-Z_0-9]+\}/.test(it.text || ""));
+function liveNote() {
+  if (!LIVE) return "";
+  const at = new Date(LIVE.at).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" });
+  return `<b>Live from the game</b>, updated ${esc(at)}. ${LIVE.notes.map(esc).join(" ")}`;
+}
+// X counts a link as 23 and most emoji as 2.
+const xLen = (s) => { s = s.replace(/https?:\/\/\S+/g, "x".repeat(23)); let n = 0; for (const ch of s) n += ch.codePointAt(0) <= 0x10ff ? 1 : 2; return n; };
+const rich = (t) => esc(t).replace(/(^|\s)(\$[A-Za-z]{1,6}|@[A-Za-z0-9_]{1,15})(?![A-Za-z0-9_])/g, '$1<span class="tag2">$2</span>').replace(/\{([A-Z_0-9]+)\}/g, '<span class="ph">{$1}</span>');
+const toast = (m) => { const t = document.getElementById("toast"); t.textContent = m; t.classList.add("on"); clearTimeout(t.h); t.h = setTimeout(() => t.classList.remove("on"), 1300); };
+const short = (s, a = 6, b = 4) => (s.length > a + b + 1 ? s.slice(0, a) + "…" + s.slice(-b) : s);
+
+// Parts: a section with `part` starts one; the sections after it belong to it.
+const PARTS = [];
+PLAN.sections.forEach((s, i) => {
+  if (s.part || !PARTS.length) PARTS.push({ title: s.part || PLAN.title, sub: s.partSub || "", loose: !!s.loose, secs: [] });
+  PARTS[PARTS.length - 1].secs.push({ ...s, idx: i });
+});
+const pickById = {};
+PLAN.sections.forEach((s) => s.items.forEach((it) => { if (it.type === "pick") pickById[it.id] = it; }));
+const pickedOpt = (id) => { const it = pickById[id]; return it && picks[id] !== undefined ? it.options[picks[id]] : null; };
+const isDone = (it) => (it.type === "pick" ? picks[it.id] !== undefined : done.has(it.id));
+const count = (items) => [items.filter(isDone).length, items.length];
+const partItems = (p) => p.secs.flatMap((s) => s.items);
+const allItems = PARTS.flatMap(partItems);
+const cnt = ([a, b]) => `${a}/${b}`;
+
+function media(m) {
+  if (!m) return "";
+  // A post can show whatever is picked in a "pick" item (pickOf = that item's id).
+  if (m.pickOf) { const o = pickedOpt(m.pickOf); if (!o) return `<div class="pending">${esc(m.pending || "pick a picture above")}</div>`; m = { ...m, src: o.src }; }
+  const pend = esc(m.pending || "being made");
+  // Videos are real players (tap to watch); the poster is what shows before play.
+  return m.video
+    ? `<div class="pic"><video src="${esc(m.video)}" poster="${esc(m.src)}" controls playsinline preload="metadata" data-pending="${pend}" onerror="pend(this)"></video></div>`
+    : `<div class="pic"><img src="${esc(m.src)}" alt="" loading="lazy" data-pending="${pend}" onerror="pend(this)" /></div>`;
+}
+// ?dl=1 makes the server send the file as a download, so a phone saves it instead of opening it.
+const dlUrl = (src) => src + (src.includes("?") ? "&" : "?") + "dl=1";
+function mediaBtns(m) {
+  if (!m) return "";
+  if (m.pickOf) { const o = pickedOpt(m.pickOf); if (!o) return ""; m = { src: o.src }; }
+  const dl = m.download || m.src, name = (dl || "").split("/").pop();
+  return m.video
+    ? `<a class="btn ghost small dl" href="${esc(dlUrl(m.video))}" download="${esc(m.video.split("/").pop())}">Download video</a>`
+    : `<button class="ghost small" data-act="img">Copy image</button><a class="btn ghost small dl" href="${esc(dlUrl(dl))}" download="${esc(name)}">Download</a>`;
+}
+function pend(el) { const d = document.createElement("div"); d.className = "pending"; d.textContent = el.dataset.pending; const pic = el.closest(".pic"); const box = el.closest("[data-id]"); box?.querySelectorAll('[data-act="img"], a.btn[download]').forEach((b) => b.remove()); pic.replaceWith(d); }
+function lenTag(t, limit) { return limit ? `<span class="len ${xLen(t) > limit ? "over" : ""}" data-limit="${limit}">${xLen(t)} / ${limit}</span>` : ""; }
+
+// One post drawn as an X post. author: who posts it (default the project's account).
+function tweet(it, o = {}) {
+  const p = PLAN.profile, t = fill(it.text);
+  const a = it.author ? { name: it.author.name, handle: it.author.handle, pic: (it.author.picOf && pickedOpt(it.author.picOf)?.src) || "" } : { name: p.name, handle: p.handle, pic: p.logo, tick: true };
+  const d = done.has(it.id);
+  return `<div class="tw ${o.next ? "next" : ""} ${d ? "done" : ""}" data-id="${esc(it.id)}">
+    <div class="avc">${a.pic ? `<img class="av" src="${esc(a.pic)}" alt="" />` : `<div class="av empty"></div>`}</div>
+    <div class="twm">
+      <div class="kick" data-act="open">${o.n ? `<span class="n">${o.n}</span>` : ""}<span>${esc(it.label)}</span><span class="sp"></span><span class="fold">${lenTag(t, it.limit)}</span></div>
+      <div class="twh"><b>${esc(a.name)}</b>${a.tick ? '<span class="tick">✓</span>' : ""}<span class="h">@${esc(a.handle)} · now</span></div>
+      ${it.reply ? `<div class="rep">Replying to <span>@${esc(p.handle)}</span></div>` : ""}
+      <div class="fold">
+        <div class="body ${it.mono ? "mono" : ""}" data-raw="${esc(it.text)}">${rich(t)}</div>
+        ${media(it.media)}
+        <div class="acts"><button data-act="copy">Copy text</button>${mediaBtns(it.media)}<span class="sp"></span><button class="posted small" data-act="done">${d ? "Undo" : "✓ Posted"}</button></div>
+      </div>
+    </div></div>`;
+}
+// A setup field: label, value, copy, done.
+function field(it) {
+  const d = done.has(it.id);
+  if (it.type === "image") {
+    const round = /pfp|logo/.test(it.id);
+    return `<div class="field ${d ? "done" : ""}" data-id="${esc(it.id)}"><div class="kick"><span>${esc(it.label)}</span><span class="sp"></span></div>
+      <div><img class="thumb ${round ? "round" : ""}" src="${esc(it.src)}" alt="" data-pending="missing" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'pending',textContent:'missing'}))" /></div>
+      <div class="btns"><button class="small" data-act="img">Copy image</button><a class="btn ghost small dl" href="${esc(dlUrl(it.src))}" download="${esc(it.src.split("/").pop())}">Download</a><button class="posted small" data-act="done">${d ? "Undo" : "✓"}</button></div></div>`;
+  }
+  const t = fill(it.text);
+  return `<div class="field ${d ? "done" : ""}" data-id="${esc(it.id)}"><div class="kick"><span>${esc(it.label)}</span><span class="sp"></span>${lenTag(t, it.limit)}</div>
+    <div class="body ${it.mono ? "mono" : ""}" data-raw="${esc(it.text)}">${rich(t)}</div>
+    <div class="btns"><button class="small" data-act="copy">Copy</button><button class="posted small" data-act="done">${d ? "Undo" : "✓"}</button></div></div>`;
+}
+// A row of takes to choose from (tap to pick, tap again to clear); dashed ring = suggestion.
+function pickItem(it) {
+  const cur = picks[it.id], o = cur !== undefined ? it.options[cur] : null;
+  return `<div class="pickbox" data-id="${esc(it.id)}"><div class="kick"><span>${esc(it.label)}</span><span class="sp"></span>${o ? '<span class="len">picked</span>' : ""}</div>
+    <div class="picks">${it.options.map((x, i) => `<button data-pick="${esc(it.id)}" data-i="${i}" title="${i + 1} · ${esc(x.label)}" class="${i === cur ? "on" : ""} ${i === it.suggest && cur === undefined ? "sug" : ""}"><img src="${esc(x.thumb || x.src)}" alt="" loading="lazy" /><i>${i + 1}</i></button>`).join("")}</div>
+    <div class="picked-as">${o ? `<b>${cur + 1} · ${esc(o.label)}</b>` : `Tap one to pick it${it.suggest !== undefined ? `. Dashed ring = my suggestion (${it.suggest + 1})` : ""}.`}</div></div>`;
+}
+
+function previews() {
+  const p = PLAN.profile;
+  const bio = (k) => `${esc(p.bio)}${k ? `\n<span class="ca-fill">${esc(V.CA)}</span>` : ""}`;
+  return `<div class="previews"><div class="x-profile"><div class="x-banner"><img src="${p.banner}" alt="" /></div><div class="x-avatar"><img src="${p.logo}" alt="" /></div>
+    <div class="x-body"><div class="x-name">${esc(p.name)} <span class="tick">✓</span></div><div class="x-handle">@${esc(p.handle)}</div>
+    <p class="x-bio" id="xbio" data-k="1">${bio(true)}</p>
+    <div class="x-meta"><span>📍 ${esc(p.location)}</span><a class="site-fill">${esc(V.SITE.replace(/^https?:\/\//, ""))}</a><span>Joined ${esc(p.joined)}</span></div></div>
+    <div class="x-switch"><button data-bio="0">Before launch</button><button class="on" data-bio="1">After launch (with CA)</button></div></div></div>`;
+}
+
+function section(s, part) {
+  const [a, b] = count(s.items);
+  let h = `<section class="sec" id="s${s.idx}"><h3>${esc(s.title)} <small class="${a === b ? "all" : ""}">${a}/${b}</small></h3>${s.sub ? `<p class="sub">${s.sub}</p>` : ""}`;
+  if (hasLive(s)) h += `<p class="live-note">${liveNote()}</p>`;
+  if (s.previews) h += previews();
+  if (s.pack) return h + pack(s) + "</section>";
+  if (s.previews) return h + `<div class="stack"><div class="fields">${s.items.map((it) => (it.type === "pick" ? pickItem(it) : field(it))).join("")}</div></div></section>`;
+  // A launch post followed by replies is one thread; everything else is its own post.
+  const thread = s.items.some((it) => it.reply);
+  if (thread) return h + `<div class="stack"><div class="xpanel">${s.items.map((it, i) => tweet(it, { next: !!s.items[i + 1]?.reply })).join("")}</div></div></section>`;
+  const posts = s.items.map((it, i) => (it.type === "pick" ? pickItem(it) : `<div class="xpanel">${tweet(it, { n: s.ordered ? i + 1 : 0 })}</div>`)).join("");
+  return h + `<div class="${part.loose ? "grid" : "stack"}">${posts}</div></section>`;
+}
+// A friend's team: the picture pick, the description, their own post, and one button to copy it all.
+function pack(s) {
+  const pk = s.pack, o = pickedOpt(pk.pic);
+  const desc = s.items.find((it) => it.id.endsWith("-desc")), post = s.items.find((it) => it.id.endsWith("-post"));
+  const pick = s.items.find((it) => it.type === "pick");
+  const author = { name: pk.name, handle: "yourfriend", picOf: pk.pic };
+  return `<div class="stack"><div class="pack" data-pack="${esc(s.idx)}">
+    <div class="pack-head">${o ? `<img class="av" src="${esc(o.src)}" alt="" />` : '<div class="av empty"></div>'}<div class="who"><b>${esc(pk.name)}</b><span>$${esc(pk.ticker)} · paired to $${esc(PLAN.profile.ticker)}</span></div><button class="small" data-act="pack">Copy pack</button></div>
+    ${pickItem(pick)}
+    <div class="fields">${field(desc)}</div>
+    <div class="xpanel">${tweet({ ...post, author, media: post.media })}</div>
+    <div class="pack-note">Copy pack copies the name, ticker, description, fee split and post as one message to send your friend. Send the picture with Download.</div>
+  </div></div>`;
+}
+
+function render() {
+  const p = PLAN.profile, all = count(allItems), part = PARTS[tab] || PARTS[0];
+  document.getElementById("bar").innerHTML = `<div class="bar-in">
+    <div class="row1"><img src="${p.logo}" alt="" /><h1><span class="full">${esc(PLAN.title)}</span><span class="short">Launch kit</span></h1>
+      <div class="prog"><span><b>${all[0]}</b> / ${all[1]} done</span><div class="meter"><i style="width:${(100 * all[0]) / all[1]}%"></i></div></div>
+      <button class="gear" data-act="vars">CA + link</button></div>
+    <div class="vars ${varsOpen ? "on" : ""}"><label>CA (paste the real one at launch)<input id="v-ca" value="${esc(V.CA)}" spellcheck="false" /></label><label>Link<input id="v-site" value="${esc(V.SITE)}" spellcheck="false" /></label></div>
+    <div class="tabs">${PARTS.map((q, i) => { const c = count(partItems(q)); return `<button class="${i === tab ? "on" : ""} ${c[0] === c[1] ? "all" : ""}" data-tab="${i}">${esc(q.title.replace(/^Part \d+ · /, ""))}<small>${cnt(c)}</small></button>`; }).join("")}</div></div>
+    <div class="chips">${part.secs.map((s) => { const c = count(s.items); return `<a href="#s${s.idx}" class="${c[0] === c[1] ? "all" : ""}">${esc(s.title)}</a>`; }).join("")}</div>`;
+  document.getElementById("rail").innerHTML = part.secs.map((s) => { const c = count(s.items); return `<a href="#s${s.idx}" class="${c[0] === c[1] ? "all" : ""}">${esc(s.title)}<span>${cnt(c)}</span></a>`; }).join("");
+  document.getElementById("app").innerHTML = `<div class="part-head"><h2>${esc(part.title)}</h2>${part.sub ? `<p>${part.sub}</p>` : ""}
+    <div class="how"><span><b>Copy text</b> then post it</span><span><b>✓ Posted</b> folds it away</span><span>Paste the CA once in <b>CA + link</b>, every post fills in</span></div></div>`
+    + part.secs.map((s) => section(s, part)).join("");
+  document.getElementById("v-ca").oninput = (e) => { V.CA = e.target.value.trim(); save(); refill(); };
+  document.getElementById("v-site").oninput = (e) => { V.SITE = e.target.value.trim(); save(); refill(); };
+}
+// Typing a CA or link re-fills every post in place (inputs keep focus).
+function refill() {
+  document.querySelectorAll(".body[data-raw]").forEach((b) => {
+    const t = fill(b.dataset.raw); b.innerHTML = rich(t);
+    const len = b.closest("[data-id]").querySelector(".len[data-limit]"); if (len) { const l = +len.dataset.limit; len.textContent = `${xLen(t)} / ${l}`; len.classList.toggle("over", xLen(t) > l); }
+  });
+  document.querySelectorAll(".ca-fill").forEach((e) => (e.textContent = V.CA));
+  document.querySelectorAll(".live-note").forEach((e) => (e.innerHTML = liveNote()));
+  document.querySelectorAll(".site-fill").forEach((e) => (e.textContent = V.SITE.replace(/^https?:\/\//, "")));
+}
+const rerender = () => { const y = scrollY; render(); scrollTo(0, y); };
+async function copyText(text) { try { await navigator.clipboard.writeText(text); } catch { const t = document.createElement("textarea"); t.value = text; document.body.append(t); t.select(); document.execCommand("copy"); t.remove(); } }
+document.addEventListener("click", async (e) => {
+  const dla = e.target.closest("a.dl");
+  if (dla && matchMedia("(pointer: coarse)").matches && navigator.canShare) {
+    // A phone: the share sheet has Save Image / Save Video (into Photos). If it can't, the plain download runs.
+    e.preventDefault();
+    const name = dla.getAttribute("download"), href = dla.href;
+    toast("Getting it ready…");
+    try {
+      const blob = await (await fetch(href)).blob();
+      const file = new File([blob], name, { type: blob.type });
+      if (!navigator.canShare({ files: [file] })) throw new Error("no share");
+      await navigator.share({ files: [file] });
+    } catch (err) { if (err?.name !== "AbortError") location.href = href; }
+    return;
+  }
+  const tb = e.target.closest("button[data-tab]");
+  if (tb) { tab = +tb.dataset.tab; save(); render(); scrollTo(0, 0); return; }
+  const pb = e.target.closest("button[data-pick]");
+  if (pb) { const id = pb.dataset.pick, i = +pb.dataset.i; if (picks[id] === i) delete picks[id]; else picks[id] = i; save(); rerender(); return; }
+  const bb = e.target.closest("button[data-bio]");
+  if (bb) { const k = bb.dataset.bio === "1", p = PLAN.profile; document.getElementById("xbio").innerHTML = esc(p.bio) + (k ? `\n<span class="ca-fill">${esc(V.CA)}</span>` : ""); bb.parentElement.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === bb)); return; }
+  const el = e.target.closest("[data-act]"); if (!el) return;
+  const act = el.dataset.act, box = el.closest("[data-id]");
+  if (act === "vars") { varsOpen = !varsOpen; document.querySelector(".vars").classList.toggle("on", varsOpen); if (varsOpen) document.getElementById("v-ca").focus(); return; }
+  if (act === "open") { if (box?.classList.contains("done")) box.classList.toggle("open"); return; }
+  if (act === "done") { if (done.has(box.dataset.id)) done.delete(box.dataset.id); else done.add(box.dataset.id); save(); rerender(); return; }
+  if (act === "copy") { await copyText(fill(box.querySelector(".body").dataset.raw)); el.classList.add("ok"); el.textContent = "Copied"; toast("Copied"); setTimeout(() => { el.classList.remove("ok"); el.textContent = el.closest(".field") ? "Copy" : "Copy text"; }, 1500); return; }
+  if (act === "img") {
+    const img = box.querySelector(".pic img") || box.querySelector("img.thumb");
+    try { const blob = await (await fetch(img.src)).blob(); const png = blob.type === "image/png" ? blob : await toPng(img); await navigator.clipboard.write([new ClipboardItem({ "image/png": png })]); toast("Image copied, paste it into X"); }
+    catch { toast("This browser won't copy images, use Download"); }
+    return;
+  }
+  if (act === "pack") {
+    const s = PLAN.sections[+el.closest("[data-pack]").dataset.pack], pk = s.pack;
+    const desc = s.items.find((it) => it.id.endsWith("-desc")), post = s.items.find((it) => it.id.endsWith("-post"));
+    const o = pickedOpt(pk.pic);
+    const text = `${pk.name} on Pump Karts\n\nName: ${pk.name}\nTicker: ${pk.ticker}\nPair it with: $${PLAN.profile.ticker} (CA ${V.CA})\nFees: lock 70% team pot / 30% Top Teams fund\nPicture: ${o ? o.src.split("/").pop() + " (sending it separately)" : "not picked yet"}\n\nDescription:\n${fill(desc.text)}\n\nYour launch post:\n${fill(post.text)}`;
+    await copyText(text); toast("Pack copied, paste it to your friend");
+  }
+});
+// Clipboards only take PNG: redraw a JPG through a canvas.
+function toPng(img) { const c = document.createElement("canvas"); c.width = img.naturalWidth; c.height = img.naturalHeight; c.getContext("2d").drawImage(img, 0, 0); return new Promise((r) => c.toBlob(r, "image/png")); }
+document.title = PLAN.title;
+render();
+const loadLive = () => fetch("live.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).then((j) => { if (j) { LIVE = j; refill(); } }).catch(() => {});
+loadLive(); setInterval(loadLive, 5 * 60 * 1000);
+</script>
+</body>
+</html>
