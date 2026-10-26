@@ -1,8 +1,9 @@
 {
- "at": 1793023441900,
- "live": false,
- "vars": {},
- "notes": [
-  "The live game still pays in the test coin, so these stay blank until it switches to the real coin."
- ]
+ "at": 1793027943578,
+ "live": true,
+ "vars": {
+  "RACES": "4",
+  "DRIVERS": "4"
+ },
+ "notes": []
 }
