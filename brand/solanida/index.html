@@ -1,0 +1,148 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><style>*{box-sizing:border-box}img{max-width:100%}[hidden]{display:none!important}body{margin:0}</style></head><body>
+<title>Solanida Brand Directions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a dark gallery wall. The art carries all the colour; each direction is one hung set of banner, logo and wordmark. */
+:root{
+  --night:#15111c; --wall:#1f1929; --line:#352c42; --ink:#f5eff2; --dim:#ab9fb4;
+  --love:#ff4f8b; --maybe:#ffb648; --kill:#7d7288; --on-accent:#17111b;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+body{background:var(--night);color:var(--ink);font:16px/1.5 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 72px}
+.page{max-width:1080px;margin:0 auto;display:grid;gap:40px}
+header{display:grid;gap:12px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--love)}
+h1{font:900 clamp(44px,9vw,92px)/.95 var(--display);text-transform:uppercase;margin:0;text-wrap:balance}
+.lede{margin:0;color:var(--dim);max-width:60ch}
+.status{margin:0;font-size:14px;color:var(--maybe);min-height:1.5em}
+.strip{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.thumb{position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:6px;overflow:hidden;aspect-ratio:1}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.thumb.loved{outline:3px solid var(--love);outline-offset:-3px}
+.thumb.killed img{opacity:.3}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+button{font:inherit;color:inherit}
+.filter,.mark{border:1px solid var(--line);background:var(--wall);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;cursor:pointer}
+.filter[aria-pressed="true"]{background:var(--ink);color:var(--on-accent);border-color:var(--ink)}
+:focus-visible{outline:2px solid var(--maybe);outline-offset:2px}
+.list{display:grid;gap:56px}
+.set{display:grid;gap:10px;scroll-margin-top:16px}
+.head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.no{font:800 26px/1 var(--display);color:var(--dim);font-variant-numeric:tabular-nums}
+h2{font:900 clamp(30px,5vw,44px)/1 var(--display);text-transform:uppercase;margin:0}
+.idea{margin:0;color:var(--dim);flex-basis:100%}
+.art{padding:0;border:0;background:none;display:block;width:100%;cursor:zoom-in;border-radius:6px;overflow:hidden}
+.art img{display:block;width:100%;height:100%;object-fit:cover}
+.banner{aspect-ratio:3}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:10px}
+.pair .art{aspect-ratio:1}
+.pair .art.word{aspect-ratio:auto}
+.votes{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:4px}
+.votes[hidden]{display:none}
+.mark[aria-pressed="true"][data-v="love"]{background:var(--love);border-color:var(--love);color:var(--on-accent)}
+.mark[aria-pressed="true"][data-v="maybe"]{background:var(--maybe);border-color:var(--maybe);color:var(--on-accent)}
+.mark[aria-pressed="true"][data-v="kill"]{background:var(--kill);border-color:var(--kill);color:var(--on-accent)}
+.who{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:14px;color:var(--dim)}
+.empty{color:var(--dim);margin:0}
+.zoom{position:fixed;inset:0;z-index:20;background:rgba(10,8,14,.94);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));border:0;width:100%;cursor:zoom-out}
+.zoom img{max-width:100%;max-height:100%;object-fit:contain}
+@media (max-width:520px){.strip{grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}.mark{padding:8px 14px}}
+</style>
+
+<div class="page">
+  <header>
+    <div class="eyebrow">Open-world crime on Solana</div>
+    <h1>16 ways Solanida could look</h1>
+    <p class="lede">Each direction is one set made together: a logo, a wordmark and an X banner. Tap any picture to see it big. Each one has a number, so you can just say which ones you like.</p>
+    <p class="status" id="status" role="status"></p>
+  </header>
+  <div class="strip" id="strip" aria-label="Jump to a direction"></div>
+  <div class="filters" id="filters" hidden>
+    <button class="filter" data-f="all" aria-pressed="true">All 16</button>
+    <button class="filter" data-f="love" aria-pressed="false">Loved</button>
+    <button class="filter" data-f="open" aria-pressed="false">Not marked by me</button>
+  </div>
+  <div class="list" id="list"></div>
+  <p class="empty" id="empty" hidden>Nothing here yet.</p>
+</div>
+
+<script>
+const SETS=[
+["c2-01","Palm Tree I","Hard poster colour. The letter I grows into a palm tree."],
+["c2-02","Night Motel","A neon sign over wet asphalt at midnight."],
+["c2-03","Getaway Chrome","Eighties chrome lettering and a car with gold coins for wheels."],
+["c2-04","Chopper Poster","Hand-painted block letters caught in a police spotlight."],
+["c2-05","Banknote Palms","Engraved like paper money, with the city's palms on the note."],
+["c2-06","Burnout","The name is written in tyre marks by a car that is still drifting."],
+["c3-01","The Family Ring","A gold S signet ring. Old money and a quiet threat."],
+["c3-02","Stolen Plate","A dented licence plate off a car that isn't yours."],
+["c3-03","Case File","A red police stamp over a burnt fingerprint."],
+["c3-04","Ocean Drive Deco","South Beach hotel pastels, with bullet holes."],
+["c3-05","The Sol Sun","A sun built from a car wheel and a coin. The symbol works with no words."],
+["c4-01","Motel Key","The room key you never gave back."],
+["c4-02","Wynwood Wall","Spray paint on concrete, loud and still wet."],
+["c4-03","Flamingo Don","A flamingo mob boss. This is the mascot route."],
+["c4-04","Pit Lane","Eighties race livery bending into a giant S."],
+["c4-05","Telenovela","A crime-drama title card with a rose, a gun and a script name."],
+];
+const VERBS={love:"Love",maybe:"Maybe",kill:"Kill"};
+const $=(s,r=document)=>r.querySelector(s);
+const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n;};
+const picture=(src,alt,cls)=>{const b=el("button","art "+(cls||""));b.type="button";b.setAttribute("aria-label","Enlarge "+alt);const i=new Image();i.src=src;i.alt=alt;i.loading="lazy";b.append(i);b.onclick=()=>zoom(src,alt);return b;};
+function zoom(src,alt){const z=el("button","zoom");z.type="button";z.setAttribute("aria-label","Close");const i=new Image();i.src=src;i.alt=alt;z.append(i);z.onclick=()=>z.remove();document.body.append(z);z.focus();}
+addEventListener("keydown",e=>{if(e.key==="Escape")$(".zoom")?.remove();});
+
+const cards={},thumbs={};
+SETS.forEach(([id,name,idea],i)=>{
+  const th=el("button","thumb");th.type="button";th.setAttribute("aria-label",`Go to ${i+1}, ${name}`);
+  const im=new Image();im.src=`img/${id}-logo.webp`;im.alt="";th.append(im);
+  th.onclick=()=>cards[id].scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  $("#strip").append(th);thumbs[id]=th;
+  const s=el("section","set");s.id=id;
+  const h=el("div","head");h.append(el("span","no",String(i+1)),el("h2",null,name),el("p","idea",idea));
+  const pair=el("div","pair");pair.append(picture(`img/${id}-logo.webp`,`${name} logo`),picture(`img/${id}-wordmark.webp`,`${name} wordmark`,"word"));
+  const v=el("div","votes");v.hidden=true;
+  for(const k of Object.keys(VERBS)){const b=el("button","mark",VERBS[k]);b.type="button";b.dataset.v=k;b.setAttribute("aria-pressed","false");b.onclick=()=>setMark(id,k);v.append(b);}
+  v.append(el("div","who"));
+  s.append(h,picture(`img/${id}-banner.webp`,`${name} banner`,"banner"),pair,v);
+  $("#list").append(s);cards[id]=s;
+});
+
+let db=null,user=null,me=null,mine={},others={},filter="all",canMark=true,chain=Promise.resolve();
+const say=t=>{$("#status").textContent=t||"";};
+function setMark(id,v){
+  if(!db||!me||!canMark)return;
+  if(mine[id]===v)delete mine[id];else mine[id]=v;
+  paint();
+  const body={marks:{...mine}};
+  chain=chain.then(()=>db.doc("votes/"+me).set(body)).catch(e=>{
+    if(e&&e.code==="invalid_argument"){canMark=false;paint();say("You can look, but your marks can't be saved. Ask MB to invite you by email as an editor.");}
+    else say("That mark didn't save. Tap it again.");
+  });
+}
+async function paint(){
+  const ids=Object.keys(others);
+  const people=user&&ids.length?await user.profiles(ids):{};
+  let shown=0;
+  SETS.forEach(([id])=>{
+    const card=cards[id],all=ids.map(u=>[u,(u===me?mine:others[u])[id]]).filter(x=>x[1]);
+    const loved=all.some(x=>x[1]==="love"),anyKill=all.length>0&&all.every(x=>x[1]==="kill");
+    thumbs[id].classList.toggle("loved",loved);thumbs[id].classList.toggle("killed",anyKill);
+    card.querySelectorAll(".mark").forEach(b=>{b.setAttribute("aria-pressed",String(mine[id]===b.dataset.v));b.disabled=!canMark;});
+    const who=card.querySelector(".who");who.replaceChildren();
+    all.forEach(([u,v])=>{const name=u===me?"You":(people[u]?.name||"Someone");who.append(el("span",null,`${name}: ${VERBS[v]}`));});
+    const show=filter==="all"||(filter==="love"&&loved)||(filter==="open"&&!mine[id]);
+    card.hidden=!show;if(show)shown++;
+  });
+  $("#empty").hidden=shown>0;
+}
+$("#filters").addEventListener("click",e=>{const b=e.target.closest(".filter");if(!b)return;filter=b.dataset.f;document.querySelectorAll(".filter").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));paint();});
+
+
+</script>
+
+</body></html>
