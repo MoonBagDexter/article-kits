@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mob City Brand Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout: a members' club window: velvet black ground, gold hairlines, the art does the talking. Single dark look by choice. */
+:root {
+  --velvet: #0F0C0B;
+  --panel: #18120F;
+  --line: #3A2A1C;
+  --gold: #D9A93F;
+  --gold-hi: #F4D27A;
+  --burgundy: #8E1530;
+  --cream: #F3EAD7;
+  --muted: #A8998A;
+  --display: 'Bodoni Moda', 'Didot', Georgia, serif;
+  --body: 'Barlow', system-ui, -apple-system, sans-serif;
+  color-scheme: dark;
+}
+body { background: var(--velvet); color: var(--cream); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 48px 80px; display: grid; gap: 64px; }
+header { display: grid; gap: 20px; justify-items: start; }
+header img { width: min(520px, 100%); height: auto; }
+header p { margin: 0; max-width: 62ch; color: var(--muted); }
+h2 { font-family: var(--display); font-weight: 800; font-size: clamp(26px, 3.2vw, 36px); margin: 0; color: var(--gold-hi); text-wrap: balance; letter-spacing: .01em; }
+.sec { display: grid; gap: 24px; }
+.sec-head { display: grid; gap: 6px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.sec-head p { margin: 0; color: var(--muted); max-width: 70ch; }
+.label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.banners { display: grid; gap: 36px; }
+figure { margin: 0; display: grid; gap: 10px; }
+figure a { display: block; border-radius: 6px; overflow: hidden; outline-offset: 3px; }
+figure a:focus-visible { outline: 2px solid var(--gold); }
+figure img { display: block; width: 100%; height: auto; max-width: 100%; }
+figcaption { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+figcaption b { font-family: var(--display); font-size: 20px; font-weight: 600; color: var(--cream); }
+figcaption span { color: var(--muted); font-size: 14px; }
+.pick { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; color: var(--velvet); background: var(--gold); padding: 2px 8px; border-radius: 3px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.tile .art { aspect-ratio: 1 / 1; max-width: 100%; display: grid; place-items: center; border-radius: 6px; overflow: hidden; }
+.tile .art.wide { aspect-ratio: 2 / 1; }
+.tile .art img { max-width: 88%; max-height: 88%; object-fit: contain; }
+.tile .art.full img { max-width: 100%; max-height: 100%; }
+.checker { background: var(--velvet); }
+.on-burg { background: var(--burgundy); }
+.tile p { margin: 0; color: var(--muted); font-size: 14px; }
+.tile b { color: var(--cream); font-weight: 600; }
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+.sw { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--panel); }
+.sw i { display: block; height: 72px; }
+.sw div { padding: 10px 12px; display: grid; gap: 2px; font-size: 13px; }
+.sw div b { color: var(--cream); font-weight: 600; font-size: 14px; }
+.sw code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--gold-hi); font-size: 13px; }
+.sw div span { color: var(--muted); }
+.rules { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--cream); max-width: 75ch; }
+.rules li::marker { color: var(--gold); }
+.note { color: var(--muted); font-size: 14px; margin: 0; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; }
+@media (max-width: 560px) { .wrap { gap: 48px; padding-block: 32px 56px; } figcaption b { font-size: 18px; } }
+</style>
+<style>*{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="label">Brand kit · $MOB</span>
+    <img src="art/wordmark.svg" alt="MOB CITY wordmark in gold with a burgundy shade">
+    <p>The current Mob City brand: the Gold Leaf wordmark, the hat-and-dice icon, and seven X banner options drawn from real in-game screenshots. Click or tap any picture to open the full-size file, then save it from there.</p>
+  </header>
+
+  <section class="sec" aria-labelledby="h-banners">
+    <div class="sec-head">
+      <span class="label">X banner · 1500 × 500</span>
+      <h2 id="h-banners">Banner options</h2>
+      <p>Seven takes, all at X's exact banner size. The bottom-left corner stays quiet because X puts the profile picture there.</p>
+    </div>
+    <div class="banners">
+      <figure><a href="art/banner-police-chase.png" target="_blank" rel="noopener"><img src="art/banner-police-chase.png" alt="Sports car outrunning police down a wet palm-lined street at night, MOB CITY top left" loading="lazy"></a><figcaption><b>Police chase</b><span class="pick">Top pick</span><span>Most action, reads as a crime game instantly</span></figcaption></figure>
+      <figure><a href="art/banner-casino-front.png" target="_blank" rel="noopener"><img src="art/banner-casino-front.png" alt="Art deco casino entrance at night with MOB CITY on the sign, a couple walking in, black limo outside" loading="lazy"></a><figcaption><b>Casino front</b><span class="pick">Top pick</span><span>The name on the building; the most "mob" of the set</span></figcaption></figure>
+      <figure><a href="art/banner-carjacking.png" target="_blank" rel="noopener"><img src="art/banner-carjacking.png" alt="A man dragging a driver out of a red car outside a neon-lit hotel" loading="lazy"></a><figcaption><b>Carjacking</b><span>Neon hotel, mid-steal</span></figcaption></figure>
+      <figure><a href="art/banner-crew-ocean-drive.png" target="_blank" rel="noopener"><img src="art/banner-crew-ocean-drive.png" alt="Four-man crew by two cars on a wet Ocean Drive-style boulevard, MOB CITY across the sky" loading="lazy"></a><figcaption><b>Crew on Ocean Drive</b><span>Long boulevard, name centred</span></figcaption></figure>
+      <figure><a href="art/banner-crew-by-the-cars.png" target="_blank" rel="noopener"><img src="art/banner-crew-by-the-cars.png" alt="Crew of four leaning on two cars outside an art deco hotel" loading="lazy"></a><figcaption><b>Crew by the cars</b><span>Calmer, warmer</span></figcaption></figure>
+      <figure><a href="art/banner-boulevard-chase.png" target="_blank" rel="noopener"><img src="art/banner-boulevard-chase.png" alt="White sports car racing at the camera with a police car behind, MOB CITY on the right" loading="lazy"></a><figcaption><b>Boulevard chase</b><span>Name on the right</span></figcaption></figure>
+      <figure><a href="art/banner-garage.png" target="_blank" rel="noopener"><img src="art/banner-garage.png" alt="Man in a suit beside a white car in an open garage at night, MOB CITY on the right" loading="lazy"></a><figcaption><b>Garage at night</b><span>Darkest, most minimal</span></figcaption></figure>
+    </div>
+    <p class="note">The cars in the two chase banners look close to real-world models. That's normally fine on a banner, but skip those two if it matters.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-logo">
+    <div class="sec-head">
+      <span class="label">Logo files</span>
+      <h2 id="h-logo">Wordmark and icon</h2>
+      <p>The wordmark and the icon are separate pieces. The icon goes anywhere square (X profile picture, coin image, app icon). The wordmark goes anywhere wide.</p>
+    </div>
+    <div class="grid">
+      <div class="tile"><a class="art full" href="art/x-avatar-400.png" target="_blank" rel="noopener"><img src="art/x-avatar-400.png" alt="Gold fedora on two dice on a dark tile" loading="lazy"></a><p><b>X profile picture</b> · 400 × 400 PNG</p></div>
+      <div class="tile"><a class="art full" href="art/icon-1024.png" target="_blank" rel="noopener"><img src="art/icon-1024.png" alt="Gold fedora on two dice, large app icon" loading="lazy"></a><p><b>Coin / app icon</b> · 1024 × 1024 PNG</p></div>
+      <div class="tile"><a class="art checker" href="art/hat-and-dice.png" target="_blank" rel="noopener"><img src="art/hat-and-dice.png" alt="Hat and dice icon on a transparent background" loading="lazy"></a><p><b>Icon, see-through background</b> · PNG</p></div>
+      <div class="tile"><a class="art wide checker" href="art/wordmark-gold.png" target="_blank" rel="noopener"><img src="art/wordmark-gold.png" alt="MOB CITY gold wordmark, transparent" loading="lazy"></a><p><b>Wordmark, gold</b> · 2048 px PNG, see-through</p></div>
+      <div class="tile"><a class="art wide checker" href="art/wordmark.svg" target="_blank" rel="noopener"><img src="art/wordmark.svg" alt="MOB CITY gold wordmark, vector" loading="lazy"></a><p><b>Wordmark, vector</b> · SVG, any size, for print and merch</p></div>
+      <div class="tile"><a class="art wide on-burg" href="art/wordmark-white.png" target="_blank" rel="noopener"><img src="art/wordmark-white.png" alt="MOB CITY wordmark in white" loading="lazy"></a><p><b>Wordmark, white</b> · one colour, for photos and busy backgrounds</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-colour">
+    <div class="sec-head">
+      <span class="label">Gold Leaf palette</span>
+      <h2 id="h-colour">Colours</h2>
+    </div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#D9A93F"></i><div><b>Leaf Gold</b><code>#D9A93F</code><span>Main accent, buttons</span></div></div>
+      <div class="sw"><i style="background:#F4D27A"></i><div><b>Bright Gold</b><code>#F4D27A</code><span>Small gold text on black</span></div></div>
+      <div class="sw"><i style="background:#8E1530"></i><div><b>Club Burgundy</b><code>#8E1530</code><span>The shade, second accent</span></div></div>
+      <div class="sw"><i style="background:#F3EAD7"></i><div><b>Cream</b><code>#F3EAD7</code><span>Text on dark</span></div></div>
+      <div class="sw"><i style="background:#0F0C0B"></i><div><b>Velvet Black</b><code>#0F0C0B</code><span>Backgrounds</span></div></div>
+      <div class="sw"><i style="background:#4A0A16"></i><div><b>Oxblood</b><code>#4A0A16</code><span>Deep glows</span></div></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rules">
+    <div class="sec-head">
+      <span class="label">Using it</span>
+      <h2 id="h-rules">A few rules</h2>
+    </div>
+    <ul class="rules">
+      <li>Spell it MOB CITY, two words, one line. Never stacked or arched.</li>
+      <li>Never stretch, recolour or redraw the wordmark. Scale it whole.</li>
+      <li>On dark backgrounds use the gold. On light or gold backgrounds use a one-colour version.</li>
+      <li>Text sitting on a gold fill is always dark, never white.</li>
+      <li>Headings in Oswald, body text in Barlow (both free on Google Fonts).</li>
+    </ul>
+  </section>
+
+  <footer>Mob City · $MOB · open-world crime on Solana</footer>
+</div>
+</body>
+</html>
